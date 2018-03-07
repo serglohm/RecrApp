@@ -1,0 +1,52 @@
+<%= form_with(model: vacancy, local: true) do |form| %>
+  <% if vacancy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vacancy.errors.count, "error") %> prohibited this vacancy from being saved:</h2>
+
+      <ul>
+      <% vacancy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :vacancy_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telegraph_link_ru %>
+    <%= form.text_field :telegraph_link_ru, id: :vacancy_telegraph_link_ru %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telegraph_link_en %>
+    <%= form.text_field :telegraph_link_en, id: :vacancy_telegraph_link_en %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :vacancy_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :salary_min %>
+    <%= form.number_field :salary_min, id: :vacancy_salary_min %>
+  </div>
+
+  <div class="field">
+    <%= form.label :salary_max %>
+    <%= form.number_field :salary_max, id: :vacancy_salary_max %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_id %>
+    <%= form.select :company_id, options_from_collection_for_select(Company.all, :id, :name), id: :vacancy_company_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @candidate.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @candidate.age %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @candidate.source %>
+</p>
+
+<p>
+  <strong>Skills:</strong>
+  <%= @candidate.skills %>
+</p>
+
+<p>
+  <strong>Linked In:</strong>
+  <%= @candidate.linked_in %>
+</p>
+
+
+<p>
+  <strong>Github:</strong>
+  <%= @candidate.github %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @candidate.status %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @candidate.country %>
+</p>
+
+<p>
+  <strong>Education:</strong>
+  <%= @candidate.education %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @candidate.experience %>
+</p>
+
+<p>
+  <strong>Expected salary:</strong>
+  <%= @candidate.expected_salary %>
+</p>
+
+<p>
+  <strong>Marital status:</strong>
+  <%= @candidate.marital_status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @candidate.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
+<%= link_to 'Back', candidates_path %>
