@@ -10,68 +10,73 @@
       </ul>
     </div>
   <% end %>
+  <div class="row">
+    <div class="col-md form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, id: :candidate_name %>
+    </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :candidate_name %>
+    <div class="col-md form-group">
+      <%= form.label :age %>
+      <%= form.number_field :age, id: :candidate_age %>
+    </div>
+
+    <div class="col-md form-group">
+      <%= form.label :country %>
+      <%= form.text_field :country, id: :candidate_country %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age, id: :candidate_age %>
+  <div class="row">
+    <div class="col-md form-group">
+      <%= form.label :skills %>
+      <%= form.text_area :skills, id: :candidate_skills, class:'form-control', rows:'7' %>
+    </div>
+
+    <div class="col-md form-group">
+      <%= form.label :education %>
+      <%= form.text_area :education, id: :candidate_education, class:'form-control', rows:'7' %>
+    </div>
+
+    <div class="col-md form-group">
+      <%= form.label :experience %>
+      <%= form.text_area :experience, id: :candidate_experience, class:'form-control', rows:'7' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :skills %>
-    <%= form.text_area :skills, id: :candidate_skills %>
+  <div class="row">
+    <div class="col-md form-group">
+      <%= form.label :linked_in %>
+      <%= form.text_field :linked_in, id: :candidate_linked_in %>
+    </div>
+
+    <div class="col-md form-group">
+      <%= form.label :github %>
+      <%= form.text_field :github, id: :candidate_github %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :status %>
     <%= form.text_field :status, id: :candidate_status %>
   </div>
 
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country, id: :candidate_country %>
-  </div>
-
-  <div class="field">
-    <%= form.label :education %>
-    <%= form.text_field :education, id: :candidate_education %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :source %>
     <%= form.text_field :source, id: :candidate_source %>
   </div>
 
-  <div class="field">
-    <%= form.label :experience %>
-    <%= form.text_area :experience, id: :candidate_experience %>
-  </div>
-
-  <div class="field">
-    <%= form.label :github %>
-    <%= form.text_field :github, id: :candidate_github %>
-  </div>
-
-  <div class="field">
-    <%= form.label :experience %>
-    <%= form.text_field :experience, id: :candidate_experience %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :expected_salary %>
     <%= form.number_field :expected_salary, id: :candidate_expected_salary %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :marital_status %>
     <%= form.text_field :marital_status, id: :candidate_marital_status %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit", class:'btn btn-primary' %>
   </div>
 <% end %>
