@@ -1,0 +1,15 @@
+<%= form_with(model: user, local: true) do |f| %>
+   <div class="form-group col-md-4">
+      <%= f.label :email %><br />
+      <%= f.text_field :email, class:"form-control" %>
+   </div>   
+
+   <div class="form-group col-md-4">  
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, class:"form-control" %>
+   </div>
+   
+   <div class="actions">
+      <%= f.submit "Submit", class:'btn btn-primary' %>
+   </div>
+<% end %>
