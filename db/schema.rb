@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307205456) do
+ActiveRecord::Schema.define(version: 20180311113453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20180307205456) do
     t.string "source"
     t.string "linked_in"
     t.string "github"
+    t.string "resume"
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
@@ -38,6 +39,15 @@ ActiveRecord::Schema.define(version: 20180307205456) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "assignable_id"
+    t.string "assignable_type"
+    t.index ["assignable_type", "assignable_id"], name: "index_languages_on_assignable_type_and_assignable_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -11,42 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :vacancy_name %>
+    <%= form.text_field :name, id: :vacancy_name, class:'form-control' %>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <%= form.label :telegraph_link_ru %>
+      <%= form.text_field :telegraph_link_ru, id: :vacancy_telegraph_link_ru, class:'form-control' %>
+    </div>
+
+    <div class="form-group col">
+      <%= form.label :telegraph_link_en %>
+      <%= form.text_field :telegraph_link_en, id: :vacancy_telegraph_link_en, class:'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :telegraph_link_ru %>
-    <%= form.text_field :telegraph_link_ru, id: :vacancy_telegraph_link_ru %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telegraph_link_en %>
-    <%= form.text_field :telegraph_link_en, id: :vacancy_telegraph_link_en %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :vacancy_description %>
+    <%= form.text_area :description, id: :vacancy_description, class:'form-control', rows: "7" %>
   </div>
 
-  <div class="field">
-    <%= form.label :salary_min %>
-    <%= form.number_field :salary_min, id: :vacancy_salary_min %>
+  <div class="row">
+    <div class="form-group col">
+      <%= form.label :salary_min %>
+      <%= form.number_field :salary_min, id: :vacancy_salary_min, class:'form-control' %>
+    </div>
+
+    <div class="form-group col">
+      <%= form.label :salary_max %>
+      <%= form.number_field :salary_max, id: :vacancy_salary_max, class:'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :salary_max %>
-    <%= form.number_field :salary_max, id: :vacancy_salary_max %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :company_id %>
-    <%= form.select :company_id, options_from_collection_for_select(Company.all, :id, :name), id: :vacancy_company_id %>
+    <%= form.select :company_id, options_from_collection_for_select(Company.all, :id, :name), id: :vacancy_company_id, class:'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit", class:'btn btn-primary' %>
   </div>
 <% end %>

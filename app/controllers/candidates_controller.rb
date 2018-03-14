@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-  before_action :set_candidate, only: [:show, :edit, :update, :destroy]
+  before_action :set_candidate, only: [:show, :edit, :update, :destroy, :download]
 
   # GET /candidates
   # GET /candidates.json
@@ -61,6 +61,11 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def download
+    path = "#{@candidate.resume}"
+    send_file path, :x_sendfile=>true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_candidate
@@ -69,7 +74,7 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:name, :age, :skills, :status, :country, :education,
+      params.require(:candidate).permit(:name, :age, :skills, :status, :country, :education, :resume,
                                         :experience, :expected_salary, :marital_status, :github, :linked_in)
     end
 end
