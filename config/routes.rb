@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :sources
   resources :languages
   resources :companies
   resources :candidates
