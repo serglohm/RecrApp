@@ -56,15 +56,18 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <%= form.label :status %>
-    <%= form.select :status, Candidate.statuses.keys, id: :candidate_status, class:'form-control' %>
+  <div class="row">
+    <div class="form-group col">
+      <%= form.label :status %>
+      <%= form.select :status, Candidate.statuses.keys, {}, {class:'form-control'} %>
+    </div>
+
+    <div class="form-group col">
+      <%= form.label :source_id %>
+      <%= form.select :source_id, options_from_collection_for_select(Source.all, :id, :name), {}, class:'form-control' %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= form.label :source_id %>
-    <%= form.select :source_id, options_from_collection_for_select(Source.all, :id, :name), id: :candidate_source_id, class:'form-control' %>
-  </div>
   <div class="row">
     <div class="form-group col">
       <%= form.label :expected_salary %>
