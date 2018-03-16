@@ -62,8 +62,8 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :source %>
-    <%= form.text_field :source, id: :candidate_source, class:'form-control' %>
+    <%= form.label :source_id %>
+    <%= form.select :source_id, options_from_collection_for_select(Source.all, :id, :name), id: :candidate_source_id, class:'form-control' %>
   </div>
   <div class="row">
     <div class="form-group col">

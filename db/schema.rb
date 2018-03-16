@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316065002) do
+ActiveRecord::Schema.define(version: 20180316070352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,10 +28,11 @@ ActiveRecord::Schema.define(version: 20180316065002) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "source"
     t.string "linked_in"
     t.string "github"
     t.string "resume"
+    t.bigint "source_id"
+    t.index ["source_id"], name: "index_candidates_on_source_id"
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
@@ -85,6 +86,7 @@ ActiveRecord::Schema.define(version: 20180316065002) do
     t.index ["user_id"], name: "index_vacancies_on_user_id"
   end
 
+  add_foreign_key "candidates", "sources"
   add_foreign_key "candidates", "users"
   add_foreign_key "vacancies", "companies"
   add_foreign_key "vacancies", "users"

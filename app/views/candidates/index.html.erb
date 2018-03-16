@@ -21,7 +21,7 @@
         <td><%= candidate.status %></td>
         <td><%= candidate.country %></td>
         <td><%= candidate.expected_salary %></td>
-        <td><%= candidate.source %></td>
+        <td><%= candidate.source.name if candidate.source.present? %></td>
         <td><%= link_to 'Show', candidate %></td>
         <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
         <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
