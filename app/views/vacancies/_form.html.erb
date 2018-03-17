@@ -57,6 +57,15 @@
     <% end %>
   </div>
 
+  <div class="form-group">
+    <p>Assigned candidates</p>
+    <ul>
+      <% @vacancy.candidates.each do |candidate| %>
+        <li><%= candidate.name %></li>
+      <% end %>
+    </ul>
+  </div>
+
   <div class="actions">
     <%= form.submit "Submit", class:'btn btn-primary' %>
   </div>

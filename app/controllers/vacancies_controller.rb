@@ -71,6 +71,6 @@ class VacanciesController < ApplicationController
     def vacancy_params
       params.require(:vacancy).permit(:name, :telegraph_link_ru, :telegraph_link_en,
                                       :description, :salary_min, :salary_max,
-                                      :company_id, language_ids:[])
+                                      :company_id, language_ids:[], candidate_ids:[])
     end
 end

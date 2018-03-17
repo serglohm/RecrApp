@@ -89,6 +89,14 @@
   </div>
 
   <div class="form-group">
+    <p>Assigned vacancies</p>
+    <% Vacancy.all.each do |vacancy| %>
+      <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
+      <%= vacancy.name %> in <%= vacancy.company.name %><br/>
+    <% end %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :resume %>
     <% if @candidate.resume.present? %>
       <%= link_to File.basename(@candidate.resume.url),
