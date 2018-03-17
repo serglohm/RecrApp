@@ -62,8 +62,7 @@ class CandidatesController < ApplicationController
   end
 
   def download
-    path = "#{@candidate.resume}"
-    send_file path, :x_sendfile=>true
+    send_file @candidate.resume.path, x_sendfile: true
   end
 
   private
