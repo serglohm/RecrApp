@@ -6,23 +6,20 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Salary min</th>
-      <th>Salary max</th>
       <th>Company</th>
-      <th colspan="3"></th>
+      <th>Salary</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @vacancies.each do |vacancy| %>
       <tr>
-        <td><%= vacancy.name %></td>
-        <td><%= vacancy.salary_min %></td>
-        <td><%= vacancy.salary_max %></td>
-        <td><%= vacancy.company.name if vacancy.company.present? %></td>
-        <td><%= link_to 'Show', vacancy %></td>
+        <td><%= link_to vacancy.name, vacancy %></td>
+        <td><%= link_to vacancy.company.name, vacancy.company %></td>
+        <td><%= vacancy.salary_min %> - <%= vacancy.salary_max %> EUR</td>
         <td><%= link_to 'Edit', edit_vacancy_path(vacancy) %></td>
-        <td><%= link_to 'Destroy', vacancy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', vacancy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
