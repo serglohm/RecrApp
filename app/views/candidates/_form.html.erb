@@ -80,9 +80,6 @@
     </div>
   </div>
   
-
-  
-
   <div class="form-group">
     <p>Programming languages</p>
     <% Language.all.each do |lang| %>
@@ -90,8 +87,6 @@
       <%= lang.name %><br/>
     <% end %>
   </div>
-
-
 
   <div class="form-group">
     <%= form.label :resume %>
@@ -101,8 +96,6 @@
     <% end %>
     <%= form.file_field :resume, id: :candidate_resume, class:'form-control' %>
   </div>
-
-
 
   <div class="actions">
     <%= form.submit "Submit", class:'btn btn-primary' %>
