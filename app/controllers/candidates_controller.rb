@@ -4,7 +4,7 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
-    @candidates = current_user.candidates.all
+    @candidates = Candidate.all
   end
 
   # GET /candidates/1
