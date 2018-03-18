@@ -1,5 +1,5 @@
 class CandidateMailer < ApplicationMailer
-  default from: 'Notifications ITTalent'
+  default from: 'notifications@recr.ittalent.ee'
  
   def send_candidate(candidate, address)
     @address = address

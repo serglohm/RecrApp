@@ -5,8 +5,8 @@ set :application, "RecrApp"
 set :repo_url, "git@github.com:swith/RecrApp.git"
 set :deploy_to, '/home/deploy/RecrApp'
 set :rbenv_ruby, '2.5.0'
-append :linked_files, "config/database.yml", "config/secrets.yml"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
+append :linked_files, "config/database.yml", "config/secrets.yml", "config/secrets.yml.key"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads", "uploads"
 set :default_env, -> {{ path: [fetch(:ruby_version), "#{release_path}/bin", "$PATH"].join(":") }}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

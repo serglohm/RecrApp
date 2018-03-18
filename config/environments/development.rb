@@ -56,14 +56,14 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-   :address              => "smtp.yandex.ru",
-   :port                 => 465,
-   :domain               => 'yandex.ru',
-   :user_name            => Rails.application.secrets.gmail_username,
-   :password             => Rails.application.secrets.gmail_password,
-   :authentication       => "plain",
-   :enable_starttls_auto => true,
-   :tls => true
+   :address              => "smtp.mailgun.org",
+   :port                 => 587,
+   :domain               => 'recr.ittalent.ee',
+   :user_name            => Rails.application.secrets.mailgun_username,
+   :password             => Rails.application.secrets.mailgun_password,
+   :authentication       => :plain,
+ #  :enable_starttls_auto => true,
+ #  :api_key              => Rails.application.secrets.mailgun_api_key
   }
 
 end
