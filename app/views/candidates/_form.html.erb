@@ -10,7 +10,8 @@
       </ul>
     </div>
   <% end %>
-  <div class="row">
+  <h2>General</h2>
+  <div class="row jumbotron">
     <div class="col-md form-group">
       <%= form.label :name %>
       <%= form.text_field :name, id: :candidate_name, class:'form-control' %>
@@ -22,12 +23,18 @@
     </div>
 
     <div class="col-md form-group">
+      <%= form.label :email %>
+      <%= form.email_field :email, id: :candidate_email, class:'form-control' %>
+    </div>
+
+    <div class="col-md form-group">
       <%= form.label :country %>
       <%= form.text_field :country, id: :candidate_country, class:'form-control' %>
     </div>
   </div>
-
-  <div class="row">
+  
+  <h2>Personal</h2>
+  <div class="row jumbotron">
     <div class="col-md form-group">
       <%= form.label :skills %>
       <%= form.text_area :skills, id: :candidate_skills, class:'form-control', rows:'7' %>
@@ -43,16 +50,30 @@
       <%= form.text_area :experience, id: :candidate_experience, class:'form-control', rows:'7' %>
     </div>
   </div>
+  
+  <h2>Social</h2>
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md form-group">
+        <%= form.label :linked_in %>
+        <%= form.text_field :linked_in, id: :candidate_linked_in, class:'form-control' %>
+      </div>
 
-  <div class="row">
-    <div class="col-md form-group">
-      <%= form.label :linked_in %>
-      <%= form.text_field :linked_in, id: :candidate_linked_in, class:'form-control' %>
+      <div class="col-md form-group">
+        <%= form.label :github %>
+        <%= form.text_field :github, id: :candidate_github, class:'form-control' %>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md form-group">
+        <%= form.label :skype %>
+        <%= form.text_field :skype, id: :candidate_skype, class:'form-control' %>
+      </div>
 
-    <div class="col-md form-group">
-      <%= form.label :github %>
-      <%= form.text_field :github, id: :candidate_github, class:'form-control' %>
+      <div class="col-md form-group">
+        <%= form.label :spoken_languages %>
+        <%= form.text_field :spoken_languages, id: :candidate_spoken_languages, class:'form-control' %>
+      </div>
     </div>
   </div>
 
@@ -77,6 +98,11 @@
     <div class="form-group col">
       <%= form.label :marital_status %>
       <%= form.text_field :marital_status, id: :candidate_marital_status, class:'form-control' %>
+    </div>
+
+    <div class="form-group col">
+      <%= form.label :availability %>
+      <%= form.text_field :availability, id: :candidate_availability, class:'form-control' %>
     </div>
   </div>
   
