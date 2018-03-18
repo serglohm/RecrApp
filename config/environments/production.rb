@@ -87,7 +87,7 @@ Rails.application.configure do
    :password             => Rails.application.secrets.mailgun_password,
    :authentication       => "plain",
    :enable_starttls_auto => true,
-   api_key:              => Rails.application.secrets.mailgun_api_key
+   :api_key              => Rails.application.secrets.mailgun_api_key
   }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
