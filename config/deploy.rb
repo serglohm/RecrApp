@@ -7,7 +7,7 @@ set :deploy_to, '/home/deploy/RecrApp'
 set :rbenv_ruby, '2.5.0'
 append :linked_files, "config/database.yml", "config/secrets.yml", "config/secrets.yml.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
-set :shared_children, shared_children + %w{uploads}
+set :linked_dirs, %w{uploads}
 set :default_env, -> {{ path: [fetch(:ruby_version), "#{release_path}/bin", "$PATH"].join(":") }}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
