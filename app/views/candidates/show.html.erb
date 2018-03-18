@@ -81,6 +81,9 @@
       "/uploads/candidate/resume/#{@candidate.id}/#{File.basename(@candidate.resume.url)}" %>
 </p>
 
+<%= link_to "Send resume", controller: "candidates",
+                           action: "send_resume", id: @candidate.id %> |
+
 
 <%= link_to 'Edit', edit_candidate_path(@candidate) %> |
 <%= link_to 'Back', candidates_path %>
