@@ -75,5 +75,12 @@
   <%= @candidate.availability %>
 </p>
 
+<p>
+  <strong>CV:</strong>
+  <%= link_to File.basename(@candidate.resume.url),
+      "/uploads/candidate/resume/#{@candidate.id}/#{File.basename(@candidate.resume.url)}" %>
+</p>
+
+
 <%= link_to 'Edit', edit_candidate_path(@candidate) %> |
 <%= link_to 'Back', candidates_path %>
