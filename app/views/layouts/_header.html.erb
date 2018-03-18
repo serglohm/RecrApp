@@ -15,17 +15,16 @@
         <li class="nav-item">
           <%= link_to 'Vacancies', vacancies_path, class:'nav-link' %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Companies', companies_path, class:'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Languages', languages_path, class:'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Sources', sources_path, class:'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Users', users_path, class:'nav-link' %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Settings
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'Companies', companies_path, class:'dropdown-item' %>
+            <%= link_to 'Languages', languages_path, class:'dropdown-item' %>
+            <%= link_to 'Sources', sources_path, class:'dropdown-item' %>
+            <%= link_to 'Users', users_path, class:'dropdown-item' %>
+          </div>
         </li>
         <% if user_signed_in? %>
           <li>
