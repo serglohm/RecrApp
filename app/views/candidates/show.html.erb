@@ -1,39 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+<div class="alert alert-primary" role="alert">
+  <div class="row">
+    <div class="col">
+      Status: <%= @candidate.status %>
+    </div>
+    <div class="col">
+      Source: <%= @candidate.source.name %>
+    </div>
+    <div class="col">
+      Ownership: <%= @candidate.user.name %>
+    </div>
+  </div>
+</div>
+
 <p>
-  <strong>Name:</strong>
-  <%= @candidate.name %>
+  <strong><%= @candidate.name %></strong>, <%= @candidate.age %> y.o.
 </p>
 
 <p>
-  <strong>Age:</strong>
-  <%= @candidate.age %>
-</p>
-
-<p>
-  <strong>Source:</strong>
-  <%= @candidate.source.name %>
-</p>
-
-<p>
-  <strong>Skills:</strong>
-  <%= @candidate.skills %>
-</p>
-
-<p>
-  <strong>Linked In:</strong>
-  <%= @candidate.linked_in %>
-</p>
-
-
-<p>
-  <strong>Github:</strong>
-  <%= @candidate.github %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @candidate.status %>
+  <strong>Email:</strong>
+  <%= @candidate.email %>
 </p>
 
 <p>
@@ -42,18 +29,40 @@
 </p>
 
 <p>
-  <strong>Education:</strong>
-  <%= @candidate.education %>
+  <strong>Technical skills:</strong>
+  <%= simple_format @candidate.skills %>
 </p>
 
 <p>
+  <strong>Skype:</strong>
+  <%= @candidate.skype %>
+</p>
+
+<p>
+  <strong>Linked In:</strong>
+  <%= @candidate.linked_in %>
+</p>
+
+<p>
+  <strong>Github:</strong>
+  <%= @candidate.github %>
+</p>
+
+<p>
+  <strong>Education:</strong>
+  <%= simple_format @candidate.education %>
+  Languages: <%= @candidate.spoken_languages %>
+</p>
+
+
+<p>
   <strong>Experience:</strong>
-  <%= @candidate.experience %>
+  <%= simple_format @candidate.experience %>
 </p>
 
 <p>
   <strong>Expected salary:</strong>
-  <%= @candidate.expected_salary %>
+  <%= @candidate.expected_salary %>+ EUR
 </p>
 
 <p>
@@ -62,8 +71,8 @@
 </p>
 
 <p>
-  <strong>Ownership:</strong>
-  <%= @candidate.user.name %>
+  <strong>Available in:</strong>
+  <%= @candidate.availability %>
 </p>
 
 <%= link_to 'Edit', edit_candidate_path(@candidate) %> |
