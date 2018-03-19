@@ -13,7 +13,16 @@
     </div>
   </div>
 </div>
-
+<div class="row justify-content-end">
+  <div class="col-4">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <%= link_to "Edit", edit_candidate_path(@candidate), class:'btn btn-primary' %>
+      <%= link_to "Send resume to me", {controller: "candidates",
+                             action: "send_resume", id: @candidate.id}, class:'btn btn-primary' %>
+      <%= link_to 'Back', candidates_path, class:'btn btn-secondary' %>
+    </div>
+  </div>
+</div>
 <p>
   <strong><%= @candidate.name %></strong>, <%= @candidate.age %> y.o.
 </p>
@@ -80,10 +89,3 @@
   <%= link_to File.basename(@candidate.resume.url),
       "/uploads/candidate/resume/#{@candidate.id}/#{File.basename(@candidate.resume.url)}" %>
 </p>
-
-<%= link_to "Send resume", controller: "candidates",
-                           action: "send_resume", id: @candidate.id %> |
-
-
-<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
-<%= link_to 'Back', candidates_path %>
