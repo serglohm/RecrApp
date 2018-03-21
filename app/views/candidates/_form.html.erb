@@ -85,7 +85,7 @@
 
     <div class="form-group col">
       <%= form.label :source_id %>
-      <%= form.select :source_id, options_from_collection_for_select(Source.all, :id, :name), {}, class:'form-control' %>
+      <%= form.select :source_id, options_from_collection_for_select(Source.all, :id, :name, @candidate.source_id), {}, class:'form-control' %>
     </div>
   </div>
 
