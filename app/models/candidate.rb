@@ -11,7 +11,5 @@ class Candidate < ApplicationRecord
   has_many :assignments
   has_many :vacancies, through: :assignments
 
-  def ownership
-    "#{self.user.name} until #{(self.created_at + 1.year).to_date}"
-  end
+  accepts_nested_attributes_for :assignments
 end

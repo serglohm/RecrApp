@@ -1,0 +1,66 @@
+<p>
+  <strong><%= candidate.name %></strong>, <%= candidate.age %> y.o.
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= candidate.email %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= candidate.country %>
+</p>
+
+<p>
+  <strong>Technical skills:</strong>
+  <%= simple_format candidate.skills %>
+</p>
+
+<p>
+  <strong>Skype:</strong>
+  <%= candidate.skype %>
+</p>
+
+<p>
+  <strong>Linked In:</strong>
+  <%= candidate.linked_in %>
+</p>
+
+<p>
+  <strong>Github:</strong>
+  <%= candidate.github %>
+</p>
+
+<p>
+  <strong>Education:</strong>
+  <%= simple_format candidate.education %>
+  Languages: <%= candidate.spoken_languages %>
+</p>
+
+
+<p>
+  <strong>Experience:</strong>
+  <%= simple_format candidate.experience %>
+</p>
+
+<p>
+  <strong>Expected salary:</strong>
+  <%= candidate.expected_salary %>+ EUR
+</p>
+
+<p>
+  <strong>Marital status:</strong>
+  <%= candidate.marital_status %>
+</p>
+
+<p>
+  <strong>Available in:</strong>
+  <%= candidate.availability %>
+</p>
+
+<p>
+  <strong>CV:</strong>
+  <%= link_to File.basename(candidate.resume.url),
+      "/uploads/candidate/resume/#{candidate.id}/#{File.basename(candidate.resume.url)}" %>
+</p>

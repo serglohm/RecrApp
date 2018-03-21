@@ -11,81 +11,24 @@
     <div class="col">
       Ownership: <%= @candidate.user.name %>
     </div>
-  </div>
-</div>
-<div class="row justify-content-end">
-  <div class="col-4">
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <%= link_to "Edit", edit_candidate_path(@candidate), class:'btn btn-primary' %>
-      <%= link_to "Send resume to me", {controller: "candidates",
-                             action: "send_resume", id: @candidate.id}, class:'btn btn-primary' %>
-      <%= link_to 'Back', candidates_path, class:'btn btn-secondary' %>
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <%= link_to "Edit candidate", edit_candidate_path(@candidate), class:'btn btn-primary' %>
+        <%= link_to "Send resume to me", {controller: "candidates",
+                                   action: "send_resume", id: @candidate.id}, class:'btn btn-primary' %>
+        <%= link_to 'Back', candidates_path, class:'btn btn-secondary' %>
+      </div>
     </div>
   </div>
 </div>
-<p>
-  <strong><%= @candidate.name %></strong>, <%= @candidate.age %> y.o.
-</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @candidate.email %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @candidate.country %>
-</p>
-
-<p>
-  <strong>Technical skills:</strong>
-  <%= simple_format @candidate.skills %>
-</p>
-
-<p>
-  <strong>Skype:</strong>
-  <%= @candidate.skype %>
-</p>
-
-<p>
-  <strong>Linked In:</strong>
-  <%= @candidate.linked_in %>
-</p>
-
-<p>
-  <strong>Github:</strong>
-  <%= @candidate.github %>
-</p>
-
-<p>
-  <strong>Education:</strong>
-  <%= simple_format @candidate.education %>
-  Languages: <%= @candidate.spoken_languages %>
-</p>
-
-
-<p>
-  <strong>Experience:</strong>
-  <%= simple_format @candidate.experience %>
-</p>
-
-<p>
-  <strong>Expected salary:</strong>
-  <%= @candidate.expected_salary %>+ EUR
-</p>
-
-<p>
-  <strong>Marital status:</strong>
-  <%= @candidate.marital_status %>
-</p>
-
-<p>
-  <strong>Available in:</strong>
-  <%= @candidate.availability %>
-</p>
-
-<p>
-  <strong>CV:</strong>
-  <%= link_to File.basename(@candidate.resume.url),
-      "/uploads/candidate/resume/#{@candidate.id}/#{File.basename(@candidate.resume.url)}" %>
-</p>
+<div class="row">
+  <div class="col">
+    <h2>Candidate's info</h2>
+    <%= render 'personal_info', candidate: @candidate %>
+  </div>
+  <div class="col">
+    <h2>Application's statuses</h2>
+    <%= render 'status_form', candidate: @candidate %>
+  </div>
+</div>

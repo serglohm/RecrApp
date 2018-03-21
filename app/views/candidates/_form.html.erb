@@ -131,9 +131,9 @@
     <%= form.file_field :resume, id: :candidate_resume, class:'form-control' %>
   </div>
 
+  <%= render 'assignments', form: form %>
+
   <div class="actions">
     <%= form.submit "Submit", class:'btn btn-primary' %>
   </div>
 <% end %>
-
-

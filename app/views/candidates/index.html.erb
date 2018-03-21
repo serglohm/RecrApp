@@ -21,7 +21,7 @@
         <td><%= candidate.status %></td>
         <td><%= candidate.country %></td>
         <td><%= candidate.source.name %></td>
-        <td><%= candidate.ownership %></td>
+        <td><%= ownership(candidate) %></td>
         <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
         <td><%= link_to 'Delete', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
