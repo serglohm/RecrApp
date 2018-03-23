@@ -108,14 +108,16 @@
   
   <div class="form-group">
     <p>Programming languages and skills</p>
-    <% Skill.all.each do |skill| %>
-      <%= check_box_tag "candidate[skill_ids][]", skill.id, @candidate.skill_ids.include?(skill.id) %>
-      <%= skill.name %><br/>
+    <%= hidden_field_tag "candidate[skill_ids][]", nil%>
+    <% Skill.all.each do |s| %>
+      <%= check_box_tag "candidate[skill_ids][]", s.id, @candidate.skill_ids.include?(s.id) %>
+      <%= s.name %><br/>
     <% end %>
   </div>
 
   <div class="form-group">
     <p>Assigned vacancies</p>
+    <%= hidden_field_tag "candidate[vacancy_ids][]", nil%>
     <% Vacancy.all.each do |vacancy| %>
       <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
       <%= vacancy.name %> in <%= vacancy.company.name %><br/>
