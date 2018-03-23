@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :sources
-  resources :languages
+  resources :skills
   resources :companies
   resources :candidates
   resources :vacancies
