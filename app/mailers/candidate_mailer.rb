@@ -11,14 +11,14 @@ class CandidateMailer < ApplicationMailer
   private
 
   def subject(candidate)
-    "#{candidate.name} - #{languages(candidate)} Developer (#{vacancies(candidate)})"
+    "#{candidate.name} - #{skills(candidate)} (#{vacancies(candidate)})"
   end
 
   def vacancies(candidate)
     candidate.vacancies.map{|v| v.company.name}.join("/").to_s
   end
 
-  def languages(candidate)
-    candidate.languages.map{|l| l.name}.join('/').to_s
+  def skills(candidate)
+    candidate.skills.map{|l| l.name}.join('/').to_s
   end
 end
