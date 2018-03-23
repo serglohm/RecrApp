@@ -50,10 +50,11 @@
   </div>
 
   <div class="form-group">
-    <p>Programming languages</p>
-    <% Language.all.each do |lang| %>
-      <%= check_box_tag "vacancy[language_ids][]", lang.id, @vacancy.language_ids.include?(lang.id) %>
-      <%= lang.name %><br/>
+    <p>Required skills</p>
+    <%= hidden_field_tag "vacancy[skill_ids][]", nil%>
+    <% Skill.all.each do |s| %>
+      <%= check_box_tag "vacancy[skill_ids][]", s.id, @vacancy.skill_ids.include?(s.id) %>
+      <%= s.name %><br/>
     <% end %>
   </div>
 
