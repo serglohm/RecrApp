@@ -6,6 +6,10 @@ class CandidatesController < ApplicationController
   # GET /candidates.json
   def index
     @candidates = Candidate.all
+    @hired = @candidates.hired
+    @in_progress = @candidates.in_progress
+    @withdrawned = @candidates.withdrawn
+    @rejected = @candidates.rejected
   end
 
   # GET /candidates/1

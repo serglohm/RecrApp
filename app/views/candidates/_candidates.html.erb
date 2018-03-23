@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Country</th>
+      <th>Source</th>
+      <th>Ownership</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% candidates.each do |candidate| %>
+      <tr>
+        <td><%= link_to candidate.name, candidate %></td>
+        <td><%= candidate.status %></td>
+        <td><%= candidate.country %></td>
+        <td><%= link_to candidate.source.name, candidate.source %></td>
+        <td><%= ownership(candidate) %></td>
+        <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
+        <td><%= link_to 'Delete', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
