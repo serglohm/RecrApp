@@ -2,15 +2,16 @@
 
 <h1><%= @vacancy.name %> at <%= @vacancy.company.name %></h1>
 
-<p>
-  <strong>Telegraph link ru:</strong>
-  <%= @vacancy.telegraph_link_ru %>
-</p>
-
-<p>
-  <strong>Telegraph link en:</strong>
-  <%= @vacancy.telegraph_link_en %>
-</p>
+<div class="row">
+  <div class="col">
+    <strong>Telegraph link ru:</strong>
+    <%= @vacancy.telegraph_link_ru %>
+  </div>
+  <div class="col">
+    <strong>Telegraph link en:</strong>
+    <%= @vacancy.telegraph_link_en %>
+  </div>
+</div>
 
 <p>
   <strong>Description:</strong>
@@ -21,16 +22,13 @@
   <strong>Salary:</strong>
   <%= @vacancy.salary_min %> - <%= @vacancy.salary_max %> EUR Net
 </p>
-<% if @vacancy.candidates.present? %>
-  <div class="form-group">
-    <h2>Assigned candidates</h2>
-    <ul>
-      <% @vacancy.candidates.each do |candidate| %>
-        <li><%= candidate.name %></li>
-      <% end %>
-    </ul>
+<div class="row">
+  <div class="col-6">
+    <% if @vacancy.candidates.present? %>
+      <h2>Assigned candidates</h2>
+      <%= render 'vacancy_candidates' %>
+    <% end %>
   </div>
-<% end %>
-
+</div>
 <%= link_to 'Edit', edit_vacancy_path(@vacancy) %> |
 <%= link_to 'Back', vacancies_path %>

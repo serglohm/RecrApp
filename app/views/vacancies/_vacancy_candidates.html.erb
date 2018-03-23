@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vacancy.candidates.each do |candidate| %>
+      <tr>
+        <td><%= link_to candidate.name, candidate %></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
