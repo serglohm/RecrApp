@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180318073316) do
+ActiveRecord::Schema.define(version: 20180323055915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20180318073316) do
   create_table "candidates", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.text "skills"
+    t.text "description"
     t.integer "status"
     t.string "country"
     t.string "education"
@@ -56,25 +56,25 @@ ActiveRecord::Schema.define(version: 20180318073316) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lang_requirements", force: :cascade do |t|
-    t.bigint "vacancy_id"
-    t.bigint "language_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["language_id"], name: "index_lang_requirements_on_language_id"
-    t.index ["vacancy_id"], name: "index_lang_requirements_on_vacancy_id"
-  end
-
-  create_table "lang_skills", force: :cascade do |t|
+  create_table "skill_abilities", force: :cascade do |t|
     t.bigint "candidate_id"
-    t.bigint "language_id"
+    t.bigint "skill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["candidate_id"], name: "index_lang_skills_on_candidate_id"
-    t.index ["language_id"], name: "index_lang_skills_on_language_id"
+    t.index ["candidate_id"], name: "index_skill_abilities_on_candidate_id"
+    t.index ["skill_id"], name: "index_skill_abilities_on_skill_id"
   end
 
-  create_table "languages", force: :cascade do |t|
+  create_table "skill_requirements", force: :cascade do |t|
+    t.bigint "vacancy_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_skill_requirements_on_skill_id"
+    t.index ["vacancy_id"], name: "index_skill_requirements_on_vacancy_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -123,10 +123,10 @@ ActiveRecord::Schema.define(version: 20180318073316) do
   add_foreign_key "assignments", "vacancies"
   add_foreign_key "candidates", "sources"
   add_foreign_key "candidates", "users"
-  add_foreign_key "lang_requirements", "languages"
-  add_foreign_key "lang_requirements", "vacancies"
-  add_foreign_key "lang_skills", "candidates"
-  add_foreign_key "lang_skills", "languages"
+  add_foreign_key "skill_abilities", "candidates"
+  add_foreign_key "skill_abilities", "skills"
+  add_foreign_key "skill_requirements", "skills"
+  add_foreign_key "skill_requirements", "vacancies"
   add_foreign_key "vacancies", "companies"
   add_foreign_key "vacancies", "users"
 end

@@ -36,8 +36,8 @@
   <h2>Personal</h2>
   <div class="row jumbotron">
     <div class="col-md form-group">
-      <%= form.label :skills %>
-      <%= form.text_area :skills, id: :candidate_skills, class:'form-control', rows:'7' %>
+      <%= form.label :description %>
+      <%= form.text_area :description, id: :candidate_description, class:'form-control', rows:'7' %>
     </div>
 
     <div class="col-md form-group">
@@ -107,10 +107,10 @@
   </div>
   
   <div class="form-group">
-    <p>Programming languages</p>
-    <% Language.all.each do |lang| %>
-      <%= check_box_tag "candidate[language_ids][]", lang.id, @candidate.language_ids.include?(lang.id) %>
-      <%= lang.name %><br/>
+    <p>Programming languages and skills</p>
+    <% Skill.all.each do |skill| %>
+      <%= check_box_tag "candidate[skill_ids][]", skill.id, @candidate.skill_ids.include?(skill.id) %>
+      <%= skill.name %><br/>
     <% end %>
   </div>
 
