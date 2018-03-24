@@ -26,7 +26,7 @@
   <div class="col-6">
     <% if @vacancy.candidates.present? %>
       <h2>Assigned candidates</h2>
-      <%= render 'vacancy_candidates' %>
+      <%= render 'vacancy_candidates', vacancy: @vacancy %>
     <% end %>
   </div>
 </div>
