@@ -129,11 +129,13 @@ ActiveRecord::Schema.define(version: 20180327143953) do
     t.text "description"
     t.integer "salary_min"
     t.integer "salary_max"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"
     t.boolean "closed"
     t.index ["company_id"], name: "index_vacancies_on_company_id"
+    t.index ["user_id"], name: "index_vacancies_on_user_id"
   end
 
   add_foreign_key "assignments", "candidates"
@@ -145,4 +147,5 @@ ActiveRecord::Schema.define(version: 20180327143953) do
   add_foreign_key "skill_requirements", "skills"
   add_foreign_key "skill_requirements", "vacancies"
   add_foreign_key "vacancies", "companies"
+  add_foreign_key "vacancies", "users"
 end
