@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% candidates.each do |candidate| %>
+      <tr>
+        <td><%= link_to candidate.name, candidate %></td>
+        <td><%= candidate.status %></td>
+        <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
