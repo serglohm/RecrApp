@@ -70,7 +70,7 @@ class VacanciesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def vacancy_params
       params.require(:vacancy).permit(:name, :telegraph_link_ru, :telegraph_link_en,
-                                      :description, :salary_min, :salary_max,
+                                      :description, :salary_min, :salary_max, :closed,
                                       :company_id, skill_ids:[], candidate_ids:[])
     end
 end

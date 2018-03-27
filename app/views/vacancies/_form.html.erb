@@ -10,10 +10,19 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :vacancy_name, class:'form-control' %>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :vacancy_name, class:'form-control' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <%= form.label :closed %>
+        <%= form.check_box :closed, id: :vacancy_closed, class:'form-control' %>
+      </div>
+    </div>
   </div>
   <div class="row">
     <div class="form-group col">

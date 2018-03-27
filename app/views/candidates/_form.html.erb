@@ -119,8 +119,12 @@
     <p>Assigned vacancies</p>
     <%= hidden_field_tag "candidate[vacancy_ids][]", nil%>
     <% Vacancy.all.each do |vacancy| %>
-      <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
-      <%= vacancy.name %> in <%= vacancy.company.name %><br/>
+      <% if vacancy.closed? %>
+        <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id), disabled: true %>
+      <% else %>
+        <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
+      <% end %>
+      <%= vacancy.name %> in <%= link_to vacancy.company.name, vacancy.company %><br/>
     <% end %>
   </div>
 
