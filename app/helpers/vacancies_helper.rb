@@ -1,9 +1,9 @@
 module VacanciesHelper
   def check_tg(link)
     if link.present?
-      fa_icon "check-circle"
+      fa_icon "check"
     else
-      fa_icon "times-circle"
+      fa_icon "times"
     end
   end
 end
