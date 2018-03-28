@@ -1,9 +1,9 @@
 module VacanciesHelper
   def check_tg(link)
     if link.present?
-      fa_icon "check"
+      content_tag(:td, fa_icon('check'))
     else
-      fa_icon "times"
+      content_tag(:td, fa_icon('times'), class:'table-danger')
     end
   end
 end
