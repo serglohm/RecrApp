@@ -8,6 +8,8 @@
       <th>Name</th>
       <th>Company</th>
       <th>Salary</th>
+      <th>TG_Ru</th>
+      <th>TG_En</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -18,6 +20,8 @@
         <td><%= link_to vacancy.name, vacancy %></td>
         <td><%= link_to vacancy.company.name, vacancy.company %></td>
         <td><%= vacancy.salary_min %> - <%= vacancy.salary_max %> EUR</td>
+        <td><%= check_tg(vacancy.telegraph_link_ru) %></td>
+        <td><%= check_tg(vacancy.telegraph_link_en)%></td>
         <td><%= link_to 'Edit', edit_vacancy_path(vacancy) %></td>
         <td><%= link_to 'Delete', vacancy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
