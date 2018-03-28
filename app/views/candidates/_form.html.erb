@@ -105,27 +105,28 @@
       <%= form.text_field :availability, id: :candidate_availability, class:'form-control' %>
     </div>
   </div>
-  
-  <div class="form-group">
-    <p>Programming languages and skills</p>
-    <%= hidden_field_tag "candidate[skill_ids][]", nil%>
-    <% Skill.all.each do |s| %>
-      <%= check_box_tag "candidate[skill_ids][]", s.id, @candidate.skill_ids.include?(s.id) %>
-      <%= s.name %><br/>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <p>Assigned vacancies</p>
-    <%= hidden_field_tag "candidate[vacancy_ids][]", nil%>
-    <% Vacancy.all.each do |vacancy| %>
-      <% if vacancy.closed? %>
-        <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
-      <% else %>
-        <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
+  <div class="row jumbotron">
+    <div class="form-group col">
+      <p>Assigned vacancies</p>
+      <%= hidden_field_tag "candidate[vacancy_ids][]", nil %>
+      <% Vacancy.all.each do |vacancy| %>
+        <% if vacancy.closed? %>
+          <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
+        <% else %>
+          <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
+        <% end %>
+        <%= vacancy.name %> in <%= link_to vacancy.company.name, vacancy.company %><br/>
       <% end %>
-      <%= vacancy.name %> in <%= link_to vacancy.company.name, vacancy.company %><br/>
-    <% end %>
+    </div>
+
+    <div class="form-group col">
+      <p>Programming languages and skills</p>
+      <%= hidden_field_tag "candidate[skill_ids][]", nil %>
+      <% Skill.all.each do |s| %>
+        <%= check_box_tag "candidate[skill_ids][]", s.id, @candidate.skill_ids.include?(s.id) %>
+        <%= s.name %><br/>
+      <% end %>
+    </div>
   </div>
 
   <div class="form-group">
