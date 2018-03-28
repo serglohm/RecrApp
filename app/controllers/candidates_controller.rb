@@ -5,7 +5,7 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
-    @candidates = Candidate.all
+    @candidates = Candidate.order(updated_at: :desc)
     @hired = @candidates.hired
     @in_progress = @candidates.in_progress
     @withdrawned = @candidates.withdrawn

@@ -120,7 +120,7 @@
     <%= hidden_field_tag "candidate[vacancy_ids][]", nil%>
     <% Vacancy.all.each do |vacancy| %>
       <% if vacancy.closed? %>
-        <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id), disabled: true %>
+        <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
       <% else %>
         <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
       <% end %>
@@ -131,8 +131,7 @@
   <div class="form-group">
     <%= form.label :resume %>
     <% if @candidate.resume.present? %>
-      <%= link_to File.basename(@candidate.resume.url),
-      "/uploads/candidate/resume/#{candidate.id}/#{File.basename(@candidate.resume.url)}" %>
+      <%= cv_link_to(@candidate) %>
     <% end %>
     <%= form.file_field :resume, id: :candidate_resume, class:'form-control' %>
   </div>
