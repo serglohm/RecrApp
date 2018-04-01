@@ -10,6 +10,7 @@ class CandidatesController < ApplicationController
     @in_progress = @candidates.in_progress
     @withdrawned = @candidates.withdrawn
     @rejected = @candidates.rejected
+    @preparating = @candidates.preparation
   end
 
   # GET /candidates/1

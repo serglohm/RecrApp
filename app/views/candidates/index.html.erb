@@ -16,6 +16,9 @@
     <a class="nav-link" id="withdrawned-tab" data-toggle="tab" href="#withdrawned" role="tab" aria-controls="withdrawned" aria-selected="false">Withdrawned</a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" id="preparating-tab" data-toggle="tab" href="#preparating" role="tab" aria-controls="preparating" aria-selected="false">Preparating</a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="false">All</a>
   </li>
 </ul>
@@ -31,6 +34,9 @@
   </div>
   <div class="tab-pane fade" id="withdrawned" role="tabpanel" aria-labelledby="withdrawned-tab">
     <%= render 'candidates', candidates: @withdrawned %>
+  </div>
+  <div class="tab-pane fade" id="preparating" role="tabpanel" aria-labelledby="preparating-tab">
+    <%= render 'candidates', candidates: @preparating %>
   </div>
   <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all-tab">
     <%= render 'candidates', candidates: @candidates %>
