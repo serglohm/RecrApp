@@ -3,21 +3,54 @@
    <div class="form-group col-md-4">
       <%= f.label :name %><br />
       <%= f.text_field :name, class:"form-control" %>
-   </div> 
+   </div>
 
    <div class="form-group col-md-4">
       <%= f.label :email %><br />
       <%= f.text_field :email, class:"form-control" %>
-   </div>   
+   </div>
 
-   <div class="form-group col-md-4">  
+   <div class="form-group col-md-4">
       <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, class:"form-control" %>
    </div>
 
-   <div class="form-group col-md-4"> 
-      <%= f.label :roles %> 
-      <%= f.select :roles, options_from_collection_for_select(Role.all, :id, :name), {}, {class:'form-control'} %>
+   <div class="form-group col-md-4">
+      <%= f.label :role_ids %>
+      <%= f.collection_select :role_ids, Role.all, :id, :name, {}, class:"form-control" %>
+   </div>
+   <h2>Telegraph API settings</h2>
+   <div class="jumbotron">
+      <div class="row">
+         <div class="form-group col">
+            <%= f.label :short_name %>
+            <%= f.text_field :short_name, class:"form-control" %>
+         </div>
+
+         <div class="form-group col">
+            <%= f.label :author_name %>
+            <%= f.text_field :author_name, class:"form-control" %>
+         </div>
+      </div>
+      <div class="row">
+         <div class="form-group col">
+            <%= f.label :author_url %>
+            <%= f.text_field :author_url, class:"form-control" %>
+         </div>
+         <div class="form-group col">
+            <%= f.label :auth_url %>
+            <%= f.text_field :auth_url, class:"form-control" %>
+         </div>
+         <div class="form-group col">
+            <%= f.label :access_token %>
+            <%= f.text_field :access_token, class:"form-control" %>
+         </div>
+      </div>
+
+      <div class="form-group">
+       <%= f.label :vacancy_footer %>
+       <%= f.text_area :vacancy_footer, id: :company_vacancy_footer, class:'form-control', rows: 10 %>
+     </div>
    </div>
 
    <div class="actions">

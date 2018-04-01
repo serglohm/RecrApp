@@ -35,6 +35,7 @@ gem 'city-state'
 gem 'cancancan'
 gem 'rolify'
 gem 'font-awesome-rails'
+gem 'telegraph-ruby'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
