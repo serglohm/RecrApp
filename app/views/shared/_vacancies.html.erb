@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% vacancies.each do |vacancy| %>
+      <tr>
+        <td><%= link_to vacancy.name, vacancy %></td>
+        <td><%= link_to 'Edit', edit_vacancy_path(vacancy) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
