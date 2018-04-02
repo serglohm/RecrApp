@@ -1,1 +1,37 @@
-<h1>There is nothing to see here. Yet.</h1>
+<p id="notice"><%= notice %></p>
+
+<h1><%= @user.name %></h1>
+
+<p>
+  <strong>email:</strong>
+  <%= @user.email %>
+</p>
+
+<h3>Telegram data</h3>
+<p>
+  <strong>Short name:</strong>
+  <%= @user.short_name %>
+</p>
+
+<p>
+  <strong>Author name:</strong>
+  <%= @user.author_name %>
+</p>
+
+<p>
+  <strong>Author url:</strong>
+  <%= @user.author_url %>
+</p>
+
+<p>
+  <strong>Auth_url:</strong>
+  <%= @user.auth_url %>
+</p>
+
+<p>
+  <strong>Access token:</strong>
+  <%= @user.access_token %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

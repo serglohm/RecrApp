@@ -112,6 +112,8 @@ GEM
       railties (>= 3.2, < 5.2)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    html2markdown (0.0.3)
+      nokogiri
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     i18n (1.0.0)
@@ -263,6 +265,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   font-awesome-rails
+  html2markdown
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

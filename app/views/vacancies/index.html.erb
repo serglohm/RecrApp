@@ -1,6 +1,15 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Vacancies</h1>
+<div class='row'>
+  <div class='col-md-4'>
+    <br/>
+    <h1>Vacancies</h1>
+  </div>
+  <div class='col-md-3'>
+    <br/>
+    <%= link_to 'New Vacancy', new_vacancy_path, class:'btn btn-primary' %>
+  </div>
+</div>
+<br>
 
 <table class="table">
   <thead>
@@ -30,7 +39,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Vacancy', new_vacancy_path %>

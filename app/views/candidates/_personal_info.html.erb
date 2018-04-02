@@ -62,7 +62,6 @@
 <% if candidate.resume.present? %>
   <p>
     <strong>CV:</strong>
-    <%= link_to File.basename(candidate.resume.url),
-        "/uploads/candidate/resume/#{candidate.id}/#{File.basename(candidate.resume.url)}" %>
+    <%= cv_link_to(candidate) %>
   </p>
 <% end %>
