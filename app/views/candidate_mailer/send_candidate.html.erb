@@ -9,13 +9,26 @@
     </p>
 
     <p>
-      <strong>Email:</strong>
-      <%= @candidate.email %>
+      <strong>Country:</strong>
+      <%= @candidate.country %>
     </p>
 
     <p>
-      <strong>Country:</strong>
-      <%= @candidate.country %>
+      <strong>Languages:</strong>
+      <%= @candidate.spoken_languages %>
+    </p>
+
+    <p>
+      <strong>Contacts:</strong>
+      Skype: <%= @candidate.skype %>
+      Email: <%= @candidate.email %>
+      Linked In: <%= @candidate.linked_in %>
+      Github: <%= @candidate.github %>
+    </p>
+
+    <p>
+      <strong>Experience:</strong>
+      <%= simple_format @candidate.experience %>
     </p>
 
     <p>
@@ -24,30 +37,8 @@
     </p>
 
     <p>
-      <strong>Skype:</strong>
-      <%= @candidate.skype %>
-    </p>
-
-    <p>
-      <strong>Linked In:</strong>
-      <%= @candidate.linked_in %>
-    </p>
-
-    <p>
-      <strong>Github:</strong>
-      <%= @candidate.github %>
-    </p>
-
-    <p>
       <strong>Education:</strong>
       <%= simple_format @candidate.education %>
-      Languages: <%= @candidate.spoken_languages %>
-    </p>
-
-
-    <p>
-      <strong>Experience:</strong>
-      <%= simple_format @candidate.experience %>
     </p>
 
     <p>
