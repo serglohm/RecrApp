@@ -2,5 +2,7 @@
   <div class="form-group col">
     <%= f.label :status, assignment_label(f.object) %>
     <%= f.text_field :status, class:'form-control' %>
+    <%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "Remove" %>
   </div>
 <% end %>
