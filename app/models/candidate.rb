@@ -11,4 +11,8 @@ class Candidate < ApplicationRecord
   has_many :vacancies, through: :assignments
 
   accepts_nested_attributes_for :assignments, allow_destroy: true
+
+  validates :name, presence: true, uniqueness: true
+  validates :email, presence: true
+  validates :country, presence: true
 end
