@@ -90,7 +90,7 @@ class CandidatesController < ApplicationController
                                         :spoken_languages,:education, :resume,
                                         :experience, :expected_salary,:marital_status, :github,
                                         :linked_in, :skype, :email, :availability,
-                                        :source_id, assignments_attributes:[:id, :vacancy_id, :status],
+                                        :source_id, assignment_ids:[],
                                         skill_ids:[], vacancy_ids:[])
     end
 end

@@ -1,10 +1,6 @@
 <%= form.fields_for(:assignments) do |f| %>
   <div class="form-group col">
     <%= f.label :status, assignment_label(f.object) %>
-    <% if f.object.vacancy.closed? %>
-      <%= f.text_field :status, class:'form-control' %>
-    <% else %>
-      <%= f.text_field :status, class:'form-control' %>
-    <% end %>
+    <%= f.text_field :status, class:'form-control' %>
   </div>
 <% end %>

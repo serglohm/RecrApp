@@ -7,8 +7,8 @@ class Candidate < ApplicationRecord
   has_many :skill_abilities
   has_many :skills, through: :skill_abilities
 
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
   has_many :vacancies, through: :assignments
 
-  accepts_nested_attributes_for :assignments
+  accepts_nested_attributes_for :assignments, allow_destroy: true
 end

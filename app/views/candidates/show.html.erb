@@ -28,9 +28,11 @@
     </br>
     <%= render 'personal_info', candidate: @candidate %>
   </div>
-  <div class="col">
-    <h2>Application's statuses</h2>
-    </br>
-    <%= render 'status_form', candidate: @candidate %>
-  </div>
+  <% if @candidate.assignments.present? %>
+    <div class="col">
+      <h2>Application's statuses</h2>
+      </br>
+      <%= render 'status_form', candidate: @candidate %>
+    </div>
+  <% end %>
 </div>

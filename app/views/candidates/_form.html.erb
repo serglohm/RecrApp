@@ -32,7 +32,7 @@
       <%= form.text_field :country, id: :candidate_country, class:'form-control' %>
     </div>
   </div>
-  
+
   <h2>Personal</h2>
   <div class="row jumbotron">
     <div class="col-md form-group">
@@ -50,7 +50,7 @@
       <%= form.text_area :experience, id: :candidate_experience, class:'form-control', rows:'7' %>
     </div>
   </div>
-  
+
   <h2>Social</h2>
   <div class="jumbotron">
     <div class="row">
@@ -110,11 +110,7 @@
       <h3>Assigned vacancies</h3>
       <%= hidden_field_tag "candidate[vacancy_ids][]", nil %>
       <% Vacancy.all.each do |vacancy| %>
-        <% if vacancy.closed? %>
-          <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
-        <% else %>
-          <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
-        <% end %>
+        <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
         <%= vacancy.name %> in <%= link_to vacancy.company.name, vacancy.company %><br/>
       <% end %>
     </div>
