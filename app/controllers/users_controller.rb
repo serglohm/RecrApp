@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :create_tg_account]
   before_action :allow_without_password, only: :update
   # GET /users
   # GET /users.json
@@ -59,6 +59,11 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def create_tg_account
+    @user.create_telegraph_account
+    redirect_to user_path(@user)
   end
 
   private

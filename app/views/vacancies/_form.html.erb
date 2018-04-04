@@ -11,28 +11,44 @@
     </div>
   <% end %>
   <div class="row">
-    <div class="col">
-      <div class="form-group">
-        <%= form.label :name %>
-        <%= form.text_field :name, id: :vacancy_name, class:'form-control' %>
-      </div>
+    <div class="form-group col">
+      <%= form.label :name %>
+      <%= form.text_field :name, id: :vacancy_name, class:'form-control' %>
     </div>
-    <div class="col">
-      <div class="form-group">
-        <%= form.label :closed %>
-        <%= form.check_box :closed, id: :vacancy_closed, class:'form-control' %>
-      </div>
+    <div class="form-group col">
+      <%= form.label :job_link %>
+      <%= form.text_field :job_link, id: :vacancy_job_link, class:'form-control' %>
+    </div>
+    <div class="form-group col">
+      <%= form.label :closed %>
+      <%= form.check_box :closed, id: :vacancy_closed, class:'form-control' %>
     </div>
   </div>
-  <div class="row">
-    <div class="form-group col">
-      <%= form.label :telegraph_link_ru %>
-      <%= form.text_field :telegraph_link_ru, id: :vacancy_telegraph_link_ru, class:'form-control' %>
+
+  <div class="jumbotron">
+    <h2>Telegram & Telegraph block</h2>
+    <div class="row">
+      <div class="form-group col">
+        <%= form.label :telegraph_link_ru %>
+        <%= form.text_field :telegraph_link_ru, id: :vacancy_telegraph_link_ru, class:'form-control' %>
+      </div>
+
+      <div class="form-group col">
+        <%= form.label :telegraph_link_en %>
+        <%= form.text_field :telegraph_link_en, id: :vacancy_telegraph_link_en, class:'form-control' %>
+      </div>
     </div>
 
-    <div class="form-group col">
-      <%= form.label :telegraph_link_en %>
-      <%= form.text_field :telegraph_link_en, id: :vacancy_telegraph_link_en, class:'form-control' %>
+    <div class="row">
+      <div class="form-group col">
+        <%= form.label :telegram_desc_ru, "Telegram text ru" %>
+        <%= form.text_area :telegram_desc_ru, id: :vacancy_telegram_desk_ru, class:'form-control', rows: "5" %>
+      </div>
+
+      <div class="form-group col">
+        <%= form.label :telegram_desc_en, "Telegram text en" %>
+        <%= form.text_area :telegram_desc_en, id: :vacancy_telegram_desk_en, class:'form-control', rows: "5" %>
+      </div>
     </div>
   </div>
 

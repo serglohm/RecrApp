@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401090235) do
+ActiveRecord::Schema.define(version: 20180404075058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,9 @@ ActiveRecord::Schema.define(version: 20180401090235) do
     t.datetime "updated_at", null: false
     t.bigint "company_id"
     t.boolean "closed"
+    t.string "job_link"
+    t.text "telegram_desc_ru"
+    t.text "telegram_desc_en"
     t.index ["company_id"], name: "index_vacancies_on_company_id"
   end
 
