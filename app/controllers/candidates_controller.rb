@@ -1,6 +1,7 @@
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show, :edit, :update,
                                        :destroy, :download, :send_resume]
+  before_action :set_vacancies_and_skills, only: [:new, :edit]
 
   # GET /candidates
   # GET /candidates.json
@@ -25,6 +26,7 @@ class CandidatesController < ApplicationController
 
   # GET /candidates/1/edit
   def edit
+    @vacancies = Vacancy.order(:name)
   end
 
   # POST /candidates
@@ -84,6 +86,11 @@ class CandidatesController < ApplicationController
       @candidate = Candidate.find(params[:id])
     end
 
+    def set_vacancies_and_skills
+      @vacancies = Vacancy.order(:name)
+      @skills = Skill.order(:name)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
       params.require(:candidate).permit(:name, :description, :status, :country, :city,
@@ -91,7 +98,7 @@ class CandidatesController < ApplicationController
                                         :experience, :expected_salary, :marital_status,
                                         :github, :linked_in, :skype, :email,
                                         :phone, :availability, :source_id,
-                                        assignments_attributes:[:_destroy, :id, :vacancy_id, :status],
-                                        assignments_ids:[], skill_ids:[], vacancy_ids:[])
+                                        assignments_attributes:[:_destroy, :id, :vacancy_id, :status, :candidate_id],
+                                        skill_ids:[], vacancy_ids:[])
     end
 end

@@ -89,7 +89,7 @@
   <div class="row">
     <div class="form-group col">
       <%= form.label :status %>
-      <%= form.select :status, Candidate.statuses.keys, {}, {class:'form-control'} %>
+      <%= form.select :status, Candidate.statuses.keys, {}, { class:'form-control' } %>
     </div>
 
     <div class="form-group col">
@@ -116,20 +116,18 @@
   </div>
   <div class="row jumbotron">
     <div class="form-group col">
-      <h3>Assigned vacancies</h3>
-      <%= hidden_field_tag "candidate[vacancy_ids][]", nil %>
-      <% Vacancy.order(:name).each do |vacancy| %>
-        <%= check_box_tag "candidate[vacancy_ids][]", vacancy.id, @candidate.vacancy_ids.include?(vacancy.id) %>
-        <%= vacancy.name %> in <%= link_to vacancy.company.name, vacancy.company %><br/>
+      <h3>Assign vacancies</h3>
+      <%= form.collection_check_boxes(:vacancy_ids, @vacancies, :id, :name, checked: @candidate.vacancies.map(&:id)) do |f| %>
+        <%= f.check_box %>
+        <%= f.label %> in <%= link_to f.object.company.name, f.object.company %><br/>
       <% end %>
     </div>
 
     <div class="form-group col">
       <h3>Programming skills</h3>
-      <%= hidden_field_tag "candidate[skill_ids][]", nil %>
-      <% Skill.order(:name).each do |s| %>
-        <%= check_box_tag "candidate[skill_ids][]", s.id, @candidate.skill_ids.include?(s.id) %>
-        <%= s.name %><br/>
+      <%= form.collection_check_boxes(:skill_ids, @skills, :id, :name, checked: @candidate.skills.map(&:id)) do |f| %>
+        <%= f.check_box %>
+        <%= f.label %><br/>
       <% end %>
     </div>
   </div>
@@ -141,8 +139,6 @@
     <% end %>
     <%= form.file_field :resume, id: :candidate_resume, class:'form-control' %>
   </div>
-
-  <%= render 'assignments', form: form %>
 
   <div class="actions">
     <%= form.submit "Submit", class:'btn btn-primary' %>
