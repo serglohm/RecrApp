@@ -41,9 +41,14 @@
         <%= form.email_field :email, id: :candidate_email, class:'form-control' %>
       </div>
 
-      <div class="col-md form-group">
+      <div class="col-4">
         <%= form.label :phone %>
-        <%= form.phone_field :phone, id: :candidate_phone, class:'form-control' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">+</div>
+          </div>
+          <%= form.phone_field :phone, id: :candidate_phone, class:'form-control' %>
+        </div>
       </div>
     </div>
 
@@ -94,7 +99,10 @@
 
     <div class="form-group col">
       <%= form.label :source_id %>
-      <%= form.select :source_id, options_from_collection_for_select(Source.all, :id, :name, @candidate.source_id), {}, class:'form-control' %>
+      <%= form.select :source_id, options_from_collection_for_select(Source.all,
+                                                                     :id, :name,
+                                                                     @candidate.source_id),
+                                {}, class:'form-control' %>
     </div>
   </div>
 
