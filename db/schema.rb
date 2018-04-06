@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180404075058) do
+ActiveRecord::Schema.define(version: 20180406092235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,12 @@ ActiveRecord::Schema.define(version: 20180404075058) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "name"
-    t.integer "age"
     t.text "description"
     t.integer "status"
     t.string "country"
     t.string "education"
     t.text "experience"
-    t.integer "expected_salary"
+    t.string "expected_salary"
     t.string "marital_status"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -46,6 +45,8 @@ ActiveRecord::Schema.define(version: 20180404075058) do
     t.string "email"
     t.string "availability"
     t.text "spoken_languages"
+    t.string "city"
+    t.bigint "phone"
     t.index ["source_id"], name: "index_candidates_on_source_id"
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end

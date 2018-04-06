@@ -5,12 +5,12 @@
   </head>
   <body>
     <p>
-      <strong><%= @candidate.name %></strong>, <%= @candidate.age %> y.o.
+      <strong><%= @candidate.name %></strong>
     </p>
 
     <p>
       <strong>Country:</strong>
-      <%= @candidate.country %>
+      <%= @candidate.country %> resides in <%= @candidate.city %>
     </p>
 
     <p>
@@ -20,6 +20,7 @@
 
     <p>
       <strong>Contacts:</strong>
+      <p>Phone: <%= @candidate.phone %></p>
       <p>Skype: <%= @candidate.skype %></p>
       <p>Email: <%= @candidate.email %></p>
       <p>Linked In: <%= @candidate.linked_in %></p>

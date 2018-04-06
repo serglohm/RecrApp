@@ -23,10 +23,10 @@
     <a class="nav-link" id="rejected-tab" data-toggle="tab" href="#rejected" role="tab" aria-controls="rejected" aria-selected="false">Rejected</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="withdrawned-tab" data-toggle="tab" href="#withdrawned" role="tab" aria-controls="withdrawned" aria-selected="false">Withdrawned</a>
+    <a class="nav-link" id="withdrawn-tab" data-toggle="tab" href="#withdrawn" role="tab" aria-controls="withdrawn" aria-selected="false">Withdrawn</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="preparing-tab" data-toggle="tab" href="#preparing" role="tab" aria-controls="preparing" aria-selected="false">Preparing</a>
+    <a class="nav-link" id="draft-tab" data-toggle="tab" href="#draft" role="tab" aria-controls="draft" aria-selected="false">Draft</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="false">All</a>
@@ -42,11 +42,11 @@
   <div class="tab-pane fade" id="rejected" role="tabpanel" aria-labelledby="rejected-tab">
     <%= render 'candidates', candidates: @rejected %>
   </div>
-  <div class="tab-pane fade" id="withdrawned" role="tabpanel" aria-labelledby="withdrawned-tab">
-    <%= render 'candidates', candidates: @withdrawned %>
+  <div class="tab-pane fade" id="withdrawn" role="tabpanel" aria-labelledby="withdrawn-tab">
+    <%= render 'candidates', candidates: @withdrawn %>
   </div>
-  <div class="tab-pane fade" id="preparing" role="tabpanel" aria-labelledby="preparing-tab">
-    <%= render 'candidates', candidates: @preparing %>
+  <div class="tab-pane fade" id="draft" role="tabpanel" aria-labelledby="draft-tab">
+    <%= render 'candidates', candidates: @draft %>
   </div>
   <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all-tab">
     <%= render 'candidates', candidates: @candidates %>

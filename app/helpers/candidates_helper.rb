@@ -16,4 +16,12 @@ module CandidatesHelper
   def cv_path(obj)
     "/uploads/candidate/resume/#{obj.id}/#{File.basename(obj.resume.url)}"
   end
+
+  def show_if_present(header, attribute)
+    if attribute.present?
+      content_tag :p do
+        concat(content_tag(:strong, header) + " " + attribute.to_s)
+      end
+    end
+  end
 end

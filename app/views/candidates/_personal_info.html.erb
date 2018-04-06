@@ -1,5 +1,5 @@
 <p>
-  <strong><%= candidate.name %></strong>, <%= candidate.age %> y.o.
+  <strong><%= candidate.name %></strong>
 </p>
 
 <p>
@@ -9,7 +9,7 @@
 
 <p>
   <strong>Country:</strong>
-  <%= candidate.country %>
+  <%= candidate.country %>, resides in <%= candidate.city %>
 </p>
 
 <p>
@@ -17,20 +17,10 @@
   <%= simple_format candidate.description %>
 </p>
 
-<p>
-  <strong>Skype:</strong>
-  <%= candidate.skype %>
-</p>
-
-<p>
-  <strong>Linked In:</strong>
-  <%= candidate.linked_in %>
-</p>
-
-<p>
-  <strong>Github:</strong>
-  <%= candidate.github %>
-</p>
+<%= show_if_present("Phone:", candidate.phone) %>
+<%= show_if_present("Skype:", candidate.skype) %>
+<%= show_if_present("Linked In:", candidate.linked_in) %>
+<%= show_if_present("Github:", candidate.github) %>
 
 <p>
   <strong>Education:</strong>
@@ -59,9 +49,4 @@
   <%= candidate.availability %>
 </p>
 
-<% if candidate.resume.present? %>
-  <p>
-    <strong>CV:</strong>
-    <%= cv_link_to(candidate) %>
-  </p>
-<% end %>
+<%= show_if_present("CV:", cv_link_to(candidate)) %>

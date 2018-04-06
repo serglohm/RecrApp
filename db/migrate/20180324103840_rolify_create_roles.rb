@@ -11,10 +11,10 @@ class RolifyCreateRoles < ActiveRecord::Migration[5.1]
       t.references :user
       t.references :role
     end
-    
+
     add_index(:roles, [ :name, :resource_type, :resource_id ])
     add_index(:users_roles, [ :user_id, :role_id ])
-    [:admin, :recruiter, :writer].each do |role|
+    [:admin, :recruiter, :external].each do |role|
       Role.create(name: role)
     end
   end

@@ -8,9 +8,9 @@ class CandidatesController < ApplicationController
     @candidates = Candidate.order(updated_at: :desc)
     @hired = @candidates.hired
     @in_progress = @candidates.in_progress
-    @withdrawned = @candidates.withdrawn
+    @withdrawn = @candidates.withdrawn
     @rejected = @candidates.rejected
-    @preparing = @candidates.preparation
+    @draft = @candidates.draft
   end
 
   # GET /candidates/1
@@ -86,11 +86,12 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:name, :age, :description, :status, :country,
-                                        :spoken_languages,:education, :resume,
-                                        :experience, :expected_salary,:marital_status, :github,
-                                        :linked_in, :skype, :email, :availability,
-                                        :source_id, assignments_attributes:[:_destroy, :id, :vacancy_id, :status],
+      params.require(:candidate).permit(:name, :description, :status, :country, :city,
+                                        :spoken_languages, :education, :resume,
+                                        :experience, :expected_salary, :marital_status,
+                                        :github, :linked_in, :skype, :email,
+                                        :phone, :availability, :source_id,
+                                        assignments_attributes:[:_destroy, :id, :vacancy_id, :status],
                                         assignments_ids:[], skill_ids:[], vacancy_ids:[])
     end
 end
