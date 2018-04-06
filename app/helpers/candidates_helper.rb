@@ -1,6 +1,6 @@
 module CandidatesHelper
   def ownership(candidate)
-    "#{candidate.user.name} until #{(candidate.created_at + 1.year).to_date}"
+    "#{shorten_name(candidate.user.name)} until #{(candidate.created_at + 1.year).to_date}"
   end
 
   def assignment_label(obj)
@@ -11,17 +11,21 @@ module CandidatesHelper
     link_to File.basename(obj.resume.url), cv_path(obj)
   end
 
-  private
-
-  def cv_path(obj)
-    "/uploads/candidate/resume/#{obj.id}/#{File.basename(obj.resume.url)}"
-  end
-
   def show_if_present(header, attribute)
     if attribute.present?
       content_tag :p do
         concat(content_tag(:strong, header) + " " + attribute.to_s)
       end
     end
+  end
+
+  private
+
+  def shorten_name(name)
+    name.split(" ").map{|n| n.first}.join
+  end
+
+  def cv_path(obj)
+    "/uploads/candidate/resume/#{obj.id}/#{File.basename(obj.resume.url)}"
   end
 end
