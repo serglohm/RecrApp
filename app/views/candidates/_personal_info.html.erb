@@ -17,7 +17,7 @@
   <%= simple_format candidate.description %>
 </p>
 
-<%= show_if_present("Phone:", candidate.phone) %>
+<%= show_if_present("Phone:", "+" + candidate.phone.to_s) %>
 <%= show_if_present("Skype:", candidate.skype) %>
 <%= show_if_present("Linked In:", candidate.linked_in) %>
 <%= show_if_present("Github:", candidate.github) %>
@@ -36,7 +36,7 @@
 
 <p>
   <strong>Expected salary:</strong>
-  <%= candidate.expected_salary %>+ EUR
+  <%= candidate.expected_salary %>
 </p>
 
 <p>

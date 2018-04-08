@@ -7,9 +7,13 @@
     <div class="btn-group" role="group" aria-label="Basic example">
       <%= link_to 'Edit', edit_user_path(@user), class:'btn btn-primary' %>
       <%= link_to "Create Telegraph account", { controller: "users",
-                                                action: "create_tg_account",
+                                                action: "create_telegraph_account",
                                                 id: @user.id },
                                             class:'btn btn-success' %>
+      <%= link_to "Delete Telegraph account", { controller: "users",
+                                                action: "delete_telegraph_account",
+                                                id: @user.id },
+                                            class:'btn btn-danger' %>
       <%= link_to 'Back', users_path, class:'btn btn-secondary' %>
     </div>
   </div>

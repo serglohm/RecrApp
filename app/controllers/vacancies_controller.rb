@@ -1,6 +1,6 @@
 class VacanciesController < ApplicationController
-  before_action :set_vacancy, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_vacancy, only: [:show, :edit, :update, :destroy, :create_vacancy_on_telegraph]
+  before_action :set_current_user, only: :create_vacancy_on_telegraph
   # GET /vacancies
   # GET /vacancies.json
   def index
@@ -59,6 +59,11 @@ class VacanciesController < ApplicationController
       format.html { redirect_to vacancies_url, notice: 'Vacancy was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def create_vacancy_on_telegraph
+    @vacancy.create_telegraph_page(User.current)
+    redirect_to @vacancy
   end
 
   private

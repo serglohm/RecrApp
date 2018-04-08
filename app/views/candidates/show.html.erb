@@ -15,7 +15,8 @@
       <div class="btn-group" role="group" aria-label="Basic example">
         <%= link_to "Edit candidate", edit_candidate_path(@candidate), class:'btn btn-primary' %>
         <%= link_to "Send resume to me", { controller: "candidates",
-                                   action: "send_resume", id: @candidate.id }, class:'btn btn-primary' %>
+                                           action: "send_resume", id: @candidate.id },
+                                         class:'btn btn-primary' %>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :create_tg_account]
+  before_action :set_user, only: [:show, :edit, :update, :destroy,
+                                  :create_telegraph_account, :delete_telegraph_account]
   before_action :allow_without_password, only: :update
   # GET /users
   # GET /users.json
@@ -61,8 +62,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def create_tg_account
+  def create_telegraph_account
     @user.create_telegraph_account
+    redirect_to user_path(@user)
+  end
+
+  def delete_telegraph_account
+    @user.delete_telegraph_account
     redirect_to user_path(@user)
   end
 

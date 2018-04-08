@@ -7,6 +7,10 @@
   <div class="col">
     <div class="btn-group" role="group" aria-label="Basic example">
       <%= link_to 'Edit', edit_vacancy_path(@vacancy), class:'btn btn-primary' %>
+      <%= link_to "Create Telegraph page", { controller: "vacancies",
+                                                action: "create_vacancy_on_telegraph",
+                                                id: @vacancy.id },
+                                            class:'btn btn-success' %>
       <%= link_to 'Back', vacancies_path, class:'btn btn-secondary' %>
     </div>
   </div>

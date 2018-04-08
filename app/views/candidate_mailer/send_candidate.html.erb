@@ -20,11 +20,17 @@
 
     <p>
       <strong>Contacts:</strong>
-      <p>Phone: <%= @candidate.phone %></p>
+      <p>Phone: <%= "+" + @candidate.phone.to_s %></p>
       <p>Skype: <%= @candidate.skype %></p>
       <p>Email: <%= @candidate.email %></p>
-      <p>Linked In: <%= @candidate.linked_in %></p>
-      <p>Github: <%= @candidate.github %></p>
+
+      <% if @candidate.linked_in.present? %>
+        <p>Linked In: <%= @candidate.linked_in %></p>
+      <% end %>
+
+      <% if @candidate.github.present? %>
+        <p>Github: <%= @candidate.github %></p>
+      <% end %>
     </p>
 
     <p>
@@ -44,7 +50,7 @@
 
     <p>
       <strong>Expected salary:</strong>
-      <%= @candidate.expected_salary %>+ EUR
+      <%= @candidate.expected_salary %>
     </p>
 
     <p>

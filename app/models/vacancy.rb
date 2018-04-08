@@ -1,4 +1,5 @@
 class Vacancy < ApplicationRecord
+  require 'telegraph-ruby'
   belongs_to :company
 
   has_many :skill_requirements, dependent: :destroy
@@ -20,4 +21,11 @@ class Vacancy < ApplicationRecord
     end
   end
 
+  def create_telegraph_page(user)
+    telegraph = Telegraph.new
+    page = telegraph.createPage(access_token: user.access_token, title: name, content: nil)
+    puts page
+    self.telegraph_link_ru = page["url"]
+    save!
+  end
 end

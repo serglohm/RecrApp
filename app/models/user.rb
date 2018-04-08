@@ -7,6 +7,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :candidates
 
+  def self.current
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
+
   def create_telegraph_account
     telegraph = Telegraph.new
     account = telegraph.createAccount(short_name: short_name,
@@ -14,6 +22,14 @@ class User < ApplicationRecord
                                       author_url: author_url)
     self.access_token = account['access_token']
     self.auth_url = account['auth_url']
+    save!
+  end
+
+  def delete_telegraph_account
+    telegraph = Telegraph.new
+    telegraph.revokeAccessToken(access_token)
+    self.access_token = nil
+    self.auth_url = nil
     save!
   end
 end
