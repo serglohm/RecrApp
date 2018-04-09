@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406092235) do
+ActiveRecord::Schema.define(version: 20180409140921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20180406092235) do
     t.string "availability"
     t.text "spoken_languages"
     t.string "city"
-    t.bigint "phone"
+    t.string "phone"
     t.index ["source_id"], name: "index_candidates_on_source_id"
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
