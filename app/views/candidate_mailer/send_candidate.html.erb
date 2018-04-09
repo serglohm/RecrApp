@@ -20,7 +20,9 @@
 
     <p>
       <strong>Contacts:</strong>
-      <p>Phone: <%= "+" + @candidate.phone %></p>
+      <% if @candidate.phone.present? %>
+        <p>Phone: <%= "+" + @candidate.phone %></p>
+      <% end %>
       <p>Skype: <%= @candidate.skype %></p>
       <p>Email: <%= @candidate.email %></p>
 

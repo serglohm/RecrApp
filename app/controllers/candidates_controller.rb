@@ -1,7 +1,7 @@
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show, :edit, :update,
                                        :destroy, :download, :send_resume]
-  before_action :set_vacancies_and_skills, only: [:new, :edit]
+  before_action :set_vacancies_and_skills, only: [:new, :create, :update, :edit]
 
   # GET /candidates
   # GET /candidates.json
