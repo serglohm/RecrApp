@@ -54,10 +54,11 @@
   <strong>Available in:</strong>
   <%= candidate.availability %>
 </p>
+
 <% if candidate.resume.present? %>
   <p>
     <strong>CV:</strong>
-    <%= candidate.availability %>
+    <%= cv_link_to(candidate) %>
   </p>
 <% end %>
 
