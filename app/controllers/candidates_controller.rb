@@ -17,7 +17,7 @@ class CandidatesController < ApplicationController
   # GET /candidates/1
   # GET /candidates/1.json
   def show
-    @admins = User.with_role :admin
+    @admins = User.with_role(:admin).where.not(id: current_user.id)
   end
 
   # GET /candidates/new
