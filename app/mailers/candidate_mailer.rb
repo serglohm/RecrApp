@@ -1,13 +1,13 @@
 class CandidateMailer < ApplicationMailer
   default from: 'notifications@recr.ittalent.ee'
- 
+
   def send_candidate(candidate, address)
     @address = address
     @candidate = candidate
-    attachments['cv.pdf'] = File.read(@candidate.resume.path)
+    attachments["#{cv_name(@candidate)}CV.pdf"] = File.read(@candidate.resume.path)
     mail(to: address, subject: subject(@candidate))
   end
-  
+
   private
 
   def subject(candidate)
@@ -20,5 +20,9 @@ class CandidateMailer < ApplicationMailer
 
   def skills(candidate)
     candidate.skills.map{|l| l.name}.join('/').to_s
+  end
+
+  def cv_name(candidate)
+    @candidate.name.split(" ").join()
   end
 end
