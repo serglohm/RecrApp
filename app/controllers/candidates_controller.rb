@@ -17,6 +17,7 @@ class CandidatesController < ApplicationController
   # GET /candidates/1
   # GET /candidates/1.json
   def show
+    @admins = User.with_role :admin
   end
 
   # GET /candidates/new
@@ -74,7 +75,11 @@ class CandidatesController < ApplicationController
   end
 
   def send_resume
-    @address = current_user.email
+    if params[:manager]
+      @address = User.find(params[:manager]).email
+    else
+      @address = current_user.email
+    end
     CandidateMailer.send_candidate(@candidate, @address).deliver_now
     flash[:notice] = "Resume has been sent."
     redirect_to candidate_path(@candidate)
