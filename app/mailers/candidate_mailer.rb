@@ -4,7 +4,9 @@ class CandidateMailer < ApplicationMailer
   def send_candidate(candidate, address)
     @address = address
     @candidate = candidate
-    attachments["#{cv_name(@candidate)}CV.pdf"] = File.read(@candidate.resume.path)
+    if candidate.resume.present?
+      attachments["#{cv_name(@candidate)}CV.pdf"] = File.read(@candidate.resume.path)
+    end
     mail(to: address, subject: subject(@candidate))
   end
 
