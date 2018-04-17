@@ -1,32 +1,4 @@
-<div class="alert alert-primary" role="alert">
-  <div class="row">
-    <div class="col">
-      Status: <%= @candidate.status %>
-    </div>
-    <div class="col">
-      Source: <%= @candidate.source.name %>
-    </div>
-    <div class="col">
-      Ownership: <%= ownership(@candidate) %>
-    </div>
-    <div class="col">
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <%= link_to "Edit candidate", edit_candidate_path(@candidate), class:'btn btn-primary' %>
-        <%= link_to "Send resume to me", { controller: "candidates",
-                                           action: "send_resume", id: @candidate.id },
-                                         class:'btn btn-primary' %>
-        <% @admins.each do |admin| %>
-          <%= link_to "Send resume to #{shorten_name(admin.name)}", { controller: "candidates",
-                                                                      action: "send_resume",
-                                                                      id: @candidate.id,
-                                                                      manager: admin.id },
-                                                                    class:'btn btn-primary' %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
+<%= render 'show_header' %>
 <%= link_to '<- Back', candidates_path, class:'btn btn-success' %>
 
 <div class="row">
