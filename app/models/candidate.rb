@@ -4,6 +4,7 @@ class Candidate < ApplicationRecord
 
   enum status: [:in_progress, :hired, :rejected, :withdrawn, :draft]
   mount_uploader :resume, ResumeUploader
+
   has_many :skill_abilities, dependent: :destroy
   has_many :skills, through: :skill_abilities
 

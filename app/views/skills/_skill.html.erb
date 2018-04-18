@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to skill.name, skill %></td>
+  <td><%= link_to 'Edit', edit_skill_path(skill) %></td>
+  <td><%= link_to 'Delete', skill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

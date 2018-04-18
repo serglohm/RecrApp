@@ -21,14 +21,16 @@
             <%= link_to "Me", { controller: "candidates",
                                 action: "send_resume",
                                 id: @candidate.id },
-                            class:'dropdown-item' %>
+                            class:'dropdown-item',
+                            data: { disable_with: "Sending..." } %>
 
             <% @admins.each do |admin| %>
               <%= link_to "#{admin.name}", { controller: "candidates",
                                              action: "send_resume",
                                              id: @candidate.id,
                                              manager: admin.id },
-                                          class:'dropdown-item' %>
+                                          class:'dropdown-item',
+                                          data: { disable_with: "Sending..." } %>
             <% end %>
           </div>
         </div>
