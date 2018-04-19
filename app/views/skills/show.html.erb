@@ -4,7 +4,25 @@
     <%= render 'shared/candidates', candidates: @skill.candidates %>
   </div>
   <div class="col">
-    <%= render 'shared/vacancies', vacancies: @skill.vacancies %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @skill.vacancies.each do |vacancy| %>
+          <tr>
+            <td><%= link_to vacancy.name, vacancy %> at
+                <%= link_to vacancy.company.name, vacancy.company %>
+            </td>
+            <td><%= link_to 'Edit', edit_vacancy_path(vacancy) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 <%= link_to 'Edit', edit_skill_path(@skill) %> |

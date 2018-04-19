@@ -8,7 +8,7 @@ class CandidatesController < ApplicationController
   # GET /candidates.json
   def index
     @candidates = apply_scopes(Candidate).order(created_at: :desc)
-    @users = User.select(:id,:name)
+    @users = User.select(:id, :name)
     @statuses = Candidate.statuses.map{ |key, value| [key.humanize, value] }
   end
 
