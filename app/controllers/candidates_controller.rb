@@ -2,16 +2,14 @@ class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show, :edit, :update,
                                        :destroy, :download, :send_resume]
   before_action :set_vacancies_and_skills, only: [:new, :create, :update, :edit]
-
+  has_scope :by_user
+  has_scope :by_status
   # GET /candidates
   # GET /candidates.json
   def index
-    @candidates = Candidate.order(updated_at: :desc)
-    @hired = @candidates.hired
-    @in_progress = @candidates.in_progress
-    @withdrawn = @candidates.withdrawn
-    @rejected = @candidates.rejected
-    @draft = @candidates.draft
+    @candidates = apply_scopes(Candidate).order(created_at: :desc)
+    @users = User.select(:id,:name)
+    @statuses = Candidate.statuses.map{ |key, value| [key.humanize, value] }
   end
 
   # GET /candidates/1

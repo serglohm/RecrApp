@@ -1,0 +1,20 @@
+<%= form_with url: candidates_path, method: 'get', local: true, class:"form-inline" do |form| %>
+  <div class="row">
+    <div class="col-auto form-group form-control-sm">
+      <%= form.label :by_user, class:"my-1 mr-2" %>
+      <%= form.select :by_user, options_from_collection_for_select(@users, :id, :name, params['by_user']),
+                                { include_blank: "All" },
+                                class:'form-control' %>
+    </div>
+    <div class="col-auto form-group form-control-sm">
+      <%= form.label :by_status, class:"my-1 mr-2" %>
+      <%= form.select :by_status, options_for_select(@statuses, params['by_status']),
+                                  { include_blank: "All" },
+                                  class:'form-control' %>
+    </div>
+
+    <div class="col-auto actions">
+      <%= form.submit "Submit", class:'btn btn-primary mb-2 btn-sm' %>
+    </div>
+  </div>
+<% end %>

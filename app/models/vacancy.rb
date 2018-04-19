@@ -24,7 +24,6 @@ class Vacancy < ApplicationRecord
   def create_telegraph_page(user)
     telegraph = Telegraph.new
     page = telegraph.createPage(access_token: user.access_token, title: name, content: nil)
-    puts page
     self.telegraph_link_ru = page["url"]
     save!
   end

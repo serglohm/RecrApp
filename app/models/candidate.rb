@@ -16,4 +16,7 @@ class Candidate < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true
   validates :country, presence: true
+
+  scope :by_user, -> user_id { where("user_id = ?", user_id) }
+  scope :by_status, -> status { where("status = ?", status) }
 end
