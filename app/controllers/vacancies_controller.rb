@@ -5,6 +5,7 @@ class VacanciesController < ApplicationController
   # GET /vacancies.json
   def index
     @vacancies = Vacancy.all
+    @vacancies_by_company = Vacancy.all.group_by(&:company)
   end
 
   # GET /vacancies/1
