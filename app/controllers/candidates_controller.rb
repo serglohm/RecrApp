@@ -3,7 +3,7 @@ class CandidatesController < ApplicationController
                                        :destroy, :download, :send_resume]
   before_action :set_vacancies_and_skills, only: [:new, :create, :update, :edit]
   has_scope :by_user
-  has_scope :by_status
+  has_scope :by_status, default: 0
   # GET /candidates
   # GET /candidates.json
   def index
