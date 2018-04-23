@@ -23,18 +23,18 @@ class SkillsController < ApplicationController
 
   # POST /skills
   # POST /skills.json
+
   def create
     @skill = Skill.new(skill_params)
 
     respond_to do |format|
       if @skill.save
-        format.html { redirect_to skills_path, notice: 'Skill was successfully created.' }
+        format.html
         format.json { render :show, status: :created, location: @skill }
         format.js
       else
         format.html { render :new }
         format.json { render json: @skill.errors, status: :unprocessable_entity }
-        format.js
       end
     end
   end

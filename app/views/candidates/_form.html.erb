@@ -125,12 +125,12 @@
   <div class="row jumbotron">
     <div class="form-group col">
       <h3>Assign vacancies</h3>
-      <%= form.select :vacancy_ids, @vacancies, {}, { multiple: true, class:'selectize' } %>
+      <%= form.select :vacancy_ids, @vacancies, {}, { multiple: true, class:'selectize-vacancies' } %>
     </div>
 
     <div class="form-group col">
       <h3>Programming skills</h3>
-      <%= form.select :skill_ids, @skills, {}, { multiple: true, class:'selectize' } %>
+      <%= form.select :skill_ids, @skills, {}, { multiple: true, class:'selectize-skills' } %>
     </div>
   </div>
 
@@ -146,3 +146,5 @@
     <%= form.submit "Submit", class:'btn btn-primary' %>
   </div>
 <% end %>
+
+<%= render 'skill_modal' %>
