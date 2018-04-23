@@ -25,7 +25,6 @@ class CandidatesController < ApplicationController
 
   # GET /candidates/1/edit
   def edit
-    @vacancies = Vacancy.order(:name)
   end
 
   # POST /candidates
@@ -90,8 +89,8 @@ class CandidatesController < ApplicationController
     end
 
     def set_vacancies_and_skills
-      @vacancies = Vacancy.order(:name)
-      @skills = Skill.order(:name)
+      @vacancies = Vacancy.all.map{|v| ["#{v.name} at #{v.company.name}", v.id]}
+      @skills = Skill.all.pluck(:name, :id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -38,6 +38,7 @@ gem 'rolify'
 gem 'font-awesome-rails'
 gem 'telegraph-ruby'
 gem 'html2markdown'
+gem "selectize-rails"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
