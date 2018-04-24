@@ -1,6 +1,4 @@
 $(document).on("turbolinks:load", function() {
-  $(".selectize-vacancies").selectize();
-
   var selectizeCallback = null;
   $(".skill-modal").on("hide.bs.modal", function(e) {
     if (selectizeCallback != null) {

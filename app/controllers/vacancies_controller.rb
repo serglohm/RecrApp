@@ -1,6 +1,7 @@
 class VacanciesController < ApplicationController
   before_action :set_vacancy, only: [:show, :edit, :update, :destroy, :create_vacancy_on_telegraph]
   before_action :set_current_user, only: :create_vacancy_on_telegraph
+  before_action :set_skills, only: [:new, :create, :update, :edit]
   # GET /vacancies
   # GET /vacancies.json
   def index
@@ -73,6 +74,9 @@ class VacanciesController < ApplicationController
       @vacancy = Vacancy.find(params[:id])
     end
 
+    def set_skills
+      @skills = Skill.all.pluck(:name, :id)
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def vacancy_params
       params.require(:vacancy).permit(:name, :telegraph_link_ru, :telegraph_link_en,

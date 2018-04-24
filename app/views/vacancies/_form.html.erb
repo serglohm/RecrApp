@@ -76,14 +76,12 @@
 
   <div class="form-group">
     <p>Required skills</p>
-    <%= hidden_field_tag "vacancy[skill_ids][]", nil%>
-    <% Skill.all.each do |s| %>
-      <%= check_box_tag "vacancy[skill_ids][]", s.id, @vacancy.skill_ids.include?(s.id) %>
-      <%= s.name %><br/>
-    <% end %>
+    <%= form.select :skill_ids, @skills, {}, { multiple: true, class:'selectize-skills' } %>
   </div>
 
   <div class="actions">
     <%= form.submit "Submit", class:'btn btn-primary' %>
   </div>
 <% end %>
+
+<%= render 'shared/skill_modal' %>

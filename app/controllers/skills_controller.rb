@@ -29,7 +29,7 @@ class SkillsController < ApplicationController
 
     respond_to do |format|
       if @skill.save
-        format.html
+        format.html { redirect_to skills_path, notice: 'Skill was successfully created.' }
         format.json { render :show, status: :created, location: @skill }
         format.js
       else
