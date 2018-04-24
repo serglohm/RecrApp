@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  assignments: one
+  scheduled_on: 2018-04-24 10:20:47
+  name: MyString
+
+two:
+  assignments: two
+  scheduled_on: 2018-04-24 10:20:47
+  name: MyString

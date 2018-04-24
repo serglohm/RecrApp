@@ -2,7 +2,9 @@
   <div class="form-group col">
     <%= f.label :status, assignment_label(f.object) %>
     <%= f.text_field :status, class:'form-control' %>
+    <br>
     <%= f.check_box :_destroy %>
     <%= f.label :_destroy, "Remove" %>
+    <%= button_tag "Schedule event", class:'btn btn-success btn-sm pull-right', id:'show-modal-button', remote: true %>
   </div>
 <% end %>

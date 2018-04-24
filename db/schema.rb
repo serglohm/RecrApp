@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409140921) do
+ActiveRecord::Schema.define(version: 20180424072047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20180409140921) do
     t.text "description_en"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.bigint "assignments_id"
+    t.datetime "scheduled_on"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assignments_id"], name: "index_events_on_assignments_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -91,6 +100,9 @@ ActiveRecord::Schema.define(version: 20180409140921) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "assignable_id"
+    t.string "assignable_type"
+    t.index ["assignable_type", "assignable_id"], name: "index_skills_on_assignable_type_and_assignable_id"
   end
 
   create_table "sources", force: :cascade do |t|
@@ -152,6 +164,7 @@ ActiveRecord::Schema.define(version: 20180409140921) do
   add_foreign_key "assignments", "vacancies"
   add_foreign_key "candidates", "sources"
   add_foreign_key "candidates", "users"
+  add_foreign_key "events", "assignments", column: "assignments_id"
   add_foreign_key "skill_abilities", "candidates"
   add_foreign_key "skill_abilities", "skills"
   add_foreign_key "skill_requirements", "skills"
