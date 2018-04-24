@@ -60,12 +60,12 @@ ActiveRecord::Schema.define(version: 20180424072047) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.bigint "assignments_id"
+    t.bigint "assignment_id"
     t.datetime "scheduled_on"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assignments_id"], name: "index_events_on_assignments_id"
+    t.index ["assignment_id"], name: "index_events_on_assignment_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 20180424072047) do
   add_foreign_key "assignments", "vacancies"
   add_foreign_key "candidates", "sources"
   add_foreign_key "candidates", "users"
-  add_foreign_key "events", "assignments", column: "assignments_id"
+  add_foreign_key "events", "assignments"
   add_foreign_key "skill_abilities", "candidates"
   add_foreign_key "skill_abilities", "skills"
   add_foreign_key "skill_requirements", "skills"

@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% events.each do |event| %>
+      <tr>
+        <td><%= event_name(event) %> </td>
+        <td><%= event.scheduled_on.strftime("%F %R") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,27 +1,35 @@
-<div class="modal fade event-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade event-modal" id="eventModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Schedule an event</h5>
+        <h5 class="modal-title">Schedule an event</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div class="container">
-            <div class="form-group">
-                <div class="input-group date" id="datetimepicker" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker"/>
-                    <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                    </div>
-                </div>
+        <%= form_for Event.new, url: events_path(format: 'json'), id:'new_event' do |ff| %>
+          <div class="form-group">
+            <%= ff.label :name %>
+            <%= ff.text_field :name, id: :event_name, class:'form-control' %>
+          </div>
+          <%= ff.hidden_field :assignment_id, value: nil, id:'assignment-id' %>
+          <div class="form-group">
+            <%= ff.label :scheduled_on %>
+            <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+              <%= ff.text_field :scheduled_on, class:'form-control datetimepicker-input',
+                                                     id:'datetimepicker',
+                                                     data: {target:"#datetimepicker"} %>
+              <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
             </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Schedule</button>
+          </div>
+
+          <div class="modal-footer">
+            <%= ff.submit "Schedule", class:'btn btn-primary', id:'event-submit' %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

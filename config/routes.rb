@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :companies
   resources :candidates
   resources :vacancies
+  resources :events
   devise_for :users
   resources :users
   get "/uploads/candidate/resume/:id/:basename.:extension", controller: "candidates", action: "download"

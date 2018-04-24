@@ -5,6 +5,8 @@
     <br>
     <%= f.check_box :_destroy %>
     <%= f.label :_destroy, "Remove" %>
-    <%= button_tag "Schedule event", class:'btn btn-success btn-sm pull-right', id:'show-modal-button', remote: true %>
+    <%= f.button "Schedule event", type:'button',
+                                  class:'btn btn-success btn-sm pull-right show-modal-button',
+                                  data: {toggle: "modal", target: "#eventModal", assignment_id: f.object.id} %>
   </div>
 <% end %>

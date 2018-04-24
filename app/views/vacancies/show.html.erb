@@ -37,7 +37,7 @@
 </p>
 <div class="row">
   <div class="col-6">
-    <% if @vacancy.candidates.present? %>
+    <% if @vacancy.candidates.in_progress.present? %>
       <h2>Assigned candidates</h2>
       <%= render 'vacancy_candidates', vacancy: @vacancy %>
     <% end %>
