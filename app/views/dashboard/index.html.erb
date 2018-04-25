@@ -1,7 +1,13 @@
 <h1>Dashboard</h1>
 <div class="row">
-  <div class="col-6">
+  <div class="col-4">
     <h3>Your last 10 updated candidates</h3>
     <%= render 'shared/candidates', candidates: @last_candidates %>
   </div>
+  <% if @upcoming_events.present? %>
+    <div class="col-8">
+      <h3>Your upcoming events (next 7 days)</h3>
+      <%= render 'shared/events', events: @upcoming_events %>
+    </div>
+  <% end %>
 </div>

@@ -7,7 +7,7 @@
   </thead>
 
   <tbody>
-    <% vacancy.candidates.each do |candidate| %>
+    <% vacancy.candidates.in_progress.each do |candidate| %>
       <tr>
         <td><%= link_to candidate.name, candidate %></td>
         <td><%# candidate.assignments.find(vacancy.id).status %></td>
