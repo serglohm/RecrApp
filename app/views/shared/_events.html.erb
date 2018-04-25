@@ -15,10 +15,10 @@
         <td><%= event_name(event) %> </td>
         <td><%= event.scheduled_on.strftime("%d\'%b %R") %></td>
         <td>
-          <%= link_to fa_icon('check'), {controller: 'events', action:'set_done', id: event.id}, class:'btn btn-outline-success' %>
+          <%= link_to fa_icon('check'), event_set_done_path(event), class:'btn btn-outline-success' %>
         </td>
         <td>
-          <%= link_to fa_icon('times'), {controller: 'events', action:'set_cancelled', id: event.id}, class:'btn btn-outline-warning' %>
+          <%= link_to fa_icon('times'), event_set_cancelled_path(event), class:'btn btn-outline-warning' %>
         </td>
         <td>
           <%= link_to fa_icon('ban'), event, method: :delete, class:'btn btn-outline-danger', data: { confirm: 'Are you sure?' } %>

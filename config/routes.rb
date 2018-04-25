@@ -8,18 +8,16 @@ Rails.application.routes.draw do
   resources :candidates
   resources :vacancies
   resources :events do
-    get :set_done, controller: "events", action: "set_done"
-    get :set_cancelled, controller: "events", action: "set_cancelled"
+    get :set_done, to: 'events#set_done'
+    get :set_cancelled, to: 'events#set_cancelled'
   end
   devise_for :users
   resources :users
-  get :set_done, controller: "events", action: "set_done"
-  get :set_cancelled, controller: "events", action: "set_cancelled"
   get "/uploads/candidate/resume/:id/:basename.:extension", controller: "candidates", action: "download"
   get :send_resume, controller: "candidates", action: "send_resume"
   get :create_telegraph_account, controller: "users", action: "create_telegraph_account"
   get :delete_telegraph_account, controller: "users", action: "delete_telegraph_account"
   get :create_telegraph_page, controller: "vacancies", action: "create_vacancy_on_telegraph"
-  root "candidates#index"
+  root "dashboard#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
