@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :set_done, :set_cancelled]
 
   # GET /events
   # GET /events.json
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-
+    @event.update_attributes(status: :active)
     respond_to do |format|
       if @event.save
         format.html { redirect_to events_path, notice: 'Event was successfully created.' }
@@ -60,9 +60,23 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to dashboard_path, error: 'Event was successfully destroyed.' }
       format.json { head :no_content }
       format.js
+    end
+  end
+
+  def set_done
+    @event.update_attributes(status: :done)
+    respond_to do |format|
+      format.html { redirect_to dashboard_path, notice: 'Event has been done!' }
+    end
+  end
+
+  def set_cancelled
+    @event.update_attributes(status: :cancelled)
+    respond_to do |format|
+      format.html { redirect_to dashboard_path, alert: 'Event has been cancelled' }
     end
   end
 

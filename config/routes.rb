@@ -7,9 +7,14 @@ Rails.application.routes.draw do
   resources :companies
   resources :candidates
   resources :vacancies
-  resources :events
+  resources :events do
+    get :set_done, controller: "events", action: "set_done"
+    get :set_cancelled, controller: "events", action: "set_cancelled"
+  end
   devise_for :users
   resources :users
+  get :set_done, controller: "events", action: "set_done"
+  get :set_cancelled, controller: "events", action: "set_cancelled"
   get "/uploads/candidate/resume/:id/:basename.:extension", controller: "candidates", action: "download"
   get :send_resume, controller: "candidates", action: "send_resume"
   get :create_telegraph_account, controller: "users", action: "create_telegraph_account"
