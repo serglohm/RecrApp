@@ -10,6 +10,7 @@ class Candidate < ApplicationRecord
 
   has_many :assignments, dependent: :destroy
   has_many :vacancies, through: :assignments
+  has_many :events, through: :assignments
 
   accepts_nested_attributes_for :assignments, allow_destroy: true
   validates :name, presence: true, uniqueness: true

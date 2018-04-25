@@ -10,7 +10,7 @@
     <% events.each do |event| %>
       <tr>
         <td><%= event_name(event) %> </td>
-        <td><%= event.scheduled_on.strftime("%F %R") %></td>
+        <td><%= event.scheduled_on.strftime("%d\'%b %R") %></td>
       </tr>
     <% end %>
   </tbody>
