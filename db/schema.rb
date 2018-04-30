@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425072655) do
+ActiveRecord::Schema.define(version: 20180430102636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20180425072655) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "finish_date"
+    t.boolean "rejected"
+    t.string "reject_reason"
+    t.boolean "withdrawn"
+    t.string "withdrawn_reason"
+    t.boolean "hired"
+    t.integer "salary"
     t.index ["candidate_id"], name: "index_assignments_on_candidate_id"
     t.index ["vacancy_id"], name: "index_assignments_on_vacancy_id"
   end
@@ -101,6 +108,9 @@ ActiveRecord::Schema.define(version: 20180425072655) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "assignable_id"
+    t.string "assignable_type"
+    t.index ["assignable_type", "assignable_id"], name: "index_skills_on_assignable_type_and_assignable_id"
   end
 
   create_table "sources", force: :cascade do |t|
