@@ -3,10 +3,13 @@
     <%= f.label :status, assignment_label(f.object) %>
     <%= f.text_field :status, class:'form-control' %>
     <br>
-    <%= f.check_box :_destroy %>
-    <%= f.label :_destroy, "Remove" %>
-    <%= f.button "Schedule event", type:'button',
-                                  class:'btn btn-success btn-sm pull-right show-modal-button',
-                                  data: {toggle: "modal", target: "#eventModal", assignment_id: f.object.id} %>
+    <div class="pull-right">
+      <%= f.button "Schedule event", type:'button',
+                                     class:'btn btn-success btn-sm show-modal-button',
+                                     data: {toggle: "modal", target: "#eventModal", assignment_id: f.object.id} %>
+      <%= link_to "Unassign", f.object, method: :delete,
+                                        class:'btn btn-danger btn-sm',
+                                        data: { confirm: 'Are you sure?' } %>
+    </div>
   </div>
 <% end %>

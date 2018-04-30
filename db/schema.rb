@@ -101,9 +101,6 @@ ActiveRecord::Schema.define(version: 20180425072655) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "assignable_id"
-    t.string "assignable_type"
-    t.index ["assignable_type", "assignable_id"], name: "index_skills_on_assignable_type_and_assignable_id"
   end
 
   create_table "sources", force: :cascade do |t|

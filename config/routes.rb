@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get :set_done, to: 'events#set_done'
     get :set_cancelled, to: 'events#set_cancelled'
   end
+  resources :assignments, only: :destroy
   devise_for :users
   resources :users
   get "/uploads/candidate/resume/:id/:basename.:extension", controller: "candidates", action: "download"
