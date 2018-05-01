@@ -15,9 +15,10 @@ Rails.application.routes.draw do
     match :set_hired, to: 'assignments#set_hired', via: :patch
     match :set_rejected, to: 'assignments#set_rejected', via: :patch
     match :set_withdrawn, to: 'assignments#set_withdrawn', via: :patch
-    get '/hire', to: 'assignments#hire_modal', as: 'hire_modal'
-    get '/reject', to: 'assignments#reject_modal', as: 'reject_modal'
-    get '/withdrawn', to: 'assignments#withdrawn_modal', as: 'withdrawn_modal'
+    get :reset_status, to: 'assignments#reset_status'
+    get :hire, to: 'assignments#hire_modal', as: 'hire_modal'
+    get :reject, to: 'assignments#reject_modal', as: 'reject_modal'
+    get :withdrawn, to: 'assignments#withdrawn_modal', as: 'withdrawn_modal'
   end
   devise_for :users
   resources :users

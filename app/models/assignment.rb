@@ -28,8 +28,6 @@ class Assignment < ApplicationRecord
     save!
   end
 
-  private
-
   def reset_status
     self.hired = false
     self.rejected = false
@@ -38,5 +36,6 @@ class Assignment < ApplicationRecord
     self.salary = nil
     self.reject_reason = nil
     self.withdrawn_reason = nil
+    save!
   end
 end

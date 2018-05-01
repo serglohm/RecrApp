@@ -28,6 +28,11 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def reset_status
+    @assignment.reset_status
+    redirect_to @assignment.candidate
+  end
+
   def set_hired
     @assignment.hire(params[:salary])
     redirect_to @assignment.candidate
