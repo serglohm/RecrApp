@@ -3,10 +3,22 @@
     <%= f.label :status, assignment_label(f.object) %>
     <%= f.text_field :status, class:'form-control' %>
     <br>
-    <div class="pull-right">
-      <%= f.button "Schedule event", type:'button',
+    <%= f.button "Schedule event", type:'button',
                                      class:'btn btn-success btn-sm show-modal-button',
                                      data: {toggle: "modal", target: "#eventModal", assignment_id: f.object.id} %>
+    <div class="pull-right">
+      <%= link_to "Hire", assignment_hire_modal_path(f.object),
+                           remote: true,
+                           data: {assignment_id: f.object.id},
+                           class:'btn btn-success btn-sm' %>
+      <%= link_to "Reject", assignment_reject_modal_path(f.object),
+                           remote: true,
+                           data: {assignment_id: f.object.id},
+                           class:'btn btn-warning btn-sm' %>
+      <%= link_to "Withdrawn", assignment_withdrawn_modal_path(f.object),
+                           remote: true,
+                           data: {assignment_id: f.object.id},
+                           class:'btn btn-warning btn-sm' %>
       <%= link_to "Unassign", f.object, method: :delete,
                                         class:'btn btn-danger btn-sm',
                                         data: { confirm: 'Are you sure?' } %>

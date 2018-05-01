@@ -1,0 +1,23 @@
+<div class="modal fade set-reject-modal" id="rejectModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Reject</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with url: assignment_set_rejected_path(@assignment), method: :patch, remote: false do |ff| %>
+          <div class="form-group">
+            <%= ff.label :reason %>
+            <%= ff.text_field :reason, id: :reaason, class:'form-control' %>
+          </div>
+          <div class="modal-footer">
+            <%= ff.submit "Reject", class:'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

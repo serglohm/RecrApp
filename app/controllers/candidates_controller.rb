@@ -100,7 +100,8 @@ class CandidatesController < ApplicationController
                                         :experience, :expected_salary, :marital_status,
                                         :github, :linked_in, :skype, :email,
                                         :phone, :availability, :source_id,
-                                        assignments_attributes:[:_destroy, :id, :vacancy_id, :status, :candidate_id],
+                                        assignments_attributes:[:id, :vacancy_id, :status, :candidate_id,
+                                                                :salary, :withdrawn_reason, :reject_reason],
                                         skill_ids:[], vacancy_ids:[])
     end
 end

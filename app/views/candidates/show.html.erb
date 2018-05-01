@@ -2,7 +2,7 @@
 <%= link_to '<- Back', :back, class:'btn btn-success' %>
 
 <div class="row">
-  <div class="col">
+  <div class="col personal_info">
     <h2>Candidate's info</h2>
     </br>
     <%= render 'personal_info', candidate: @candidate %>
@@ -16,4 +16,4 @@
   <% end %>
 </div>
 <%= render 'shared/event_modal' %>
-
+<div class="modal-div"></div>
