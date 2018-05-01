@@ -11,7 +11,7 @@
         <%= form_with url: assignment_set_hired_path(@assignment), method: :patch, remote: false, id:'set-hired' do |ff| %>
           <div class="form-group">
             <%= ff.label :salary %>
-            <%= ff.text_field :salary, id: :salary, class:'form-control' %>
+            <%= ff.number_field :salary, id: :salary, class:'form-control' %>
           </div>
           <div class="modal-footer">
             <%= ff.submit "Hire!", class:'btn btn-primary', id:'set-hired-submit' %>
