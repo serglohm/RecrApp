@@ -1,12 +1,10 @@
 $(document).on("turbolinks:load", function() {
   $('#datetimepicker').datetimepicker({
-    format: "YYYY-MM-DD HH:mm",
-    sideBySide: true
+    format: "YYYY-MM-DD HH:mm"
   });
 
   $('#datePick').datetimepicker({
-    format: 'L',
-    sideBySide: true
+    format: 'L'
   });
 
   var buttonId = null;
