@@ -1,8 +1,13 @@
 $(document).on("turbolinks:load", function() {
   $('#datetimepicker').datetimepicker({
-    viewMode: 'years',
-    format: "YYYY-MM-DD HH:mm"
-  })
+    format: "YYYY-MM-DD HH:mm",
+    sideBySide: true
+  });
+
+  $('#datePick').datetimepicker({
+    format: 'L',
+    sideBySide: true
+  });
 
   var buttonId = null;
 
@@ -17,7 +22,7 @@ $(document).on("turbolinks:load", function() {
   $('.show-modal-button').on('click', function(){
     $('.event-modal').modal();
     buttonId = $(this).data('assignmentId');
-  })
+  });
 
 
   $("#new_event").on("submit", function(e) {

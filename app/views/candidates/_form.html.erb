@@ -76,8 +76,8 @@
   <h2>Personal</h2>
   <div class="row jumbotron">
     <div class="col-md form-group">
-      <%= form.label :description %>
-      <%= form.text_area :description, id: :candidate_description, class:'form-control', rows:'7' %>
+      <%= form.label :experience, "Introduction" %>
+      <%= form.text_area :experience, id: :candidate_experience, class:'form-control', rows:'7' %>
     </div>
 
     <div class="col-md form-group">
@@ -86,8 +86,8 @@
     </div>
 
     <div class="col-md form-group">
-      <%= form.label :experience %>
-      <%= form.text_area :experience, id: :candidate_experience, class:'form-control', rows:'7' %>
+      <%= form.label :description, "Technical skills"%>
+      <%= form.text_area :description, id: :candidate_description, class:'form-control', rows:'7' %>
     </div>
   </div>
 

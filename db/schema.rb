@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430102636) do
+ActiveRecord::Schema.define(version: 20180502073832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20180430102636) do
     t.string "withdrawn_reason"
     t.boolean "hired"
     t.integer "salary"
+    t.date "start_date"
     t.index ["candidate_id"], name: "index_assignments_on_candidate_id"
     t.index ["vacancy_id"], name: "index_assignments_on_vacancy_id"
   end

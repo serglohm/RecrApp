@@ -14,8 +14,8 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require moment
-//= require tempusdominus-bootstrap-4.js
 //= require selectize
+//= require tempusdominus-bootstrap-4.js
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .

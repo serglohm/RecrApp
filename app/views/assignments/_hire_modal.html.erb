@@ -13,6 +13,17 @@
             <%= ff.label :salary, "Salary (gross)" %>
             <%= ff.number_field :salary, id: :salary, class:'form-control' %>
           </div>
+          <div class="form-group">
+            <%= ff.label :start_date %>
+            <div class="input-group date" id="datePick" data-target-input="nearest">
+              <%= ff.text_field :start_date, class:'form-control datetimepicker-input',
+                                                    id:'datePick',
+                                                    data: {target:"#datePick", toggle:"datetimepicker"} %>
+              <div class="input-group-append" data-target="#datePick" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
+          </div>
           <div class="modal-footer">
             <%= ff.submit "Hire!", class:'btn btn-primary', id:'set-hired-submit' %>
           </div>
