@@ -1,8 +1,9 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, except: :destroy
-  before_action :set_candidate
+  before_action :set_candidate, except: :destroy
   def destroy
     @assignment = Assignment.find(params[:id])
+    @candidate = @assignment.candidate
     @assignment.destroy
     respond_to do |format|
       format.html { redirect_to @candidate, notice: 'Assignment was successfully destroyed.' }
