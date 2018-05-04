@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if current_user.has_role? :admin
+      @users = User.all
+    else
+      @users = User.where(id: current_user.id)
+    end
   end
 
   # GET /users/1

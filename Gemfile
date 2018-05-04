@@ -7,7 +7,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
@@ -41,6 +40,7 @@ gem 'html2markdown'
 gem "selectize-rails"
 gem 'momentjs-rails'
 gem 'bootstrap4-datetime-picker-rails'
+gem 'pg_search'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

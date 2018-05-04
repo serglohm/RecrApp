@@ -1,0 +1,7 @@
+</br>
+<h1>Search results</h1>
+</br>
+<% @search_results.each do |pg_search_document| %>
+  <h4><%= link_to pg_search_document.searchable.name, pg_search_document.searchable %></h4>
+  <hr>
+<% end %>

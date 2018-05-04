@@ -1,4 +1,8 @@
 class Candidate < ApplicationRecord
+  include PgSearch
+  after_save :reindex
+
+  multisearchable against: [:name, :description]
   belongs_to :user
   belongs_to :source
 
@@ -19,4 +23,10 @@ class Candidate < ApplicationRecord
 
   scope :by_user, -> user_id { where("user_id = ?", user_id) }
   scope :by_status, -> status { where("status = ?", status) }
+
+  private
+
+  def reindex
+    PgSearch::Multisearch.rebuild(Candidate)
+  end
 end

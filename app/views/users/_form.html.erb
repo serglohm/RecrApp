@@ -14,11 +14,12 @@
          <%= f.label :password %> <small>(leave blank if you don't want to change)</small><br />
          <%= f.password_field :password, class:"form-control" %>
       </div>
-
-      <div class="form-group col-2">
-         <%= f.label :role_ids, "Role" %>
-         <%= f.collection_select :role_ids, Role.all, :id, :name, {}, {class:"form-control"} %>
-      </div>
+      <% if current_user.has_role? :admin %>
+         <div class="form-group col-2">
+            <%= f.label :role_ids, "Role" %>
+            <%= f.collection_select :role_ids, Role.all, :id, :name, {}, {class:"form-control"} %>
+         </div>
+      <% end %>
    </div>
 
    <h2>Telegraph API settings</h2>
