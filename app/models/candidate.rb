@@ -2,7 +2,7 @@ class Candidate < ApplicationRecord
   include PgSearch
   after_save :reindex
 
-  multisearchable against: [:name, :description]
+  multisearchable against: [:name, :description, :skype, :email]
   belongs_to :user
   belongs_to :source
 
