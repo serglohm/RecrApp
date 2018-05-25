@@ -11,10 +11,10 @@
 <br>
 
 <div class="row">
-  <div class="col-6">
+  <div class="col-8">
     <%= render "filter" %>
   </div>
-  <div class="col-6">
+  <div class="col-4">
     <% if current_user.has_role? :admin %>
       <%= link_to "Export candidates to XLS", candidates_path(format: "xlsx",
                                                               by_user: params[:by_user],
