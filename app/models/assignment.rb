@@ -19,6 +19,11 @@ class Assignment < ApplicationRecord
     update!(withdrawn: true, withdrawn_reason: reason, finish_date: Date.today)
   end
 
+  def to_offer_rejected(reason)
+    _reset_status
+    update!(offer_rejected: true, offer_rejected_reason: reason, finish_date: Date.today)
+  end
+
   def reset_status
     _reset_status
     save!
@@ -30,9 +35,11 @@ class Assignment < ApplicationRecord
     self.hired = false
     self.rejected = false
     self.withdrawn = false
+    self.offer_rejected = false
     self.finish_date = nil
     self.salary = nil
     self.reject_reason = nil
     self.withdrawn_reason = nil
+    self.offer_rejected_reason = nil
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180510085505) do
+ActiveRecord::Schema.define(version: 20180525083052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20180510085505) do
     t.boolean "hired", default: false
     t.integer "salary"
     t.date "start_date"
+    t.boolean "offer_rejected", default: false
+    t.string "offer_rejected_reason"
     t.index ["candidate_id"], name: "index_assignments_on_candidate_id"
     t.index ["vacancy_id"], name: "index_assignments_on_vacancy_id"
   end

@@ -8,7 +8,7 @@ class Candidate < ApplicationRecord
   belongs_to :user
   belongs_to :source
 
-  enum status: [:in_progress, :hired, :rejected, :withdrawn, :draft]
+  enum status: [:in_progress, :hired, :rejected, :withdrawn, :draft, :offers_rejected]
 
   mount_uploader :resume, ResumeUploader
 

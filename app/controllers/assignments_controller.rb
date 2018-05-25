@@ -1,7 +1,11 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, except: :destroy
   before_action :set_candidate, except: :destroy
-  after_action :touch_candidate, only: [:reset_status, :set_hired, :set_rejected, :set_withdrawn]
+  after_action :touch_candidate, only: [:reset_status,
+                                        :set_hired,
+                                        :set_rejected,
+                                        :set_withdrawn,
+                                        :set_offer_rejected]
 
   def destroy
     @assignment = Assignment.find(params[:id])
@@ -31,6 +35,12 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def offer_rejected_modal
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def reset_status
     @assignment.reset_status
     redirect_to @assignment.candidate
@@ -48,6 +58,11 @@ class AssignmentsController < ApplicationController
 
   def set_withdrawn
     @assignment.to_withdrawn(params[:reason])
+    redirect_to @assignment.candidate
+  end
+
+  def set_offer_rejected
+    @assignment.to_offer_rejected(params[:reason])
     redirect_to @assignment.candidate
   end
 

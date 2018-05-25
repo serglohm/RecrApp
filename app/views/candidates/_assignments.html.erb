@@ -24,6 +24,12 @@
       <%= link_to "Reset", assignment_reset_status_path(f.object),
                             data: {assignment_id: f.object.id},
                             class:'btn btn-danger btn-sm' %>
+    <% elsif f.object.offer_rejected? %>
+      <h4><%= assignment_label(f.object) %></h4>
+      <p>offer rejected on <%= f.object.finish_date %> because: <%= f.object.offer_rejected_reason %></p>
+      <%= link_to "Reset", assignment_reset_status_path(f.object),
+                            data: {assignment_id: f.object.id},
+                            class:'btn btn-danger btn-sm' %>
     <% else %>
       <%= f.label :status, assignment_label(f.object) %>
       <%= f.text_field :status, class:'form-control' %>
@@ -41,6 +47,10 @@
                             data: {assignment_id: f.object.id},
                             class:'btn btn-warning btn-sm' %>
         <%= link_to "Withdrawn", assignment_withdrawn_modal_path(f.object),
+                            remote: true,
+                            data: {assignment_id: f.object.id},
+                            class:'btn btn-warning btn-sm' %>
+        <%= link_to "Offer reject", assignment_offer_rejected_modal_path(f.object),
                             remote: true,
                             data: {assignment_id: f.object.id},
                             class:'btn btn-warning btn-sm' %>
