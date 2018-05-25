@@ -16,6 +16,7 @@ class Vacancy < ApplicationRecord
   validate :salary_max_greater_than_salary_min
 
   def salary_max_greater_than_salary_min
+    return if salary_max.nil? or salary_min.nil?
     if salary_min > salary_max
       errors.add(:salary_min, "Minimum salary should be less or equal to Maximum salary")
     end
