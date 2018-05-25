@@ -47,7 +47,7 @@ class AssignmentsController < ApplicationController
   end
 
   def set_hired
-    @assignment.to_hire(params[:salary])
+    @assignment.to_hire(params[:salary], params[:start_date])
     redirect_to @assignment.candidate
   end
 

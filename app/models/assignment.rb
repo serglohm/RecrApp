@@ -4,9 +4,10 @@ class Assignment < ApplicationRecord
   has_many :events, dependent: :destroy
   scope :active, -> { where(hired: false, rejected: false, withdrawn: false) }
 
-  def to_hire(salary)
+  def to_hire(salary, date_of_start)
     _reset_status
-    update!(hired: true, salary: salary, finish_date: Date.today)
+    date = Date.strptime(date_of_start, "%m/%d/%Y")
+    update!(hired: true, salary: salary, start_date: date, finish_date: Date.today)
   end
 
   def to_reject(reason)
@@ -37,6 +38,7 @@ class Assignment < ApplicationRecord
     self.withdrawn = false
     self.offer_rejected = false
     self.finish_date = nil
+    self.start_date = nil
     self.salary = nil
     self.reject_reason = nil
     self.withdrawn_reason = nil

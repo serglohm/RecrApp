@@ -7,29 +7,33 @@
         <% if current_user.has_role? :admin || current_user == @candidate.user %>
           with salary <%= f.object.salary %> EUR gross
         <% end %>
-        on <%= f.object.finish_date %>
+        on <%= f.object.finish_date %>, starts on <%= f.object.start_date %>
       </p>
       <%= link_to "Reset", assignment_reset_status_path(f.object),
                             data: {assignment_id: f.object.id},
                             class:'btn btn-danger btn-sm' %>
+
     <% elsif f.object.rejected? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>rejected on <%= f.object.finish_date %> because: <%= f.object.reject_reason %></p>
       <%= link_to "Reset", assignment_reset_status_path(f.object),
                             data: {assignment_id: f.object.id},
                             class:'btn btn-danger btn-sm' %>
+
     <% elsif f.object.withdrawn? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>withdrawn on <%= f.object.finish_date %> because: <%= f.object.withdrawn_reason %></p>
       <%= link_to "Reset", assignment_reset_status_path(f.object),
                             data: {assignment_id: f.object.id},
                             class:'btn btn-danger btn-sm' %>
+
     <% elsif f.object.offer_rejected? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>offer rejected on <%= f.object.finish_date %> because: <%= f.object.offer_rejected_reason %></p>
       <%= link_to "Reset", assignment_reset_status_path(f.object),
                             data: {assignment_id: f.object.id},
                             class:'btn btn-danger btn-sm' %>
+
     <% else %>
       <%= f.label :status, assignment_label(f.object) %>
       <%= f.text_field :status, class:'form-control' %>
