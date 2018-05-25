@@ -43,7 +43,7 @@ class Candidate < ApplicationRecord
       hired!
     elsif self.assignments.all?(&:withdrawn?)
       withdrawn!
-    elsif self.assignments.all?(&:offers_rejected)
+    elsif self.assignments.all?(&:offer_rejected)
       offers_rejected!
     end
   end
