@@ -10,7 +10,19 @@
 </div>
 <br>
 
-<%= render "filter" %>
+<div class="row">
+  <div class="col-6">
+    <%= render "filter" %>
+  </div>
+  <div class="col-6">
+    <% if current_user.has_role? :admin %>
+      <%= link_to "Export candidates to XLS", candidates_path(format: "xlsx",
+                                                              by_user: params[:by_user],
+                                                              by_status: params[:by_status]
+                                                             ), class:'btn btn-primary pull-right' %>
+    <% end %>
+  </div>
+</div>
 <%= render "candidates", candidates: @candidates %>
 
 

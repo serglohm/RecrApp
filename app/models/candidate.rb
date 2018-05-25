@@ -1,12 +1,15 @@
 class Candidate < ApplicationRecord
   include PgSearch
   after_save :reindex
+  after_touch :set_status
 
   multisearchable against: [:name, :description, :skype, :email]
+
   belongs_to :user
   belongs_to :source
 
   enum status: [:in_progress, :hired, :rejected, :withdrawn, :draft]
+
   mount_uploader :resume, ResumeUploader
 
   has_many :skill_abilities, dependent: :destroy
@@ -17,9 +20,12 @@ class Candidate < ApplicationRecord
   has_many :events, through: :assignments
 
   accepts_nested_attributes_for :assignments, allow_destroy: true
-  validates :name, presence: true, uniqueness: true
-  validates :email, presence: true
-  validates :country, presence: true
+
+  with_options presence: true do
+    validates :name, uniqueness: true
+    validates :email
+    validates :country
+  end
 
   scope :by_user, -> user_id { where("user_id = ?", user_id) }
   scope :by_status, -> status { where("status = ?", status) }
@@ -29,4 +35,15 @@ class Candidate < ApplicationRecord
   def reindex
     PgSearch::Multisearch.rebuild(Candidate)
   end
+
+  def set_status
+    if self.assignments.all?(&:rejected?)
+      rejected!
+    elsif self.assignments.any?(&:hired?)
+      hired!
+    elsif self.assignments.all?(&:withdrawn?)
+      withdrawn!
+    end
+  end
 end
+

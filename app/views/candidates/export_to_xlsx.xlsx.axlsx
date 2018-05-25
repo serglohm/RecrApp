@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Candidates") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(name email)
+
+  # each user is a row on your spreadsheet
+  @candidates.each do |candidate|
+    sheet.add_row [candidate.name, candidate.email]
+    candidate.assignments.active.each do |assignment|
+      sheet.add_row [" ", " ", "#{assignment.vacancy.name} at #{assignment.vacancy.company.name}", assignment.status]
+    end
+  end
+end

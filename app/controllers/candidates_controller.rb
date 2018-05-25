@@ -10,6 +10,10 @@ class CandidatesController < ApplicationController
     @candidates = apply_scopes(Candidate.includes(:source, :user)).order(created_at: :desc)
     @users = User.select(:id, :name)
     @statuses = Candidate.statuses.map{ |key, value| [key.humanize, value] }
+    respond_to do |format|
+      format.html
+      format.xlsx { render xlsx: 'export_to_xlsx' }
+    end
   end
 
   # GET /candidates/1
@@ -80,6 +84,13 @@ class CandidatesController < ApplicationController
     CandidateMailer.send_candidate(@candidate, @address).deliver_now
     flash[:notice] = "Resume has been sent."
     redirect_to candidate_path(@candidate)
+  end
+
+  def export_to_xlsx
+    @candidates = current_user.candidates.where(status: :in_progress)
+    respond_to do |format|
+      format.xlsx
+    end
   end
 
   private

@@ -2,33 +2,31 @@ class Assignment < ApplicationRecord
   belongs_to :candidate
   belongs_to :vacancy
   has_many :events, dependent: :destroy
+  scope :active, -> { where(hired: false, rejected: false, withdrawn: false) }
 
-
-  def hire(salary)
-    reset_status
-    self.hired = true
-    self.salary = salary
-    self.finish_date = Date.today
-    save!
+  def to_hire(salary)
+    _reset_status
+    update!(hired: true, salary: salary, finish_date: Date.today)
   end
 
-  def reject(reason)
-    reset_status
-    self.rejected = true
-    self.reject_reason = reason
-    self.finish_date = Date.today
-    save!
+  def to_reject(reason)
+    _reset_status
+    update!(rejected: true, reject_reason: reason, finish_date: Date.today)
   end
 
-  def withdrawn(reason)
-    reset_status
-    self.withdrawn = true
-    self.withdrawn_reason = reason
-    self.finish_date = Date.today
-    save!
+  def to_withdrawn(reason)
+    _reset_status
+    update!(withdrawn: true, withdrawn_reason: reason, finish_date: Date.today)
   end
 
   def reset_status
+    _reset_status
+    save!
+  end
+
+  private
+
+  def _reset_status
     self.hired = false
     self.rejected = false
     self.withdrawn = false
@@ -36,6 +34,5 @@ class Assignment < ApplicationRecord
     self.salary = nil
     self.reject_reason = nil
     self.withdrawn_reason = nil
-    save!
   end
 end

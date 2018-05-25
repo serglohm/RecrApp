@@ -2,11 +2,18 @@
   <% vacancies_by_company.each do |company, vacancies| %>
     <div class="card">
       <div class="card-header" id="heading<%= company.id %>">
-        <h5 class="mb-0">
-          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%= company.id %>" aria-expanded="true" aria-controls="collapse<%= company.id %>">
-            <%= company.name %>
-          </button>
-        </h5>
+        <div class="row">
+          <div class="col-2">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%= company.id %>" aria-expanded="true" aria-controls="collapse<%= company.id %>">
+                <%= company.name %>
+              </button>
+            </h5>
+          </div>
+          <div class="col pull-right">
+            <p>processing: <%= candidates_in_progress(company) %> <%= "candidate".pluralize(candidates_in_progress(company)) %></p>
+          </div>
+        </div>
       </div>
       <div id="collapse<%= company.id %>" class="collapse" aria-labelledby="heading<%= company.id %>" data-parent="#accordion">
         <div class="card-body">
@@ -14,7 +21,6 @@
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Company</th>
                 <th>Salary(net)</th>
                 <th>Description</th>
                 <th>TG_Ru</th>
@@ -26,7 +32,6 @@
               <% vacancies.each do |vacancy| %>
                 <tr <%= 'class=table-secondary' if vacancy.closed? %>>
                   <td><%= link_to vacancy.name, vacancy %></td>
-                  <td><%= link_to vacancy.company.name, vacancy.company %></td>
                   <td><%= vacancy.salary_min %> - <%= vacancy.salary_max %> EUR</td>
                   <%= check_completion(vacancy.description) %>
                   <%= check_completion(vacancy.telegraph_link_ru) %>

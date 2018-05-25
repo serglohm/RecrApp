@@ -6,4 +6,8 @@ module VacanciesHelper
       content_tag(:td, fa_icon('times'), class:'table-danger')
     end
   end
+
+  def candidates_in_progress(company)
+    company.candidates.in_progress.count
+  end
 end

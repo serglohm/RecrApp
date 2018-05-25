@@ -1,6 +1,8 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, except: :destroy
   before_action :set_candidate, except: :destroy
+  after_action :touch_candidate, only: [:reset_status, :set_hired, :set_rejected, :set_withdrawn]
+
   def destroy
     @assignment = Assignment.find(params[:id])
     @candidate = @assignment.candidate
@@ -35,21 +37,25 @@ class AssignmentsController < ApplicationController
   end
 
   def set_hired
-    @assignment.hire(params[:salary])
+    @assignment.to_hire(params[:salary])
     redirect_to @assignment.candidate
   end
 
   def set_rejected
-    @assignment.reject(params[:reason])
+    @assignment.to_reject(params[:reason])
     redirect_to @assignment.candidate
   end
 
   def set_withdrawn
-    @assignment.withdrawn(params[:reason])
+    @assignment.to_withdrawn(params[:reason])
     redirect_to @assignment.candidate
   end
 
   private
+
+  def touch_candidate
+    @candidate.touch
+  end
 
   def set_candidate
     @candidate = @assignment.candidate
@@ -59,3 +65,5 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:assignment_id])
   end
 end
+
+

@@ -11,10 +11,9 @@
       <%= form.select :by_status, options_for_select(@statuses, params['by_status']),
                                   { include_blank: "All" },
                                   class:'form-control' %>
-    </div>
-
-    <div class="col-auto actions">
-      <%= form.submit "Submit", class:'btn btn-primary mb-2 btn-sm' %>
+      <div class="col-auto actions">
+        <%= form.submit "Submit", class:'btn btn-primary' %>
+      </div>
     </div>
   </div>
 <% end %>
