@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :candidates
   has_many :events, through: :candidates
+  has_many :chats
 
   def self.current
     Thread.current[:user]

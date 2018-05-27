@@ -57,6 +57,26 @@
      </div>
    </div>
 
+   <h2>Telegram API settings</h2>
+   <div class="jumbotron">
+      <div class="row">
+         <div class="form-group col">
+            <%= f.label :telegram_api_id, "Telegram API id" %>
+            <%= f.text_field :telegram_api_id, class:"form-control" %>
+         </div>
+
+         <div class="form-group col">
+            <%= f.label :telegram_api_hash %>
+            <%= f.text_field :telegram_api_hash, class:"form-control" %>
+         </div>
+
+         <div class="form-group col">
+            <%= f.label :phone_number %>
+            <%= f.text_field :phone_number, class:"form-control" %>
+         </div>
+      </div>
+   </div>
+
    <div class="actions">
       <%= f.submit "Submit", class:'btn btn-primary' %>
    </div>

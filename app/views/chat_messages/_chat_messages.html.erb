@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Vacancy</th>
+      <th>Message</th>
+      <th>Sent last time</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% chat_messages.each do |chat_message| %>
+      <tr>
+        <td><%= "#{chat_message.vacancy.name} at #{chat_message.vacancy.company.name}" %></td>
+        <td><%= chat_message.message.truncate(100) if chat_message.message.present? %></td>
+        <td><%= "#{distance_of_time_in_words_to_now(chat_message.last_sent)} ago" if chat_message.last_sent.present? %></td>
+        <td><%= link_to 'Edit', edit_chat_message_path(chat_message.chat, chat_message), class:'btn btn-primary' %></td>
+        <td><%= link_to 'Send message', chat_message_send_path(chat_message.chat, chat_message), class:'btn btn-secondary' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

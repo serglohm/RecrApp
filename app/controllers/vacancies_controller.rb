@@ -82,6 +82,6 @@ class VacanciesController < ApplicationController
       params.require(:vacancy).permit(:name, :telegraph_link_ru, :telegraph_link_en,
                                       :job_link, :telegram_desc_ru, :telegram_desc_en,
                                       :description, :salary_min, :salary_max, :closed,
-                                      :company_id, skill_ids:[], candidate_ids:[])
+                                      :company_id, skill_ids:[], candidate_ids:[], chat_ids:[])
     end
 end

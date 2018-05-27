@@ -8,6 +8,9 @@ class Vacancy < ApplicationRecord
   has_many :assignments, dependent: :destroy
   has_many :candidates, through: :assignments
 
+  has_many :chat_messages
+  has_many :chats, through: :chat_messages
+
   validates :name, presence: true,
                    uniqueness: { scope: :company,
                                  message: "should be unique inside a company" }

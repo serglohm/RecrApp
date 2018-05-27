@@ -15,7 +15,7 @@
       <tr>
         <td><%= link_to candidate.name, candidate %></td>
         <td><%= candidate.status %></td>
-        <td><%= candidate.country %></td>
+        <td><%= candidate.country.truncate(30) %></td>
         <td><%= link_to candidate.source.name, candidate.source %></td>
         <td><%= candidate.user.name %></td>
         <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>

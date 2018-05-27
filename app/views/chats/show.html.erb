@@ -1,0 +1,8 @@
+<h2>Chat name:
+<small><%= @chat.name %></small></h2>
+<br>
+<h3>Messages:</h3>
+<%= render "chat_messages/chat_messages", chat_messages: @chat.chat_messages %>
+
+<%= link_to 'Edit', edit_chat_path(@chat) %> |
+<%= link_to 'Back', chats_path %>

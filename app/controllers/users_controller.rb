@@ -86,7 +86,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email, :password, :name, :short_name,
                                    :author_name, :author_url, :role_ids,
-                                   :vacancy_footer)
+                                   :vacancy_footer, :telegram_api_id, :telegram_api_hash, :phone_number)
     end
 
     def allow_without_password

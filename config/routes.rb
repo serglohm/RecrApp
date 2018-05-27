@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   resources :candidates
   resources :vacancies
 
+  resources :chats do
+    resources :chat_messages, only: [:show, :edit, :update], as: :messages do
+      get :send_message, to: "chat_messages#send_message", as: 'send'
+    end
+  end
+
   resources :events do
     get :set_done, to: 'events#set_done'
     get :set_cancelled, to: 'events#set_cancelled'

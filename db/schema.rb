@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525083052) do
+ActiveRecord::Schema.define(version: 20180526113419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,24 @@ ActiveRecord::Schema.define(version: 20180525083052) do
     t.string "phone"
     t.index ["source_id"], name: "index_candidates_on_source_id"
     t.index ["user_id"], name: "index_candidates_on_user_id"
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.integer "chat_id"
+    t.integer "vacancy_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "last_sent"
+    t.index ["chat_id", "vacancy_id"], name: "index_chat_messages_on_chat_id_and_vacancy_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -151,6 +169,9 @@ ActiveRecord::Schema.define(version: 20180525083052) do
     t.string "auth_url"
     t.string "access_token"
     t.text "vacancy_footer"
+    t.integer "telegram_api_id"
+    t.string "telegram_api_hash"
+    t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -184,6 +205,7 @@ ActiveRecord::Schema.define(version: 20180525083052) do
   add_foreign_key "assignments", "vacancies"
   add_foreign_key "candidates", "sources"
   add_foreign_key "candidates", "users"
+  add_foreign_key "chats", "users"
   add_foreign_key "events", "assignments"
   add_foreign_key "skill_abilities", "candidates"
   add_foreign_key "skill_abilities", "skills"

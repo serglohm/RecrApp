@@ -58,7 +58,7 @@
   </div>
 
   <div class="row">
-    <div class="form-group">
+    <div class="form-group col">
       <%= form.label :company_id %>
       <%= form.select :company_id, options_from_collection_for_select(Company.all, :id, :name, @vacancy.company_id), {}, id: :vacancy_company_id, class:'form-control' %>
     </div>
@@ -77,6 +77,14 @@
   <div class="form-group">
     <p>Required skills</p>
     <%= form.select :skill_ids, @skills, {}, { multiple: true, class:'selectize-skills' } %>
+  </div>
+
+  <h3>Post this vacancy to</h3>
+  <div class="form-group">
+    <% Chat.all.each do |chat| %>
+      <%= check_box_tag "vacancy[chat_ids][]", chat.id, form.object.chats.include?(chat) %>
+      <%= chat.name %>
+    <% end %>
   </div>
 
   <div class="actions">
