@@ -1,4 +1,8 @@
 import sys
+import logging
+
+logging.basicConfig(filename='telethon.log',level=logging.DEBUG)
+
 from telethon import TelegramClient
 
 chat = sys.argv[1]

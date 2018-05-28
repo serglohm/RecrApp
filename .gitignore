@@ -22,3 +22,4 @@
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
 *.session
+telethon.log
