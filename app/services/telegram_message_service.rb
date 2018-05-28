@@ -10,6 +10,6 @@ class TelegramMessageService
 
   def perform
     message = "\"#{@message}\""
-    `python3.6 script/send_message.py #{@chat} #{@api_id} #{@api_hash} #{@session_name} #{message}`
+    Process.spawn("python3.6 script/send_message.py #{@chat} #{@api_id} #{@api_hash} #{@session_name} #{message}")
   end
 end
