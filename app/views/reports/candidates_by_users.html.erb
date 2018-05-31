@@ -1,0 +1,10 @@
+<h1>Candidates by Users report</h1>
+<%= render 'filter', report_url: candidates_by_users_path %>
+
+<div class="row">
+  <%= pie_chart @grouped_candidates.count, download: true %>
+</div>
+<div class="row">
+  <%= render "candidates/candidates", candidates: @candidates %>
+</div>
+

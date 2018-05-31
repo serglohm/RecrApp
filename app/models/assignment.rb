@@ -2,7 +2,9 @@ class Assignment < ApplicationRecord
   belongs_to :candidate
   belongs_to :vacancy
   has_many :events, dependent: :destroy
+  has_one :user, through: :candidate
   scope :active, -> { where(hired: false, rejected: false, withdrawn: false) }
+  scope :accepted, -> { where(hired: true).where.not(start_date: nil) }
 
   def to_hire(salary, date_of_start)
     _reset_status

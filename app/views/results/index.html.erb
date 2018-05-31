@@ -2,6 +2,19 @@
 <h1>Search results</h1>
 </br>
 <% @search_results.each do |pg_search_document| %>
-  <h4><%= link_to pg_search_document.searchable.name, pg_search_document.searchable %></h4>
+  <div class="row">
+    <div class="col">
+      <h4><%= link_to pg_search_document.searchable.name, pg_search_document.searchable %></h4>
+      <p><%= pg_search_document.searchable.status.humanize %></p>
+    </div>
+    <div class="col">
+      <p>
+        Skills: <%= pg_search_document.searchable.skills.map(&:name).join(", ") %>
+      </p>
+      <p>
+        Owner: <%= pg_search_document.searchable.user.name %>
+      </p>
+    </div>
+  </div>
   <hr>
 <% end %>

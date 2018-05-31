@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :candidates
+  has_many :assignments, through: :candidates
   has_many :events, through: :candidates
   has_many :chats
 

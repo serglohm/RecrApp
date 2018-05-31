@@ -31,9 +31,14 @@ Rails.application.routes.draw do
     get :offer_rejected, to: 'assignments#offer_rejected_modal', as: 'offer_rejected_modal'
   end
 
+  scope :reports do
+    get :candidates_by_users, to: 'reports#candidates_by_users'
+    get :candidates_by_sources, to: 'reports#candidates_by_sources'
+    get :candidates_by_months, to: 'reports#candidates_by_months'
+  end
+
   devise_for :users
   resources :users
-
   get 'results', to: 'results#index', as: 'results'
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get "/uploads/candidate/resume/:id/:basename.:extension", to: "candidates#download"

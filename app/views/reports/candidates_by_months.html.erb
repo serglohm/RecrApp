@@ -1,0 +1,14 @@
+<h1>Accepted offers by months report</h1>
+
+<div class="row">
+  <%= line_chart @accepted_assignments.count, download: true %>
+</div>
+
+<div class="row">
+  <% @users.each do |user| %>
+    <div class="col-4">
+      <h3>User <%= user.name %></h3>
+      <%= line_chart @accepted_assignments.where("users.id = ?", user.id).count, download: true %>
+    </div>
+  <% end %>
+</div>

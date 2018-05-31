@@ -28,5 +28,12 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    if user.has_role?(:external)
+        can :manage, Candidate, user_id: user.id
+    elsif user.has_role?(:admin)
+        can :manage, :all
+    elsif user.has_role?(:recruiter)
+        can :manage, Candidate
+    end
   end
 end

@@ -1,4 +1,5 @@
 class CandidatesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_candidate, only: [:show, :edit, :update,
                                        :destroy, :download, :send_resume]
   before_action :set_vacancies_and_skills, only: [:new, :create, :update, :edit]
@@ -7,7 +8,11 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
-    @candidates = apply_scopes(Candidate.includes(:source, :user)).order(created_at: :desc)
+    if current_user.has_role?(:admin) || current_user.has_role?(:recruiter)
+      @candidates = apply_scopes(Candidate.includes(:source, :user)).order(created_at: :desc)
+    else
+      @candidates = current_user.candidates.order(created_at: :desc)
+    end
     @users = User.select(:id, :name)
     @statuses = Candidate.statuses.map{ |key, value| [key.humanize, value] }
     respond_to do |format|
@@ -35,7 +40,6 @@ class CandidatesController < ApplicationController
   # POST /candidates.json
   def create
     @candidate = current_user.candidates.new(candidate_params)
-
     respond_to do |format|
       if @candidate.save
         format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }

@@ -1,0 +1,17 @@
+<h1>Candidates by Sources report</h1>
+<%= render 'filter', report_url: candidates_by_sources_path %>
+<div class="row">
+  <h2>Overall statistic</h2>
+  <%= pie_chart @grouped_candidates.count, download: true %>
+</div>
+<br>
+<hr>
+<div class="row">
+  <% @users.each do |user| %>
+    <div class="col-4">
+      <h3>User <%= user.name %></h3>
+      <%= pie_chart @grouped_candidates.where(user_id: user.id).count, download: true %>
+    </div>
+  <% end %>
+</div>
+

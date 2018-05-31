@@ -12,7 +12,10 @@
 //
 //= require jquery3
 //= require popper
+//= require Chart.bundle
+//= require chartkick
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker
 //= require moment
 //= require selectize
 //= require tempusdominus-bootstrap-4.js

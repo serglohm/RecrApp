@@ -1,0 +1,27 @@
+<%= form_with url: report_url, method: 'get', local: true, class:"form-inline" do |form| %>
+  <div class="row">
+    <div class="input-daterange input-group form-group" id="datepicker">
+      <%= form.text_field 'by_date[start_date]', value: (params[:by_date][:start_date] if params.has_key?(:by_date)),
+                                                 id: :start_date,
+                                                 placeholder: "Start date",
+                                                 class:'form-control input-group-prepend' %>
+      <div class="input-group-prepend">
+        <span class="input-group-text">to</span>
+      </div>
+      <%= form.text_field 'by_date[end_date]', value: (params[:by_date][:end_date] if params.has_key?(:by_date)),
+                                               id: :end_date,
+                                               placeholder: "End date",
+                                               class:'form-control input-group-append' %>
+    </div>
+
+    <div class="col-auto form-group form-control-sm">
+      <%= form.label :by_status, class:"my-1 mr-2" %>
+      <%= form.select :by_status, options_for_select(@statuses, params['by_status']),
+                                  { include_blank: "All" },
+                                  class:'form-control' %>
+    </div>
+  </div>
+  <div class="col-auto actions">
+    <%= form.submit "Submit", class:'btn btn-primary' %>
+  </div>
+<% end %>
