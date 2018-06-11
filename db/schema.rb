@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526113419) do
+ActiveRecord::Schema.define(version: 20180611122827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 20180526113419) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "candidate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_comments_on_candidate_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -206,6 +216,8 @@ ActiveRecord::Schema.define(version: 20180526113419) do
   add_foreign_key "candidates", "sources"
   add_foreign_key "candidates", "users"
   add_foreign_key "chats", "users"
+  add_foreign_key "comments", "candidates"
+  add_foreign_key "comments", "users"
   add_foreign_key "events", "assignments"
   add_foreign_key "skill_abilities", "candidates"
   add_foreign_key "skill_abilities", "skills"

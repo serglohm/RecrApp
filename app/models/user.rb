@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :assignments, through: :candidates
   has_many :events, through: :candidates
   has_many :chats
+  has_many :comments
 
   def self.current
     Thread.current[:user]

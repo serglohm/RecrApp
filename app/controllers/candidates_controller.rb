@@ -25,6 +25,8 @@ class CandidatesController < ApplicationController
   # GET /candidates/1.json
   def show
     @admins = User.with_role(:admin).where.not(id: current_user.id)
+    @comments = @candidate.comments
+    @comment = current_user.comments.new(candidate_id: @candidate.id)
   end
 
   # GET /candidates/new
@@ -115,9 +117,10 @@ class CandidatesController < ApplicationController
                                         :experience, :expected_salary, :marital_status,
                                         :github, :linked_in, :skype, :email,
                                         :phone, :availability, :source_id,
-                                        assignments_attributes:[:id, :vacancy_id, :status,
+                                        assignments_attributes: [:id, :vacancy_id, :status,
                                                                 :candidate_id, :salary, :withdrawn_reason,
                                                                 :reject_reason, :start_date],
+                                        comments_attributes: [:id, :content, :_destroy],
                                         skill_ids:[], vacancy_ids:[])
     end
 end
