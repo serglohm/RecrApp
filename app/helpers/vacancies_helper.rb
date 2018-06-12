@@ -8,6 +8,6 @@ module VacanciesHelper
   end
 
   def candidates_in_progress(company)
-    company.candidates.in_progress.count
+    company.assignments.in_progress.active.count
   end
 end

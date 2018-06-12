@@ -42,25 +42,33 @@
                                      class:'btn btn-success btn-sm show-modal-button',
                                      data: {toggle: "modal", target: "#eventModal", assignment_id: f.object.id} %>
       <div class="pull-right">
-        <%= link_to "Hire", assignment_hire_modal_path(f.object),
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actions
+          </button>
+          <div class="dropdown-menu">
+            <%= link_to "Hire", assignment_hire_modal_path(f.object),
                             remote: true,
                             data: {assignment_id: f.object.id},
-                            class:'btn btn-success btn-sm' %>
-        <%= link_to "Reject", assignment_reject_modal_path(f.object),
+                            class:'dropdown-item' %>
+            <%= link_to "Reject", assignment_reject_modal_path(f.object),
                             remote: true,
                             data: {assignment_id: f.object.id},
-                            class:'btn btn-warning btn-sm' %>
-        <%= link_to "Withdrawn", assignment_withdrawn_modal_path(f.object),
+                            class:'dropdown-item' %>
+            <%= link_to "Withdrawn", assignment_withdrawn_modal_path(f.object),
                             remote: true,
                             data: {assignment_id: f.object.id},
-                            class:'btn btn-warning btn-sm' %>
-        <%= link_to "Offer reject", assignment_offer_rejected_modal_path(f.object),
+                            class:'dropdown-item' %>
+            <%= link_to "Offer reject", assignment_offer_rejected_modal_path(f.object),
                             remote: true,
                             data: {assignment_id: f.object.id},
-                            class:'btn btn-warning btn-sm' %>
-        <%= link_to "Unassign", f.object, method: :delete,
-                                          class:'btn btn-danger btn-sm',
+                            class:'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Unassign", f.object, method: :delete,
+                                          class:'dropdown-item',
                                           data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>

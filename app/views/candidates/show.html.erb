@@ -2,13 +2,13 @@
 <%= link_to '<- Back', :back, class:'btn btn-success' %>
 
 <div class="row">
-  <div class="col personal_info">
+  <div class="col-lg personal_info">
     <h2>Candidate's info</h2>
     </br>
     <%= render 'personal_info', candidate: @candidate %>
   </div>
   <% if @candidate.assignments.present? %>
-    <div class="col">
+    <div class="col-lg">
       <h2>Application's statuses</h2>
       </br>
       <%= render 'status_form', candidate: @candidate %>

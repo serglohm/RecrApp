@@ -26,7 +26,7 @@
               <tr>
                 <th>Name</th>
                 <th>Salary(net)</th>
-                <th>Description</th>
+                <th>Candidates in progress</th>
                 <th>TG_Ru</th>
                 <th>TG_En</th>
                 <th colspan="2"></th>
@@ -37,7 +37,7 @@
                 <tr <%= 'class=table-secondary' if vacancy.closed? %>>
                   <td><%= link_to vacancy.name, vacancy %></td>
                   <td><%= vacancy.salary_min %> - <%= vacancy.salary_max %> EUR</td>
-                  <%= check_completion(vacancy.description) %>
+                  <td><%= vacancy.assignments.in_progress.active.count %></td>
                   <%= check_completion(vacancy.telegraph_link_ru) %>
                   <%= check_completion(vacancy.telegraph_link_en) %>
                   <td><%= link_to 'Edit', edit_vacancy_path(vacancy) %></td>

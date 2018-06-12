@@ -6,7 +6,9 @@ class VacanciesController < ApplicationController
   # GET /vacancies.json
   def index
     @vacancies = Vacancy.all
-    @vacancies_by_company = Vacancy.all.group_by(&:company)
+    @vacancies_by_company = @vacancies.group_by(&:company)
+                                      .sort_by { |company, vacancy| company.assignments.in_progress.active.count }
+                                      .reverse
   end
 
   # GET /vacancies/1

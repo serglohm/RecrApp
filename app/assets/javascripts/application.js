@@ -15,7 +15,8 @@
 //= require Chart.bundle
 //= require chartkick
 //= require bootstrap-sprockets
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
 //= require moment
 //= require selectize
 //= require tempusdominus-bootstrap-4.js

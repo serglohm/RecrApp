@@ -2,8 +2,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Status</th>
-      <th colspan="1"></th>
+      <th>Assignments</th>
     </tr>
   </thead>
 
@@ -11,9 +10,10 @@
     <% candidates.each do |candidate| %>
       <tr>
         <td><%= link_to candidate.name, candidate %></td>
-        <td><%= candidate.status %></td>
-        <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
+        <td><%= candidate.assignments.active.count %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+
