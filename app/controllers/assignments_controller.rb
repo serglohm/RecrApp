@@ -5,7 +5,8 @@ class AssignmentsController < ApplicationController
                                         :set_hired,
                                         :set_rejected,
                                         :set_withdrawn,
-                                        :set_offer_rejected]
+                                        :set_offer_rejected,
+                                        :set_invoiced]
 
   def destroy
     @assignment = Assignment.find(params[:id])
@@ -48,6 +49,11 @@ class AssignmentsController < ApplicationController
 
   def set_hired
     @assignment.to_hire(params[:salary], params[:start_date])
+    redirect_to @assignment.candidate
+  end
+
+  def set_invoiced
+    @assignment.to_invoiced
     redirect_to @assignment.candidate
   end
 

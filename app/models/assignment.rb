@@ -28,6 +28,12 @@ class Assignment < ApplicationRecord
     update!(offer_rejected: true, offer_rejected_reason: reason, finish_date: Date.today)
   end
 
+  def to_invoiced
+    if hired?
+      update!(invoiced: true)
+    end
+  end
+
   def reset_status
     _reset_status
     save!
@@ -46,5 +52,6 @@ class Assignment < ApplicationRecord
     self.reject_reason = nil
     self.withdrawn_reason = nil
     self.offer_rejected_reason = nil
+    self.invoiced = false
   end
 end

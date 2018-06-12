@@ -1,17 +1,26 @@
 <%= form.fields_for(:assignments) do |f| %>
-  <div class="form-group col">
+  <div class="form-group col <%= set_color_to_assignment(f.object) %>">
     <% if f.object.hired? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>
         Hired
         <% if current_user.has_role? :admin || current_user == @candidate.user %>
-          with salary <%= f.object.salary %> EUR gross,
+          with salary <%= f.object.salary %> EUR gross
         <% end %>
-        starts on <%= f.object.start_date %>
+        , starts on <%= f.object.start_date %>
       </p>
       <%= link_to "Reset", assignment_reset_status_path(f.object),
                             data: {assignment_id: f.object.id},
                             class:'btn btn-danger btn-sm' %>
+      <div class="pull-right">
+        <% if f.object.invoiced? %>
+          <h3>Invoiced</h3>
+        <% else %>
+          <%= link_to "Set Invoiced", assignment_set_invoiced_path(f.object),
+                                      data: {assignment_id: f.object.id},
+                                      class:'btn btn-success btn-sm' %>
+          <% end %>
+      </div>
 
     <% elsif f.object.rejected? %>
       <h4><%= assignment_label(f.object) %></h4>
