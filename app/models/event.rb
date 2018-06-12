@@ -6,5 +6,5 @@ class Event < ApplicationRecord
 
   enum status: [:active, :done, :cancelled]
 
-  scope :upcoming, -> {where("scheduled_on < ?", Date.today + 7.days)}
+  scope :upcoming, -> { where("scheduled_on < ?", Date.today + 7.days) }
 end

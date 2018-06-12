@@ -47,6 +47,7 @@ gem 'axlsx_rails'
 gem "chartkick"
 gem 'bootstrap-datepicker-rails'
 gem 'groupdate'
+gem 'whenever', require: false
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

@@ -39,6 +39,17 @@ class Assignment < ApplicationRecord
     save!
   end
 
+  def self.generate_follow_ups
+    Assignment.active.in_progress.each do |a|
+      if a.updated_at < 7.day.ago
+        EventGeneratorService.new(name: "Follow up or update status",
+                                  scheduled_on: DateTime.now.middle_of_day,
+                                  assignment_id: a.id)
+        .perform
+      end
+    end
+  end
+
   private
 
   def _reset_status
