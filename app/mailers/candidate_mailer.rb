@@ -1,13 +1,18 @@
 class CandidateMailer < ApplicationMailer
   default from: 'notifications@recr.ittalent.ee'
 
-  def send_candidate(candidate, address)
+  def send_candidate(candidate, address, user)
+
     @address = address
     @candidate = candidate
+    @user = user
     if candidate.resume.present?
       attachments["#{cv_name(@candidate)}CV.pdf"] = File.read(@candidate.resume.path)
     end
-    mail(to: address, subject: subject(@candidate))
+    mail(to: address,
+         from: "#{user.name} <notifications@recr.ittalent.ee>",
+         subject: subject(@candidate),
+         reply_to: user.email)
   end
 
   private

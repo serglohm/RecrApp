@@ -87,7 +87,7 @@ class CandidatesController < ApplicationController
     else
       @address = current_user.email
     end
-    CandidateMailer.send_candidate(@candidate, @address).deliver_now
+    CandidateMailer.send_candidate(@candidate, @address, current_user).deliver_now
     flash[:notice] = "Resume has been sent."
     redirect_to candidate_path(@candidate)
   end
