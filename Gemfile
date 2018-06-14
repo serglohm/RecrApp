@@ -78,6 +78,7 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.1'
   gem 'capistrano-rake', require: false
   gem 'capistrano-rails-console', require: false
+  gem 'bullet'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

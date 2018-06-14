@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.all.order(:name)
   end
 
   # GET /companies/1
@@ -70,6 +70,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :description_ru, :description_en)
+      params.require(:company).permit(:name, :description_ru, :description_en, :rate)
     end
 end

@@ -5,6 +5,6 @@ class DashboardController < ApplicationController
                               .sort_by { |candidate| candidate.assignments.active.in_progress.count }
                               .reverse
 
-    @upcoming_events = current_user.events.active.upcoming.order(scheduled_on: :asc)
+    @upcoming_events = current_user.events.active.upcoming.includes(:assignment).includes(:vacancy).order(scheduled_on: :asc)
   end
 end
