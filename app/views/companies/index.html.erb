@@ -14,7 +14,9 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Payment scheme</th>
+      <% if current_user.has_role?(:admin) %>
+        <th>Payment scheme</th>
+      <% end %>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -23,7 +25,9 @@
     <% @companies.each do |company| %>
       <tr>
         <td><%= link_to company.name, company %></td>
-        <td><%= company.pay_type.humanize %> <%= ": #{company.rate}%" if company.rate? %> </td>
+        <% if current_user.has_role?(:admin) %>
+          <td><%= company.pay_type.humanize %> <%= ": #{company.rate}%" if company.rate? %> </td>
+        <% end %>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
         <td><%= link_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
