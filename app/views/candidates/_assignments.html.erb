@@ -3,10 +3,10 @@
     <% if f.object.hired? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>
-        Hired
-        <p>Invoice sum: <%= f.object.calculate_invoice_sum %></p>
+        <h5>Hired</h5>
         <% if current_user.has_role? :admin || current_user == @candidate.user %>
-          Salary: <%= f.object.salary %> EUR gross
+          <p>Invoice sum: <%= f.object.calculate_invoice_sum %></p>
+          <p>Salary: <%= f.object.salary %> EUR gross</p>
         <% end %>
         <p>Starts on: <%= f.object.start_date %></p>
       </p>

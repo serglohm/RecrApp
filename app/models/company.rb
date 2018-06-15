@@ -6,4 +6,14 @@ class Company < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   enum pay_type: [:gross_salary, :rate, :half_gross_salary]
+
+  def get_multiplier
+    if self.rate?
+      multiplier = self.rate/100
+    elsif self.half_gross_salary?
+      multiplier = 1/24.0
+    elsif self.gross_salary?
+      multiplier = 1/12.0
+    end
+  end
 end

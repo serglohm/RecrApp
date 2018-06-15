@@ -56,17 +56,10 @@ class Assignment < ApplicationRecord
 
   def calculate_invoice_sum
     company = self.vacancy.company
-    if company.rate?
-      multiplier = company.rate/100
-    elsif company.half_gross_salary?
-      multiplier = 1/24
-    elsif company.gross_salary?
-      multiplier = 1/12
-    end
     if self.salary.nil?
       sum = "Define salary first"
     else
-      sum = "#{self.salary * 12 * multiplier} EUR"
+      sum = "#{self.salary * 12 * company.get_multiplier} EUR"
     end
   end
 
