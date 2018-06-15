@@ -4,10 +4,11 @@
       <h4><%= assignment_label(f.object) %></h4>
       <p>
         Hired
+        <p>Invoice sum: <%= f.object.calculate_invoice_sum %></p>
         <% if current_user.has_role? :admin || current_user == @candidate.user %>
-          with salary <%= f.object.salary %> EUR gross
+          Salary: <%= f.object.salary %> EUR gross
         <% end %>
-        , starts on <%= f.object.start_date %>
+        <p>Starts on: <%= f.object.start_date %></p>
       </p>
       <%= link_to "Reset", assignment_reset_status_path(f.object),
                             data: {assignment_id: f.object.id},

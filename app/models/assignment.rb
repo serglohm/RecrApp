@@ -45,12 +45,28 @@ class Assignment < ApplicationRecord
 
   def self.generate_follow_ups
     Assignment.active.in_progress.each do |a|
-      if a.updated_at < 7.day.ago
+      if a.updated_at < 14.day.ago
         EventGeneratorService.new(name: "Follow up or update status",
                                   scheduled_on: DateTime.now.middle_of_day,
                                   assignment_id: a.id)
         .perform
       end
+    end
+  end
+
+  def calculate_invoice_sum
+    company = self.vacancy.company
+    if company.rate?
+      multiplier = company.rate/100
+    elsif company.half_gross_salary?
+      multiplier = 1/24
+    elsif company.gross_salary?
+      multiplier = 1/12
+    end
+    if self.salary.nil?
+      sum = "Define salary first"
+    else
+      sum = "#{self.salary * 12 * multiplier} EUR"
     end
   end
 
