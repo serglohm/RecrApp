@@ -10,6 +10,7 @@ class Assignment < ApplicationRecord
   scope :active, -> { where(hired: false, rejected: false, withdrawn: false, offer_rejected: false) }
   scope :accepted, -> { where(hired: true).where.not(start_date: nil) }
   scope :invoiced, -> { where(invoiced: true) }
+  scope :not_invoiced, -> { where(invoiced: false) }
 
   def to_hire(salary, date_of_start)
     _reset_status
@@ -50,6 +51,16 @@ class Assignment < ApplicationRecord
                                   scheduled_on: DateTime.now.middle_of_day,
                                   assignment_id: a.id)
         .perform
+      end
+    end
+  end
+
+  def self.generate_invoice_reminders
+    Assignment.accepted.not_invoiced.each do |a|
+      if Date.today >= a.start_date
+        EventGeneratorService.new(name: "Send invoice",
+                                  scheduled_on: DateTime.now.middle_of_day,
+                                  assignment_id: a.id).perform
       end
     end
   end

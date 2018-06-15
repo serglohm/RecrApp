@@ -18,8 +18,8 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-set :chronic_options, hours24: true
 
-every :day, at: '5:00' do
+every :day, at: '0:01am' do
   runner "Assignment.generate_follow_ups"
+  runner "Assignment.generate_invoice_reminders"
 end
