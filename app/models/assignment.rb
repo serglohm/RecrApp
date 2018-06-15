@@ -49,8 +49,7 @@ class Assignment < ApplicationRecord
       if a.updated_at < 14.day.ago
         EventGeneratorService.new(name: "Follow up or update status",
                                   scheduled_on: DateTime.now.middle_of_day,
-                                  assignment_id: a.id)
-        .perform
+                                  assignment_id: a.id).perform
       end
     end
   end
@@ -58,7 +57,7 @@ class Assignment < ApplicationRecord
   def self.generate_invoice_reminders
     Assignment.accepted.not_invoiced.each do |a|
       if Date.today >= a.start_date
-        EventGeneratorService.new(name: "Send invoice",
+        EventGeneratorService.new(name: "Send invoice or set invoiced",
                                   scheduled_on: DateTime.now.middle_of_day,
                                   assignment_id: a.id).perform
       end
@@ -81,12 +80,12 @@ class Assignment < ApplicationRecord
     self.rejected = false
     self.withdrawn = false
     self.offer_rejected = false
+    self.invoiced = false
     self.finish_date = nil
     self.start_date = nil
     self.salary = nil
     self.reject_reason = nil
     self.withdrawn_reason = nil
     self.offer_rejected_reason = nil
-    self.invoiced = false
   end
 end
