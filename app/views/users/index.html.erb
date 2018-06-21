@@ -19,7 +19,7 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr <%= 'class=table-secondary' if user.disabled? %>>
         <td><%= link_to user.email, user %></td>
         <td>
           <%= link_to 'Edit', edit_user_path(user), class:"btn btn-outline-primary" %>

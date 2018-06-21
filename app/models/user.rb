@@ -11,6 +11,25 @@ class User < ApplicationRecord
   has_many :chats
   has_many :comments
 
+  scope :active, -> { where(active: true) }
+  scope :disabled, -> { where(active: false) }
+
+  def active?
+    self.active
+  end
+
+  def disabled?
+    !self.active
+  end
+
+  def active_for_authentication?
+    super && active?
+  end
+
+  def inactive_message
+    !active? ? super : "You're not allowed to log in"
+  end
+
   def self.current
     Thread.current[:user]
   end
