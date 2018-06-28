@@ -11,7 +11,7 @@ class Assignment < ApplicationRecord
   scope :finished, -> { where.not(finish_date: nil) }
 
   scope :rejected, -> { where(rejected: true) }
-  scope :accepted, -> { where(hired: true).where.not(start_date: nil) }
+  scope :accepted, -> { where(hired: true).where.not(start_date: nil).where.not(salary: nil) }
   scope :invoiced, -> { where(invoiced: true) }
   scope :not_invoiced, -> { where(invoiced: false) }
 
@@ -68,8 +68,8 @@ class Assignment < ApplicationRecord
   end
 
   def calculate_invoice_sum
-    company = self.vacancy.company
-    sum = (self.salary * 12 * company.get_multiplier).to_i
+    company = self.company
+    sum = (salary * 12 * company.get_multiplier).to_i
   end
 
   private
