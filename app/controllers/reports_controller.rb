@@ -14,14 +14,26 @@ class ReportsController < ApplicationController
   end
 
   def candidates_by_months
-    @accepted_assignments = Assignment.accepted.joins(:user).group_by_month(:start_date)
+    @accepted_assignments = Assignment.accepted
+    @accepted_assignments_by_month = @accepted_assignments.joins(:user).group_by_month(:start_date)
+  end
+
+  def offers_by_users
+  end
+
+  def rejects_by_companies
+    @grouped_rejects = Assignment.rejected
+    @rejects_by_month = @grouped_rejects.group_by{|a| a.company.name}
+                                        .map{|name, assignments| [name, assignments.group_by_month(&:finish_date)]}
+                                        .map{|k,v| Hash[name: k, data: v.map{|x,y| [x, y.count]}]}
+    @rejects_counter = @grouped_rejects.group_by_month(:finish_date).count.map{|k,v| v}.max
   end
 
   private
 
   def set_candidates_and_users
     @candidates = apply_scopes(Candidate.includes(:source, :user)).order(created_at: :desc)
-    @users = User.select(:id, :name)
+    @users = User.active.select(:id, :name)
     @statuses = Candidate.statuses.map{ |key, value| [key.humanize, value] }
   end
 

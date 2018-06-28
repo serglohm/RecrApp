@@ -1,13 +1,47 @@
 <h1>Dashboard</h1>
 <div class="row">
-  <div class="col-lg-4">
-    <h3>Your candidates in progress(<%= @candidates.count %>)</h3>
-    <%= render 'shared/candidates', candidates: @candidates %>
-  </div>
-  <% if @upcoming_events.present? %>
-    <div class="col-lg-8">
-      <h3>Your upcoming events (next 7 days)</h3>
-      <%= render 'shared/events', events: @upcoming_events %>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Your candidates in progress(<%= @candidates.count %>)</h4>
+      </div>
+      <div class="card-content">
+        <div class="table-responsive">
+          <%= render 'shared/candidates', candidates: @candidates %>
+        </div>
+      </div>
     </div>
-  <% end %>
+  </div>
+  <div class="col-8">
+    <% if @upcoming_events.present? %>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Your upcoming events (next 7 days)</h4>
+            </div>
+            <div class="card-content">
+              <div class="table-responsive">
+                <%= render 'shared/events', events: @upcoming_events %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <br>
+    <div class="row">
+      <div class="col-5">
+        <div class="card">
+          <%= render 'income' %>
+        </div>
+      </div>
+      <div class="col-7">
+        <div class="card">
+          <%= render 'starting_work' %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+

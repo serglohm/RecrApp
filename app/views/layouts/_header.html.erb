@@ -37,9 +37,11 @@
               Reports
             </a>
             <div class="dropdown-menu" aria-labelledby="reportsDropdown">
-              <%= link_to 'Candidates by users', candidates_by_users_path, class:'dropdown-item' %>
+              <%= link_to 'Candidates by Users', candidates_by_users_path, class:'dropdown-item' %>
               <%= link_to 'Sources', candidates_by_sources_path, class:'dropdown-item' %>
               <%= link_to 'Accepted offers', candidates_by_months_path, class:'dropdown-item' %>
+              <%= link_to 'Rejects by Companies', rejects_by_companies_path, class:'dropdown-item' %>
+              <%= link_to 'Offers by Users', offers_by_users_path, class:'dropdown-item' %>
             </div>
           </li>
         <% end %>

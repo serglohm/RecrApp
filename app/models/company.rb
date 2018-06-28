@@ -9,11 +9,15 @@ class Company < ApplicationRecord
 
   def get_multiplier
     if self.rate?
-      multiplier = self.rate/100
+      multiplier = (self.rate/100).to_f
     elsif self.half_gross_salary?
       multiplier = 1/24.0
     elsif self.gross_salary?
       multiplier = 1/12.0
     end
+  end
+
+  def get_rejects
+    self.assignments.rejected
   end
 end

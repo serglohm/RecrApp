@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180621121157) do
+ActiveRecord::Schema.define(version: 20180622092418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -186,6 +186,11 @@ ActiveRecord::Schema.define(version: 20180621121157) do
     t.string "telegram_api_hash"
     t.string "phone_number"
     t.boolean "active", default: true
+    t.integer "pay_type", default: 0
+    t.integer "rate_per_candidate", default: 0
+    t.integer "base_salary", default: 0
+    t.integer "salary_threshold", default: 0
+    t.integer "bonus_salary_rate", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

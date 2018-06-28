@@ -11,5 +11,7 @@ class DashboardController < ApplicationController
                                    .includes(:assignment)
                                    .includes(:vacancy)
                                    .order(scheduled_on: :asc)
+    @income_by_month = current_user.calculate_income_by_month(current_user)
+    @placements_this_month = current_user.candidates.starting_this_month
   end
 end

@@ -1,25 +1,24 @@
-<table class="table">
+<table class="table table-hover table-xl mb-0">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Country</th>
-      <th>Source</th>
-      <th>Ownership</th>
-      <th colspan="2"></th>
+      <th class="border-top-0">Name</th>
+      <th class="border-top-0">Status</th>
+      <th class="border-top-0">Country</th>
+      <th class="border-top-0">Source</th>
+      <th class="border-top-0">Ownership</th>
+      <th class="border-top-0"></th>
     </tr>
   </thead>
 
   <tbody>
     <% candidates.each do |candidate| %>
       <tr>
-        <td><%= link_to candidate.name, candidate %></td>
-        <td><%= candidate.status %></td>
+        <td class="text-truncate"><%= link_to candidate.name, candidate %></td>
+        <td><%= candidate.status.humanize %></td>
         <td><%= candidate.country.truncate(30) %></td>
-        <td><%= link_to candidate.source.name, candidate.source %></td>
-        <td><%= candidate.user.name %></td>
+        <td><%= candidate.source.name %></td>
+        <td ><%= candidate.user.name %></td>
         <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
-        <td><%= link_to 'Delete', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

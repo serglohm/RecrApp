@@ -32,6 +32,11 @@ class Candidate < ApplicationRecord
   scope :by_user, -> user_id { where("user_id = ?", user_id) }
   scope :by_status, -> status { where("status = ?", status) }
   scope :by_date, -> start_date, end_date { where("candidates.created_at >= ? AND candidates.created_at <= ?", start_date, end_date ) }
+  scope :starting_this_month, -> { joins(:assignments).where("assignments.start_date > ? AND assignments.start_date < ?", Time.now.beginning_of_month, Time.now.end_of_month) }
+
+  def get_offer
+    self.assignments.find_by(hired: true)
+  end
 
   private
 

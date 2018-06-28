@@ -23,6 +23,17 @@
     <% end %>
   </div>
 </div>
-<%= render "candidates", candidates: @candidates %>
+
+<div class="row">
+  <div id="candidates" class="col-12 col-md-12">
+    <div class="card">
+      <div class="card-content mt-1">
+        <div class="table-responsive">
+          <%= render "candidates", candidates: @candidates %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 

@@ -1,14 +1,29 @@
 <h1>Accepted offers by months report</h1>
 
 <div class="row">
-  <%= line_chart @accepted_assignments.count, download: true %>
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Total</h4>
+      </div>
+      <div class="card-content">
+        <%= line_chart @accepted_assignments_by_month.count, download: true %>
+      </div>
+    </div>
+  </div>
 </div>
-
+<br>
 <div class="row">
   <% @users.each do |user| %>
-    <div class="col-4">
-      <h3>User <%= user.name %></h3>
-      <%= line_chart @accepted_assignments.where("users.id = ?", user.id).count, download: true %>
+    <div class="col-3">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"><%= user.name %></h4>
+        </div>
+        <div class="card-content">
+          <%= line_chart @accepted_assignments_by_month.where("users.id = ?", user.id).count, download: true %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

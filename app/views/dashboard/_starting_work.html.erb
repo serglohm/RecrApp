@@ -1,0 +1,12 @@
+<div class="card-header">
+  <h4 class="card-title">This month placements</h4>
+</div>
+<div class="card-content collapse show">
+  <div class="card-body">
+    <div clas="row">
+    </div>
+    <% @placements_this_month.each do |candidate| %>
+      <p><%= candidate.name %>: starting at <%= candidate.get_offer.start_date %></p>
+    <% end %>
+  </div>
+</div>

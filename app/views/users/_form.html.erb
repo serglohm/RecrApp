@@ -20,12 +20,44 @@
             <%= f.collection_select :role_ids, Role.all, :id, :name, {}, { class:"form-control" } %>
          </div>
 
-         <div class="form-group col-2">
+         <div class="form-group col-1">
             <%= f.label :active %><br />
             <%= f.check_box :active, { class:"form-control" }, "true", "false" %>
          </div>
       <% end %>
    </div>
+
+   <% if current_user.has_role? :admin %>
+      <div class='row'>
+         <div class="form-group col-3">
+           <%= f.label :pay_type, "Pay scheme" %>
+           <%= f.select :pay_type, User.pay_types.keys, { selected: @user.pay_type }, { class:'form-control' } %>
+         </div>
+
+         <% if @user.share? %>
+            <div class="form-group col-2">
+               <%= f.label :base_salary %><br />
+               <%= f.text_field :base_salary, class:"form-control" %>
+            </div>
+
+            <div class="form-group col-2">
+               <%= f.label :salary_threshold %><br />
+               <%= f.text_field :salary_threshold, class:"form-control" %>
+            </div>
+
+            <div class="form-group col-2">
+               <%= f.label :bonus_salary_rate %><br />
+               <%= f.text_field :bonus_salary_rate, class:"form-control" %>
+            </div>
+
+         <% elsif @user.fixed_rate? %>
+            <div class="form-group col-2">
+               <%= f.label :rate_per_candidate %><br />
+               <%= f.text_field :rate_per_candidate, class:"form-control" %>
+            </div>
+         <% end %>
+      </div>
+   <% end %>
 
    <h2>Telegraph API settings</h2>
    <div class="jumbotron">
