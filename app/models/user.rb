@@ -74,8 +74,6 @@ class User < ApplicationRecord
     save!
   end
 
-
-
   def self.calculate_income(user, offers)
     rate = user.bonus_salary_rate.to_f / 100
     offers_sum = offers.sum(&:calculate_invoice_sum)
