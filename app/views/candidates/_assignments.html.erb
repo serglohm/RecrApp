@@ -5,10 +5,18 @@
       <p>
         <h5>Hired</h5>
         <% if (current_user.has_role? :admin) || (@candidate.user == current_user) %>
-          <p>Invoice sum: <%= f.object.calculate_invoice_sum %> EUR</p>
-          <p>Salary: <%= f.object.salary %> EUR gross</p>
+          <% if f.object.salary.present? %>
+            <p>Invoice sum: <%= f.object.calculate_invoice_sum %> EUR</p>
+            <p>Salary: <%= f.object.salary %> EUR gross</p>
+          <% else %>
+            <h3><%= fa_icon 'exclamation-triangle'%> Reset and set salary</h3>
+          <% end %>
         <% end %>
-        <p>Starts on: <%= f.object.start_date %></p>
+        <% if f.object.start_date.present? %>
+          <p>Starts on: <%= f.object.start_date %></p>
+        <% else %>
+          <h3><%= fa_icon 'exclamation-triangle'%> Reset and set start date</h3>
+        <% end %>
       </p>
       <%= link_to "Reset", assignment_reset_status_path(f.object),
                             data: {assignment_id: f.object.id},

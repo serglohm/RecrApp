@@ -30,6 +30,16 @@
       </div>
     <% end %>
     <br>
+    <% if @incompleted_offers.present? %>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <%= render 'incompleted_offers' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <br>
     <div class="row">
       <div class="col-5">
         <div class="card">

@@ -1,0 +1,19 @@
+<div class="card-header">
+  <h4 class="card-title">Incompleted offers</h4>
+</div>
+<div class="card-content collapse show">
+  <div class="card-body">
+    <div clas="row">
+    </div>
+    <% @incompleted_offers.each do |offer| %>
+      <p>
+        <%= fa_icon 'exclamation-triangle'%>
+        <%= link_to offer.candidate.name, offer.candidate %> to <%= offer.vacancy.name %> at <%= offer.vacancy.company.name %>
+        (
+          <%= "Set salary" if offer.salary.nil? %>
+          <%= "Set start date" if offer.start_date.nil? %>
+        )
+      </p>
+    <% end %>
+  </div>
+</div>

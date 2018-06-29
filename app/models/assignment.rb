@@ -10,10 +10,12 @@ class Assignment < ApplicationRecord
   scope :active, -> { where(hired: false, rejected: false, withdrawn: false, offer_rejected: false) }
   scope :finished, -> { where.not(finish_date: nil) }
 
+  scope :hired, -> { where(hired: true) }
   scope :rejected, -> { where(rejected: true) }
   scope :accepted, -> { where(hired: true).where.not(start_date: nil).where.not(salary: nil) }
   scope :invoiced, -> { where(invoiced: true) }
   scope :not_invoiced, -> { where(invoiced: false) }
+  scope :incompleted, -> { where(salary: nil).or(where(start_date: nil)) }
 
   def to_hire(salary, date_of_start)
     _reset_status
