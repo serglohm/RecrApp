@@ -42,7 +42,7 @@ class User < ApplicationRecord
     Thread.current[:user] = user
   end
 
-  def calculate_income_by_month(user)
+  def calculate_income_by_month
     if self.fixed_rate?
       offers = assignments.accepted.group_by_month(:start_date).count
       offers.map do |month, value|
@@ -52,7 +52,8 @@ class User < ApplicationRecord
         ]
       end
     elsif self.share?
-      offers = user.assignments.accepted.group_by_month{|offer| offer.start_date}.map{|month, offers| [month, User.calculate_income(user, offers)]}
+      offers = self.assignments.accepted.group_by_month{|offer| offer.start_date}
+                                        .map{|month, offers| [month, User.calculate_income(self, offers)]}
     end
   end
 

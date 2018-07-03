@@ -2,14 +2,7 @@
 <div class="row">
   <div class="col-4">
     <div class="card">
-      <div class="card-header">
-        <h4 class="card-title">Your candidates in progress(<%= @candidates.count %>)</h4>
-      </div>
-      <div class="card-content">
-        <div class="table-responsive">
-          <%= render 'shared/candidates', candidates: @candidates %>
-        </div>
-      </div>
+      <%= render 'candidates', candidates: @candidates %>
     </div>
   </div>
   <div class="col-8">
@@ -17,14 +10,7 @@
       <div class="row">
         <div class="col">
           <div class="card">
-            <div class="card-header">
-              <h4 class="card-title">Your upcoming events (next 7 days)</h4>
-            </div>
-            <div class="card-content">
-              <div class="table-responsive">
-                <%= render 'shared/events', events: @upcoming_events %>
-              </div>
-            </div>
+            <%= render 'events', events: @upcoming_events %>
           </div>
         </div>
       </div>
@@ -43,15 +29,28 @@
     <div class="row">
       <div class="col-5">
         <div class="card">
-          <%= render 'income' %>
+          <% if current_user.has_role? :head %>
+            <%= render 'overall_invoices' %>
+          <% else %>
+            <%= render 'income' %>
+          <% end %>
         </div>
       </div>
       <div class="col-7">
         <div class="card">
-          <%= render 'starting_work' %>
+          <%= render 'starting_work', placements: @sorted_placements %>
         </div>
       </div>
     </div>
   </div>
+  <!-- <div class="col-2">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <%# render 'actions' %>
+        </div>
+      </div>
+    </div>
+  </div> -->
 </div>
 

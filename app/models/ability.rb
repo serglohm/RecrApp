@@ -33,6 +33,8 @@ class Ability
         can :manage, User, id: user.id
     elsif user.has_role?(:admin)
         can :manage, :all
+    elsif user.has_role?(:head)
+        can :manage, :all
     elsif user.has_role?(:recruiter)
         can :manage, Candidate
         can :manage, User, id: user.id
