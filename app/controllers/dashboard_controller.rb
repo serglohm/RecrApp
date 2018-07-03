@@ -24,6 +24,6 @@ class DashboardController < ApplicationController
       @placements_this_month = current_user.candidates
     end
     @sorted_placements = @placements_this_month.starting_this_month
-                                               .sort_by{ |a| a.assignments.accepted.first.start_date }
+                                               .sort_by{ |candidate| candidate.assignments.accepted.first.start_date }
   end
 end

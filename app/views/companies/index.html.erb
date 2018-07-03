@@ -14,7 +14,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <% if current_user.has_role?(:admin) %>
+      <% if current_user.has_any_role? :admin, :head %>
         <th>Payment scheme</th>
       <% end %>
       <th colspan="2"></th>
@@ -25,7 +25,7 @@
     <% @companies.each do |company| %>
       <tr>
         <td><%= link_to company.name, company %></td>
-        <% if current_user.has_role?(:admin) %>
+        <% if current_user.has_any_role? :admin, :head %>
           <td><%= company.pay_type.humanize %> <%= ": #{company.rate}%" if company.rate? %> </td>
         <% end %>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>

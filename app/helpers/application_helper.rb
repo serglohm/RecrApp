@@ -7,4 +7,8 @@ module ApplicationHelper
       when 'alert' then "alert alert-warning"
     end
   end
+
+  def user_is_head_or_admin?
+    current_user.has_any_role? :admin, :head
+  end
 end

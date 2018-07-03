@@ -15,7 +15,7 @@
     <%= render "filter" %>
   </div>
   <div class="col-4">
-    <% if current_user.has_role? :admin %>
+    <% if current_user.has_any_role? :admin, :head %>
       <%= link_to "Export candidates to XLS", candidates_path(format: "xlsx",
                                                               by_user: params[:by_user],
                                                               by_status: params[:by_status]

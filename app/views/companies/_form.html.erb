@@ -17,7 +17,7 @@
       <%= form.text_field :name, id: :company_name, class:'form-control' %>
     </div>
 
-    <% if current_user.has_role?(:admin) %>
+    <% if current_user.has_any_role? :admin, :head %>
       <div class="form-group col-3">
         <%= form.label :pay_type, "Pay scheme" %>
         <%= form.select :pay_type, Company.pay_types.keys, { selected: @company.pay_type }, { class:'form-control' } %>

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    if current_user.has_role?(:admin) || current_user.has_role?(:head)
+    if current_user.has_any_role? :admin, :head
       @users = User.all
     else
       @users = User.where(id: current_user.id)

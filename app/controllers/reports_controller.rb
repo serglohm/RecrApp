@@ -38,6 +38,6 @@ class ReportsController < ApplicationController
   end
 
   def verify_admin
-    redirect_to root_url unless current_user.has_role?(:admin) || current_user.has_role?(:head)
+    redirect_to root_url unless current_user.has_any_role? :admin, :head
   end
 end

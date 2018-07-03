@@ -8,7 +8,7 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
-    if current_user.has_role?(:admin) || current_user.has_role?(:recruiter)
+    if current_user.has_any_role?(:admin, :head, :recruiter)
       @candidates = apply_scopes(Candidate.includes(:source, :user)).order(created_at: :desc)
     else
       @candidates = current_user.candidates.order(created_at: :desc)
@@ -24,7 +24,7 @@ class CandidatesController < ApplicationController
   # GET /candidates/1
   # GET /candidates/1.json
   def show
-    @admins = User.with_role(:admin).where.not(id: current_user.id)
+    @admins = User.with_any_role(:admin, :head).delete_if{ |user| user.id == current_user.id}
     @comments = @candidate.comments
     @comment = current_user.comments.new(candidate_id: @candidate.id)
   end
