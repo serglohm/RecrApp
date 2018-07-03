@@ -16,9 +16,9 @@ class DashboardController < ApplicationController
 
     if current_user.has_role? :head
       @placements_this_month = Candidate.select(:id, :name)
-      @overall_invoices = Assignment.accepted.select(:id, :start_date, :salary)
-                                            .group_by_month{ |offer| offer.start_date }
-                                            .map{ |month, offers| [month, offers.sum(&:salary)] }
+      @overall_invoices = Assignment.accepted.select(:id, :start_date, :salary, :vacancy_id)
+                                             .group_by_month{ |offer| offer.start_date }
+                                             .map{ |month, offers| [month, offers.sum(&:calculate_invoice_sum)] }
     else
       @income_by_month = current_user.calculate_income_by_month
       @placements_this_month = current_user.candidates
