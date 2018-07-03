@@ -8,7 +8,7 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
-    if current_user.has_any_role?(:admin, :head, :recruiter)
+    if current_user.has_any_role? :admin, :head, :recruiter
       @candidates = apply_scopes(Candidate.includes(:source, :user)).order(created_at: :desc)
     else
       @candidates = current_user.candidates.order(created_at: :desc)
