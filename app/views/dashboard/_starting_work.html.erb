@@ -6,7 +6,14 @@
     <div clas="row">
     </div>
     <% placements.each do |candidate| %>
-      <p><%= candidate.name %>: starting at <%= candidate.get_offer.start_date %></p>
+      <p>
+        <%= candidate.name %>: starting at <%= candidate.get_offer.start_date %>
+        <% if !candidate.get_offer.invoiced? %>
+          <%= link_to "Set Invoiced", assignment_set_invoiced_path(candidate.get_offer),
+                                      data: {assignment_id: candidate.get_offer.id},
+                                      class:'btn btn-outline-success btn-sm' %>
+        <% end %>
+      </p>
     <% end %>
   </div>
 </div>

@@ -20,7 +20,10 @@ set :output, "log/crontab.log"
 
 # Learn more: http://github.com/javan/whenever
 
-every :day, at: '0:01am' do
+every :wednesday, at: '0:01am' do
   runner "Assignment.generate_follow_ups"
+end
+
+every :day, at: '0:01am' do
   runner "Assignment.generate_invoice_reminders"
 end
