@@ -12,6 +12,8 @@ class Assignment < ApplicationRecord
 
   scope :hired, -> { where(hired: true) }
   scope :rejected, -> { where(rejected: true) }
+  scope :offer_rejected, -> { where(offer_rejected: true) }
+  scope :withdrawn, -> { where(withdrawn: true) }
   scope :accepted, -> { where(hired: true).where.not(start_date: nil).where.not(salary: nil) }
   scope :invoiced, -> { where(invoiced: true) }
   scope :not_invoiced, -> { where(invoiced: false) }

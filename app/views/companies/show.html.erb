@@ -5,6 +5,11 @@
     <h3>Vacancies</h3>
     <%= render 'shared/vacancies', vacancies: @vacancies %>
   </div>
+  <div class="col-6">
+    <h3>Status shares</h3>
+    <%= pie_chart @company.calculate_shares %>
+  </div>
 </div>
+
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
