@@ -1,7 +1,7 @@
 <h1>Skill: <%= @skill.name %></h1>
 <div class="row">
   <div class="col">
-    <%= render 'shared/candidates', candidates: @skill.candidates %>
+    <%= render 'candidates/candidates', candidates: @skill.candidates %>
   </div>
   <div class="col">
     <table class="table">

@@ -22,19 +22,27 @@ class Company < ApplicationRecord
   end
 
   def calculate_shares
-    assignments = self.assignments
-    total = assignments.finished.count.to_f
+    total = assignments.finished.pluck(:id).count.to_f
     if total > 0
-      rejected_share = assignments.rejected.count / total * 100
-      withdrawn_share = assignments.withdrawn.count / total  * 100
-      offer_rejected_share = assignments.offer_rejected.count / total  * 100
-      hired_share = assignments.hired.count / total  * 100
+      hired = assignments.accepted.pluck(:id).count.to_f
+      rejected_share = assignments.rejected.pluck(:id).count / total * 100
+      withdrawn_share = assignments.withdrawn.pluck(:id).count / total  * 100
+      offer_rejected_share = assignments.offer_rejected.pluck(:id).count / total  * 100
+      hired_share = assignments.hired.pluck(:id).count / total  * 100
+      avg_income = get_total_income / hired
       json_shares = {
-                       rejected: rejected_share.round(2),
-                       withdrawn: withdrawn_share.round(2),
-                       offer_rejected: offer_rejected_share.round(2),
-                       hired: hired_share.round(2)
+                      rejected: rejected_share.round(2),
+                      withdrawn: withdrawn_share.round(2),
+                      offer_rejected: offer_rejected_share.round(2),
+                      hired: hired_share.round(2),
+                      avg_income: avg_income.round(2),
+                      total: total
                      }
     end
   end
+
+  def get_total_income
+    self.assignments.accepted.sum(&:calculate_invoice_sum)
+  end
+
 end

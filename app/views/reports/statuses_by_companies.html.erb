@@ -1,0 +1,29 @@
+<h1>Statuses by Companies report</h1>
+
+<table class="table table-hover table-xl mb-0">
+  <thead>
+    <tr>
+      <th class="border-top-0">Company name</th>
+      <th class="border-top-0">Candidates</th>
+      <th class="border-top-0">Rejected</th>
+      <th class="border-top-0">Withdrawn</th>
+      <th class="border-top-0">Offer rejected</th>
+      <th class="border-top-0">Hired</th>
+      <th class="border-top-0">Avg income per candidate</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.name %></td>
+        <td><%= company.calculate_shares[:total].to_i if company.calculate_shares.present? %></td>
+        <td><%= company.calculate_shares[:rejected] if company.calculate_shares.present? %></td>
+        <td><%= company.calculate_shares[:withdrawn] if company.calculate_shares.present? %></td>
+        <td><%= company.calculate_shares[:offer_rejected] if company.calculate_shares.present? %></td>
+        <td><%= company.calculate_shares[:hired] if company.calculate_shares.present? %></td>
+        <td><%= company.calculate_shares[:avg_income] if company.calculate_shares.present? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

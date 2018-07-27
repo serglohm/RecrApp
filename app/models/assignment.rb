@@ -1,6 +1,6 @@
 class Assignment < ApplicationRecord
-  belongs_to :candidate
-  belongs_to :vacancy
+  belongs_to :candidate, counter_cache: true
+  belongs_to :vacancy, counter_cache: true
 
   has_many :events, dependent: :destroy
   has_one :company, through: :vacancy
@@ -72,8 +72,7 @@ class Assignment < ApplicationRecord
   end
 
   def calculate_invoice_sum
-    company = self.company
-    sum = (salary * 12 * company.get_multiplier).to_i
+    (salary * 12 * company.get_multiplier).to_i
   end
 
   private

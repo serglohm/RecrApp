@@ -1,0 +1,12 @@
+<li class="list-group-item">
+  <%= comment.content %>
+  <div class="pull-right">
+    <small>
+      created at: <%= comment.created_at.strftime('%d %h %y, %H:%M') %>
+    </small>
+    <small>
+      by <%= comment.user.name %>
+      <%= link_to (fa_icon 'times'), comment, remote: true, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete_comment_#{comment.id}" %>
+    </small>
+  </div>
+</li>

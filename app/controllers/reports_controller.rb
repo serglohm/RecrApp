@@ -21,12 +21,8 @@ class ReportsController < ApplicationController
   def offers_by_users
   end
 
-  def rejects_by_companies
-    @grouped_rejects = Assignment.rejected
-    @rejects_by_month = @grouped_rejects.group_by{|a| a.company.name}
-                                        .map{|name, assignments| [name, assignments.group_by_month(&:finish_date)]}
-                                        .map{|k,v| Hash[name: k, data: v.map{|x,y| [x, y.count]}]}
-    @rejects_counter = @grouped_rejects.group_by_month(:finish_date).count.map{|k,v| v}.max
+  def statuses_by_companies
+    @companies = Company.includes(:assignments, :vacancies).all.order(:name)
   end
 
   private

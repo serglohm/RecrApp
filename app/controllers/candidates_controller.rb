@@ -24,7 +24,7 @@ class CandidatesController < ApplicationController
   # GET /candidates/1
   # GET /candidates/1.json
   def show
-    @admins = User.with_any_role(:admin, :head).delete_if{ |user| user.id == current_user.id}
+    @admins = User.with_any_role(:admin, :head).delete_if{ |user| user.id == current_user.id }
     @comments = @candidate.comments
     @comment = current_user.comments.new(candidate_id: @candidate.id)
   end
@@ -106,7 +106,7 @@ class CandidatesController < ApplicationController
     end
 
     def set_vacancies_and_skills
-      @vacancies = Vacancy.all.map{|v| ["#{v.name} at #{v.company.name}", v.id]}
+      @vacancies = Vacancy.active.map{|v| ["#{v.name} at #{v.company.name}", v.id]}
       @skills = Skill.all.pluck(:name, :id)
     end
 

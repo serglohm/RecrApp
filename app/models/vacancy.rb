@@ -1,6 +1,6 @@
 class Vacancy < ApplicationRecord
   require 'telegraph-ruby'
-  belongs_to :company
+  belongs_to :company, counter_cache: true
 
   has_many :skill_requirements, dependent: :destroy
   has_many :skills, through: :skill_requirements
@@ -17,6 +17,9 @@ class Vacancy < ApplicationRecord
   validates :salary_min, presence: true
   validates :salary_max, presence: true
   validate :salary_max_greater_than_salary_min
+
+  scope :active, -> { where(closed: false) }
+  scope :closed, -> { where(closed: true) }
 
   def salary_max_greater_than_salary_min
     return if salary_max.nil? or salary_min.nil?

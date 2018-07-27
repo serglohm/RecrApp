@@ -17,4 +17,5 @@
 </div>
 <%= render 'shared/event_modal' %>
 <div class="modal-div"></div>
-<%= render 'comments' %>
+<%= render 'comments/comments', comments: @comments %>
+<%= render 'comments/form', comment: @comment %>

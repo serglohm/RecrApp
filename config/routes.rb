@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     get :candidates_by_users, to: 'reports#candidates_by_users'
     get :candidates_by_sources, to: 'reports#candidates_by_sources'
     get :candidates_by_months, to: 'reports#candidates_by_months'
-    get :rejects_by_companies, to: 'reports#rejects_by_companies'
+    get :statuses_by_companies, to: 'reports#statuses_by_companies'
     get :offers_by_users, to: 'reports#offers_by_users'
   end
 

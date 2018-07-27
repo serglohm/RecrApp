@@ -5,8 +5,8 @@ class Candidate < ApplicationRecord
 
   multisearchable against: [:name, :description, :skype, :email]
 
-  belongs_to :user
-  belongs_to :source
+  belongs_to :user, counter_cache: true
+  belongs_to :source, counter_cache: true
 
   enum status: [:in_progress, :hired, :rejected, :withdrawn, :draft, :offers_rejected]
 
