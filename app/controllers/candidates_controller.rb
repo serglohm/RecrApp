@@ -106,7 +106,7 @@ class CandidatesController < ApplicationController
     end
 
     def set_vacancies_and_skills
-      @vacancies = Vacancy.active.map{|v| ["#{v.name} at #{v.company.name}", v.id]}
+      @vacancies = Vacancy.all.map{|v| ["#{v.name} at #{v.company.name}", v.id]}
       @skills = Skill.all.pluck(:name, :id)
     end
 
