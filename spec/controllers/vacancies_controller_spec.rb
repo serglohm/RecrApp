@@ -23,10 +23,10 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe ChatsController, type: :controller do
+RSpec.describe VacanciesController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # Chat. As you add validations to Chat, be sure to
+  # Vacancy. As you add validations to Vacancy, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -38,12 +38,12 @@ RSpec.describe ChatsController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # ChatsController. Be sure to keep this updated too.
+  # VacanciesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
-      chat = Chat.create! valid_attributes
+      vacancy = Vacancy.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
@@ -51,8 +51,8 @@ RSpec.describe ChatsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      chat = Chat.create! valid_attributes
-      get :show, params: {id: chat.to_param}, session: valid_session
+      vacancy = Vacancy.create! valid_attributes
+      get :show, params: {id: vacancy.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
@@ -66,29 +66,29 @@ RSpec.describe ChatsController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      chat = Chat.create! valid_attributes
-      get :edit, params: {id: chat.to_param}, session: valid_session
+      vacancy = Vacancy.create! valid_attributes
+      get :edit, params: {id: vacancy.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new Chat" do
+      it "creates a new Vacancy" do
         expect {
-          post :create, params: {chat: valid_attributes}, session: valid_session
-        }.to change(Chat, :count).by(1)
+          post :create, params: {vacancy: valid_attributes}, session: valid_session
+        }.to change(Vacancy, :count).by(1)
       end
 
-      it "redirects to the created chat" do
-        post :create, params: {chat: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Chat.last)
+      it "redirects to the created vacancy" do
+        post :create, params: {vacancy: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(Vacancy.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {chat: invalid_attributes}, session: valid_session
+        post :create, params: {vacancy: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
     end
@@ -100,41 +100,41 @@ RSpec.describe ChatsController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested chat" do
-        chat = Chat.create! valid_attributes
-        put :update, params: {id: chat.to_param, chat: new_attributes}, session: valid_session
-        chat.reload
+      it "updates the requested vacancy" do
+        vacancy = Vacancy.create! valid_attributes
+        put :update, params: {id: vacancy.to_param, vacancy: new_attributes}, session: valid_session
+        vacancy.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the chat" do
-        chat = Chat.create! valid_attributes
-        put :update, params: {id: chat.to_param, chat: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(chat)
+      it "redirects to the vacancy" do
+        vacancy = Vacancy.create! valid_attributes
+        put :update, params: {id: vacancy.to_param, vacancy: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(vacancy)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        chat = Chat.create! valid_attributes
-        put :update, params: {id: chat.to_param, chat: invalid_attributes}, session: valid_session
+        vacancy = Vacancy.create! valid_attributes
+        put :update, params: {id: vacancy.to_param, vacancy: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested chat" do
-      chat = Chat.create! valid_attributes
+    it "destroys the requested vacancy" do
+      vacancy = Vacancy.create! valid_attributes
       expect {
-        delete :destroy, params: {id: chat.to_param}, session: valid_session
-      }.to change(Chat, :count).by(-1)
+        delete :destroy, params: {id: vacancy.to_param}, session: valid_session
+      }.to change(Vacancy, :count).by(-1)
     end
 
-    it "redirects to the chats list" do
-      chat = Chat.create! valid_attributes
-      delete :destroy, params: {id: chat.to_param}, session: valid_session
-      expect(response).to redirect_to(chats_url)
+    it "redirects to the vacancies list" do
+      vacancy = Vacancy.create! valid_attributes
+      delete :destroy, params: {id: vacancy.to_param}, session: valid_session
+      expect(response).to redirect_to(vacancies_url)
     end
   end
 

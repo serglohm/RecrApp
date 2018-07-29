@@ -7,7 +7,7 @@
   </div>
   <div class="col-6">
     <h3>Status shares</h3>
-    <%= pie_chart @company.calculate_shares %>
+    <%= pie_chart @company.calculate_shares.without(:avg_income, :total) %>
   </div>
 </div>
 
