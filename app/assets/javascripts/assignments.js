@@ -1,6 +1,5 @@
 $(document).on("turbolinks:load", function() {
   $('.status_field').on('change', function() {
-    console.log();
     $.ajax({
       url: $(this).closest('form').attr("action"),
       headers: {

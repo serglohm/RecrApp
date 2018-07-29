@@ -38,6 +38,10 @@ class Candidate < ApplicationRecord
     self.assignments.find_by(hired: true)
   end
 
+  def phone=(phone)
+    write_attribute(:phone, phone.gsub(/\D/, ''))
+  end
+
   private
 
   def reindex
