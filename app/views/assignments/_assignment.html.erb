@@ -1,9 +1,9 @@
-<%= form.fields_for(:assignments) do |f| %>
+<%= form_with model: assignment, id: "assignment_edit_#{assignment.id}" do |f| %>
   <div class="form-group col <%= set_color_to_assignment(f.object) %>">
     <% if f.object.hired? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>
-        <h5>Hired</h5>
+      <h5>Hired</h5>
         <% if user_is_head_or_admin? || (@candidate.user == current_user) %>
           <% if f.object.salary.present? %>
             <p>Invoice sum: <%= f.object.calculate_invoice_sum %> EUR</p>
@@ -19,72 +19,70 @@
         <% end %>
       </p>
       <%= link_to "Reset", assignment_reset_status_path(f.object),
-                            data: {assignment_id: f.object.id},
-                            class:'btn btn-danger btn-sm' %>
+                              data: {assignment_id: f.object.id},
+                              class:'btn btn-danger btn-sm' %>
       <div class="pull-right">
         <% if f.object.invoiced? %>
           <h3>Invoiced</h3>
         <% else %>
           <%= link_to "Set Invoiced", assignment_set_invoiced_path(f.object),
-                                      data: {assignment_id: f.object.id},
-                                      class:'btn btn-success btn-sm' %>
+                                        data: {assignment_id: f.object.id},
+                                        class:'btn btn-success btn-sm' %>
           <% end %>
       </div>
-
     <% elsif f.object.rejected? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>Rejected because: <%= f.object.reject_reason %></p>
       <%= link_to "Reset", assignment_reset_status_path(f.object),
-                            data: {assignment_id: f.object.id},
-                            class:'btn btn-danger btn-sm' %>
-
+                              data: {assignment_id: f.object.id},
+                              class:'btn btn-danger btn-sm' %>
     <% elsif f.object.withdrawn? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>Withdrawn because: <%= f.object.withdrawn_reason %></p>
       <%= link_to "Reset", assignment_reset_status_path(f.object),
-                            data: {assignment_id: f.object.id},
-                            class:'btn btn-danger btn-sm' %>
-
+                              data: {assignment_id: f.object.id},
+                              class:'btn btn-danger btn-sm' %>
     <% elsif f.object.offer_rejected? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>Offer rejected because: <%= f.object.offer_rejected_reason %></p>
       <%= link_to "Reset", assignment_reset_status_path(f.object),
-                            data: {assignment_id: f.object.id},
-                            class:'btn btn-danger btn-sm' %>
-
+                              data: {assignment_id: f.object.id},
+                              class:'btn btn-danger btn-sm' %>
     <% else %>
-      <%= f.label :status, assignment_label(f.object) %>
-      <%= f.text_field :status, class:'form-control' %>
+      <div class="status_field">
+        <%= f.label :status, assignment_label(f.object) %>
+        <%= f.text_field :status, class:'form-control' %>
+      </div>
       <br>
       <%= f.button "Schedule event", type:'button',
-                                     class:'btn btn-success btn-sm show-modal-button',
-                                     data: {toggle: "modal", target: "#eventModal", assignment_id: f.object.id} %>
+                                       class:'btn btn-success btn-sm show-modal-button',
+                                       data: {toggle: "modal", target: "#eventModal", assignment_id: f.object.id} %>
       <div class="pull-right">
         <div class="btn-group">
           <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Actions
+              Actions
           </button>
           <div class="dropdown-menu">
             <%= link_to "Hire", assignment_hire_modal_path(f.object),
-                            remote: true,
-                            data: {assignment_id: f.object.id},
-                            class:'dropdown-item' %>
+                              remote: true,
+                              data: {assignment_id: f.object.id},
+                              class:'dropdown-item' %>
             <%= link_to "Reject", assignment_reject_modal_path(f.object),
-                            remote: true,
-                            data: {assignment_id: f.object.id},
-                            class:'dropdown-item' %>
+                              remote: true,
+                              data: {assignment_id: f.object.id},
+                              class:'dropdown-item' %>
             <%= link_to "Withdrawn", assignment_withdrawn_modal_path(f.object),
-                            remote: true,
-                            data: {assignment_id: f.object.id},
-                            class:'dropdown-item' %>
+                              remote: true,
+                              data: {assignment_id: f.object.id},
+                              class:'dropdown-item' %>
             <%= link_to "Offer reject", assignment_offer_rejected_modal_path(f.object),
-                            remote: true,
-                            data: {assignment_id: f.object.id},
-                            class:'dropdown-item' %>
+                              remote: true,
+                              data: {assignment_id: f.object.id},
+                              class:'dropdown-item' %>
             <div class="dropdown-divider"></div>
             <%= link_to "Unassign", f.object, method: :delete,
-                                          class:'dropdown-item',
-                                          data: { confirm: 'Are you sure?' } %>
+                                            class:'dropdown-item',
+                                            data: { confirm: 'Are you sure?' } %>
           </div>
         </div>
       </div>
@@ -92,4 +90,3 @@
   </div>
   <hr>
 <% end %>
-

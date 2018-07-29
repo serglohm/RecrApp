@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get :set_cancelled, to: 'events#set_cancelled'
   end
 
-  resources :assignments, only: :destroy do
+  resources :assignments, only: [:destroy, :update] do
     match :set_hired, to: 'assignments#set_hired', via: :patch
     match :set_rejected, to: 'assignments#set_rejected', via: :patch
     match :set_withdrawn, to: 'assignments#set_withdrawn', via: :patch

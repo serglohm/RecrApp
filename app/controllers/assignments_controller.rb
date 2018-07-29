@@ -1,12 +1,32 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, except: :destroy
-  before_action :set_candidate, except: :destroy
+  before_action :set_assignment, except: [:destroy, :edit, :update]
+  before_action :set_candidate, except: [:destroy, :edit, :update]
   after_action :touch_candidate, only: [:reset_status,
                                         :set_hired,
                                         :set_rejected,
                                         :set_withdrawn,
                                         :set_offer_rejected,
                                         :set_invoiced]
+
+
+  def edit
+    @assignment = Assignment.find(params[:id])
+    @candidate = @assignment.candidate
+  end
+
+  def update
+    @assignment = Assignment.find(params[:id])
+    @candidate = @assignment.candidate
+    respond_to do |format|
+      if @assignment.update(assignment_params)
+        format.json { render :show, status: :ok, location: @candidate }
+        format.js { render layout: false }
+      else
+        format.html { render :edit }
+        format.json { render json: @candidate.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def destroy
     @assignment = Assignment.find(params[:id])
@@ -73,6 +93,13 @@ class AssignmentsController < ApplicationController
   end
 
   private
+
+  def assignment_params
+    params.require(:assignment).permit(:candidate_id, :vacancy_id, :status,
+                                       :rejected, :reject_reason, :withdrawn,
+                                       :withdrawn_reason, :hired, :salary,
+                                       :start_date, :offer_rejected, :offer_rejected_reason, :invoiced)
+  end
 
   def touch_candidate
     @candidate.touch

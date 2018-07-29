@@ -1,4 +1,3 @@
-<%= form_with(model: candidate, local: true) do |form| %>
-  <%= render 'assignments', form: form %>
-  <%= form.submit "Submit statuses", class:'btn btn-primary' %>
+<% candidate.assignments.each do |assignment| %>
+  <%= render assignment %>
 <% end %>
