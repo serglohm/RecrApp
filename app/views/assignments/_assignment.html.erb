@@ -52,10 +52,10 @@
       <div class="status_field">
         <%= f.label :status, assignment_label(f.object) %>
         <div class="row">
-          <div class="col-11">
+          <div class="col-10">
             <%= f.text_field :status, class:'form-control' %>
           </div>
-          <div class="col-1 status_state">
+          <div class="col-2" id="status_state_<%= assignment.id %>">
           </div>
         </div>
       </div>

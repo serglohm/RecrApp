@@ -1,6 +1,6 @@
 class Assignment < ApplicationRecord
-  belongs_to :candidate, counter_cache: true
-  belongs_to :vacancy, counter_cache: true
+  belongs_to :candidate
+  belongs_to :vacancy
 
   has_many :events, dependent: :destroy
   has_one :company, through: :vacancy
