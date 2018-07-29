@@ -9,7 +9,7 @@ $(document).on("turbolinks:load", function() {
       method: 'PATCH',
       data: {
         assignment: {
-          status: $(this).children().closest('input').val()
+          status: $(this).children().children().children().closest('input').val()
         }
       }
     });
