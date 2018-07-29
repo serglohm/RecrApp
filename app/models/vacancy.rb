@@ -1,6 +1,6 @@
 class Vacancy < ApplicationRecord
   require 'telegraph-ruby'
-  belongs_to :company, counter_cache: true
+  belongs_to :company
 
   has_many :skill_requirements, dependent: :destroy
   has_many :skills, through: :skill_requirements
