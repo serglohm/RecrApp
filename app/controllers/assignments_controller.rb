@@ -38,58 +38,28 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  def hire_modal
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def reject_modal
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def withdrawn_modal
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def offer_rejected_modal
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def reset_status
     @assignment.reset_status
-    redirect_to @assignment.candidate
   end
 
   def set_hired
     @assignment.to_hire(params[:salary], params[:start_date])
-    redirect_to @assignment.candidate
   end
 
   def set_invoiced
     @assignment.to_invoiced
-    redirect_to @assignment.candidate
   end
 
   def set_rejected
     @assignment.to_reject(params[:reason])
-    redirect_to @assignment.candidate
   end
 
   def set_withdrawn
     @assignment.to_withdrawn(params[:reason])
-    redirect_to @assignment.candidate
   end
 
   def set_offer_rejected
     @assignment.to_offer_rejected(params[:reason])
-    redirect_to @assignment.candidate
   end
 
   private

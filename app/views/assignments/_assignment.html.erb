@@ -18,7 +18,7 @@
           <h3><%= fa_icon 'exclamation-triangle'%> Reset and set start date</h3>
         <% end %>
       </p>
-      <%= link_to "Reset", assignment_reset_status_path(f.object),
+      <%= link_to "Reset", assignment_reset_status_path(f.object), remote: true,
                               data: {assignment_id: f.object.id},
                               class:'btn btn-danger btn-sm' %>
       <div class="pull-right">
@@ -33,19 +33,19 @@
     <% elsif f.object.rejected? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>Rejected because: <%= f.object.reject_reason %></p>
-      <%= link_to "Reset", assignment_reset_status_path(f.object),
+      <%= link_to "Reset", assignment_reset_status_path(f.object), remote: true,
                               data: {assignment_id: f.object.id},
                               class:'btn btn-danger btn-sm' %>
     <% elsif f.object.withdrawn? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>Withdrawn because: <%= f.object.withdrawn_reason %></p>
-      <%= link_to "Reset", assignment_reset_status_path(f.object),
+      <%= link_to "Reset", assignment_reset_status_path(f.object), remote: true,
                               data: {assignment_id: f.object.id},
                               class:'btn btn-danger btn-sm' %>
     <% elsif f.object.offer_rejected? %>
       <h4><%= assignment_label(f.object) %></h4>
       <p>Offer rejected because: <%= f.object.offer_rejected_reason %></p>
-      <%= link_to "Reset", assignment_reset_status_path(f.object),
+      <%= link_to "Reset", assignment_reset_status_path(f.object), remote: true,
                               data: {assignment_id: f.object.id},
                               class:'btn btn-danger btn-sm' %>
     <% else %>
@@ -69,22 +69,18 @@
               Actions
           </button>
           <div class="dropdown-menu">
-            <%= link_to "Hire", assignment_hire_modal_path(f.object),
-                              remote: true,
-                              data: {assignment_id: f.object.id},
-                              class:'dropdown-item' %>
-            <%= link_to "Reject", assignment_reject_modal_path(f.object),
-                              remote: true,
-                              data: {assignment_id: f.object.id},
-                              class:'dropdown-item' %>
-            <%= link_to "Withdrawn", assignment_withdrawn_modal_path(f.object),
-                              remote: true,
-                              data: {assignment_id: f.object.id},
-                              class:'dropdown-item' %>
-            <%= link_to "Offer reject", assignment_offer_rejected_modal_path(f.object),
-                              remote: true,
-                              data: {assignment_id: f.object.id},
-                              class:'dropdown-item' %>
+            <%= f.button "Hire", type:'button',
+                                       class:'dropdown-item hire_button status_button',
+                                       data: {toggle: "modal", target: "#hireModal-#{assignment.id}", assignment_id: f.object.id} %>
+            <%= f.button "Reject", type:'button',
+                                       class:'dropdown-item reject_button status_button',
+                                       data: {toggle: "modal", target: "#rejectModal-#{assignment.id}", assignment_id: f.object.id} %>
+            <%= f.button "Withdrawn", type:'button',
+                                       class:'dropdown-item withdrawn_button status_button',
+                                       data: {toggle: "modal", target: "#withdrawnModal-#{assignment.id}", assignment_id: f.object.id} %>
+            <%= f.button "Offer reject", type:'button',
+                                       class:'dropdown-item offer_reject_button status_button',
+                                       data: {toggle: "modal", target: "#offerRejectModal-#{assignment.id}", assignment_id: f.object.id} %>
             <div class="dropdown-divider"></div>
             <%= link_to "Unassign", f.object, method: :delete,
                                             class:'dropdown-item',

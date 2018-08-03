@@ -3,10 +3,6 @@ $(document).on("turbolinks:load", function() {
     format: "YYYY-MM-DD HH:mm"
   });
 
-  $('#datePick').datetimepicker({
-    format: 'L'
-  });
-
   var buttonId = null;
 
   $(".event-modal").on("hide.bs.modal", function(e) {

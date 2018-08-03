@@ -1,4 +1,15 @@
+var statusButtonId, modalId;
+
 $(document).on("turbolinks:load", function() {
+  console.log('turbolinks:load');
+
+
+  function showProperModal(modal_id, this_modal) {
+    statusButtonId = $(this_modal).data('assignmentId');
+    modalId = modal_id + '-' + statusButtonId;
+    $(modalId).modal();
+  }
+
   $('.status_field').on('change', function(e) {
     e.preventDefault();
     $.ajax({
@@ -14,5 +25,30 @@ $(document).on("turbolinks:load", function() {
         }
       }
     });
+  });
+
+  $('.hire_date').datetimepicker({
+    format: "L"
+  });
+
+  $('.hire_button').on('click', function(){
+    showProperModal('#hireModal', this);
+  });
+
+  $('.reject_button').on('click', function(){
+    showProperModal('#rejectModal', this);
+  });
+
+  $('.withdrawn_button').on('click', function(){
+    showProperModal('#withdrawnModal', this);
+  });
+
+  $('.offer_reject_button').on('click', function(){
+    showProperModal('#offerRejectModal', this);
+  });
+
+  $('.status_submit').on('click', function() {
+    $(modalId).modal('hide');
+    console.log(modalId+" hidden");
   });
 });

@@ -16,6 +16,12 @@
   <% end %>
 </div>
 <%= render 'shared/event_modal' %>
+<% @candidate.assignments.each do |assignment| %>
+  <%= render 'assignments/hire_modal', assignment: assignment %>
+  <%= render 'assignments/offer_rejected_modal', assignment: assignment %>
+  <%= render 'assignments/reject_modal', assignment: assignment %>
+  <%= render 'assignments/withdrawn_modal', assignment: assignment %>
+<% end %>
 <div class="modal-div"></div>
 <%= render 'comments/comments', comments: @comments %>
 <%= render 'comments/form', comment: @comment %>

@@ -1,4 +1,4 @@
-<div class="modal fade set-hired-modal" id="hireModal" tabindex="-1" role="dialog">
+<div class="modal fade set-hired-modal" id="hireModal-<%=assignment.id%>" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,24 +8,24 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with url: assignment_set_hired_path(@assignment), method: :patch, remote: false, id:'set-hired' do |ff| %>
+        <%= form_with url: assignment_set_hired_path(assignment), method: :patch do |ff| %>
           <div class="form-group">
             <%= ff.label :salary, "Salary (gross)" %>
             <%= ff.number_field :salary, id: :salary, class:'form-control' %>
           </div>
           <div class="form-group">
             <%= ff.label :start_date %>
-            <div class="input-group date" id="datePick" data-target-input="nearest">
+            <div class="input-group date hire_date" id="datePick-<%=assignment.id%>" data-target-input="nearest">
               <%= ff.text_field :start_date, class:'form-control datetimepicker-input',
-                                                    id:'datePick',
-                                                    data: {target:"#datePick", toggle:"datetimepicker"} %>
-              <div class="input-group-append" data-target="#datePick" data-toggle="datetimepicker">
+                                                    id:'datePick-#{assignment.id}',
+                                                    data: { target:"#datePick-#{assignment.id}", toggle:"datetimepicker" } %>
+              <div class="input-group-append" data-target="#datePick-<%= assignment.id %>" data-toggle="datetimepicker">
                   <div class="input-group-text"><i class="fa fa-calendar"></i></div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <%= ff.submit "Hire!", class:'btn btn-primary', id:'set-hired-submit' %>
+            <%= ff.submit "Hire!", class:'btn btn-primary status_submit', id:'set-hired-submit' %>
           </div>
         <% end %>
       </div>

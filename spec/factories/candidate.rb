@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :candidate do
+  factory :cool_candidate do
     name 'Candidate Candidatov'
     country 'Estonia'
     city 'Tallinn'
@@ -15,8 +15,8 @@ FactoryBot.define do
     expected_salary 'Currently 2000 eur net, min 2800 eur net'
     marital_status 'married'
     availability '1 month'
-    user_id User.first.id
-    source_id Source.first.id
+    user_id 1
+    source_id 1
     status 1
   end
 end
