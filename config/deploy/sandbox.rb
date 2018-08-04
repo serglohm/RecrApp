@@ -1,4 +1,5 @@
 set :stage, :sandbox
+set :rails_env, :sandbox
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

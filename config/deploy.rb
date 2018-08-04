@@ -1,6 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
+set :stages, %w(production sandbox)
+set :default_stage, "sandbox"
 set :application, "RecrApp"
 set :repo_url, "git@github.com:swith/RecrApp.git"
 set :deploy_to, '/home/deploy/RecrApp'
