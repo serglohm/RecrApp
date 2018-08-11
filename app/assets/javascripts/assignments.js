@@ -1,13 +1,11 @@
 var statusButtonId, myCustomModalId;
 
-function showProperModal(modal_id, this_modal) {
-  statusButtonId = $(this_modal).data('assignmentId');
-  myCustomModalId = modal_id + '-' + statusButtonId;
-  $(myCustomModalId).modal();
+function showProperModal(modal_id, statusButtonId) {
+    myCustomModalId = modal_id + '-' + statusButtonId;
+    $(myCustomModalId).modal();
 }
 
 $(document).on("turbolinks:load", function() {
-
   $('.status_field').on('change', function(e) {
     e.preventDefault();
     $.ajax({
@@ -30,19 +28,19 @@ $(document).on("turbolinks:load", function() {
   });
 
   $('.hire_button').on('click', function(){
-    showProperModal('#hireModal', this);
+    showProperModal('#hireModal', $(this).data('assignmentId'));
   });
 
   $('.reject_button').on('click', function(){
-    showProperModal('#rejectModal', this);
+    showProperModal('#rejectModal', $(this).data('assignmentId'));
   });
 
   $('.withdrawn_button').on('click', function(){
-    showProperModal('#withdrawnModal', this);
+    showProperModal('#withdrawnModal', $(this).data('assignmentId'));
   });
 
   $('.offer_reject_button').on('click', function(){
-    showProperModal('#offerRejectModal', this);
+    showProperModal('#offerRejectModal', $(this).data('assignmentId'));
   });
 
   $('.status_submit').on('click', function() {
