@@ -1,12 +1,12 @@
 var statusButtonId, myCustomModalId;
 
-$(document).on("turbolinks:load", function() {
+function showProperModal(modal_id, this_modal) {
+  statusButtonId = $(this_modal).data('assignmentId');
+  myCustomModalId = modal_id + '-' + statusButtonId;
+  $(myCustomModalId).modal();
+}
 
-  function showProperModal(modal_id, this_modal) {
-    statusButtonId = $(this_modal).data('assignmentId');
-    myCustomModalId = modal_id + '-' + statusButtonId;
-    $(myCustomModalId).modal();
-  }
+$(document).on("turbolinks:load", function() {
 
   $('.status_field').on('change', function(e) {
     e.preventDefault();
