@@ -1,13 +1,11 @@
-var statusButtonId, modalId;
+var statusButtonId, myCustomModalId;
 
 $(document).on("turbolinks:load", function() {
-  console.log('turbolinks:load');
-
 
   function showProperModal(modal_id, this_modal) {
     statusButtonId = $(this_modal).data('assignmentId');
-    modalId = modal_id + '-' + statusButtonId;
-    $(modalId).modal();
+    myCustomModalId = modal_id + '-' + statusButtonId;
+    $(myCustomModalId).modal();
   }
 
   $('.status_field').on('change', function(e) {
@@ -48,7 +46,7 @@ $(document).on("turbolinks:load", function() {
   });
 
   $('.status_submit').on('click', function() {
-    $(modalId).modal('hide');
-    console.log(modalId+" hidden");
+    $(myCustomModalId).modal('hide');
+    console.log(myCustomModalId+" hidden");
   });
 });
