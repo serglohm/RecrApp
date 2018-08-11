@@ -85,7 +85,8 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.1'
   gem 'capistrano-rake', require: false
   gem 'capistrano-rails-console', require: false
-  gem "capistrano-yarn"
+  gem 'capistrano-yarn'
+  gem 'capistrano-rails-db'
   gem 'bullet'
 end
 
